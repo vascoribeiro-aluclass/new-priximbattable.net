@@ -1,0 +1,139 @@
+.price_final_aluclass {
+  color: var(--red);
+  font-weight: bold;
+  margin-left: 5px;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 496px) {
+  .price_final_aluclass,
+  .price_final_no_discount_aluclass,
+  article.product-miniature.js-product-miniature span.price {
+    font-size: 0.9rem;
+  }
+}
+
+.discount_list_products_aluclass {
+  background: var(--red);
+  color: #FFF;
+  padding: 0px 4px;
+  margin-left: 5px;
+}
+
+
+.hp-modal-dialog{
+  width: 100%;
+}
+@media (min-width:576px) {
+  .hp-modal-dialog{
+    margin: 30px auto;
+    width: 70%;
+  }
+}
+
+.hp-no-line-table{
+  border: 0px solid #f6f6f6 !important;
+}
+.hp-line-table{
+  border: 0px solid #f6f6f6 !important;
+  border-bottom-width: 4px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgb(246, 246, 246) !important;
+}
+.hp-border-table-header-left{
+  border: 0px solid #f6f6f6 !important;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.hp-border-table-header-right{
+  border: 0px solid #f6f6f6 !important;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.hp-table-header-middle{
+  vertical-align: middle !important;
+  font-size: 16px;
+}
+
+.hp-layout-commande-box1{
+  background-color: #D5E9E5;
+  width: 269px;
+  height: 289px;
+  border-radius: 25px;  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hp-layout-commande-box2{
+  background-color: #DBF1EC;
+  width: 219px;
+  height: 234px;
+  border-radius: 25px;  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hp-layout-commande-title{
+  height: 350px;
+  background-color: #EEF9F4  !important;
+  border: 0px solid rgba(0,0,0,.125) !important;
+  box-shadow: 0px 0px 0px 0 rgba(0,0,0,.2) !important;
+}
+
+.hp-remover_bordes-table{
+  border: 0px solid #f6f6f6 !important;
+}
+
+
+.hp-total-order{
+  font-size: large !important;
+}
+
+.hp-box-center{
+  display: flex  !important;
+  justify-content: center  !important;
+  flex-direction: column  !important;
+  justify-content: center  !important;
+  align-items: center  !important;
+}
+
+
+.hp-header-text-table{
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+
+.hp-btn:hover{
+  background-color: #b70a0a !important;
+}
+
+.hp-center{
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+}
+
+.hp-button-remove{
+  right: -15px;
+  top: -15px;
+  padding: .25rem .5rem;
+  border-radius: 50px;
+  position: absolute;
+  z-index: 1;
+}
+
+.hp-product-title{
+  height: 300px;
+}
+
+.hp-product-price-and-shipping{
+  margin-top: -5px; background-color: #FFF; width: 100%;
+}
+
+.hp-orders{
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
+  background: #fff;
+}
+

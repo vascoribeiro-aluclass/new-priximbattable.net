@@ -1,0 +1,249 @@
+.dt-form{
+  position: relative;
+  display: block;
+  background-color: #fff;
+  border-radius: 0;
+}
+
+.dt-form-radius{
+   border-radius: 25px;
+}
+
+.dt-form-error{
+  background-color: #e9bebd;
+}
+.dt-form-succes{
+  background-color: #b3fcac;
+}
+
+.dt-error{
+  border: 2px solid rgb(255, 170, 170);
+}
+.dt-error-info{
+  color: red !important;
+  font-style: italic;
+}
+
+
+.dt-flex-title-color-1{
+  color: #4C554C;
+  background-color: #A2B1A3;
+}
+
+.dt-flex-title-color-2{
+  color: #4C554C;
+  background-color: #E3CC64;
+}
+
+.dt-flex-title-color-3{
+  color: #FFFFFF;
+  background-color: #4D674E;
+}
+
+.dt-flex-title-color-4{
+  color: #2e362e;
+  background-color: #A2B1A3;
+}
+
+.dt-flex-title{
+  height: 115px;
+  font-size: 30px;
+  font-weight: bolder;
+  display: flex;
+}
+
+.dt-flex-title-2 {
+  font-size: 20px;
+  display: flex;
+  border-radius: 25px;
+}
+.dt-flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.dt-flex-centre{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.dt-flex-col{
+  flex-direction: column;
+  display: flex;
+}
+
+.dt-flex-col-height-1{
+  max-height: 408px;
+  width: 100%;
+}
+.dt-flex-col-height-2{
+  max-height: 1000px;
+  width: 32%;
+}
+
+.dt-flex-col-height-3{
+  max-height: 478px;
+  width: 100%;
+}
+
+.dt-flex-col-height-4{
+  max-height: 1000px;
+  width: 24%;
+}
+
+
+.dt-flex-row-3{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 780px) {
+  .dt-flex-col-height-2{
+    height: auto;
+    width: 100%;
+  }
+  .dt-flex-col-height-4{
+    height: auto;
+    width: 100%;
+  }
+  .dt-flex-col-height-1{
+    max-height: 800px;
+    width: 100%;
+  }
+
+  .dt-flex-col-height-3{
+    max-height: 800px;
+    width: 100%;
+  }
+
+  .dt-flex-row-3{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dt-flex-row-reverse{
+    flex-direction: column !important;
+    display: flex;
+  }
+
+  .dt-flex-title{
+    height: 115px;
+    font-size: 25px;
+    font-weight: bolder;
+    display: flex;
+  }
+}
+
+
+.dt-flex-col.dt-flex-col-height-1{
+  font-size: 18px;
+}
+.dt-flex-col.dt-flex-col-height-2{
+  font-size: 16px;
+  background-color: #A2B1A3;
+  color: #4C554C;
+}
+
+.dt-flex-col.dt-flex-col-height-4{
+  font-size: 16px;
+  background-color: #A2B1A3;
+  color: #4C554C;
+}
+
+
+.dt-flex-col-color-1 > p{
+  font-weight: bolder;
+  font-size: 22px;
+}
+
+.dt-flex-col-color-1{
+  background-color: #E3CC64;
+  color: #4C554C;
+}
+
+.dt-flex-col-color-2{
+  background-color: #A2B1A3 !important;
+  color: #4C554C !important;
+}
+
+.dt-flex-title-description{
+  height: 85px;
+  font-size: 18px;
+  font-weight: bolder;
+  display: flex;
+  color: #FFFFFF;
+  background-color: #A2B1A3;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.dt-box-description{
+  border: 0px;
+  border-radius: 25px;
+  resize: none;
+}
+
+.dt-img-fluid{
+  max-width: 100%  !important;
+  height: auto !important;
+}
+
+.arquivo {
+  display: none;
+}
+.dt-mon-icon{
+  color: #38407C;
+  height: 25px;
+  max-width: 100%;
+
+}
+.dt-mon-files{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #777777;
+  border-radius: 50px;
+  opacity: 1;
+  font-size: 14px;
+  background: #E6E6E6;
+  width: 250px;
+  height: 40px;
+}
+.dt-mon-files-circle{
+  box-shadow: 0px 3px 6px #00000029;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: #FFFFFF;
+  border-radius: 50px;
+}
+.dt-mon-files-text{
+  margin-left: 5px;
+}
+
+.dt-nom-text-info{
+  width: 250px; text-align: center;
+}
+
+.dt-btn-submit{
+  background-color: #939A93  !important;
+  color:white  !important;
+  border-radius: 25px  !important;
+  padding: 1.5rem 2.25rem  !important;
+}
+
+.dt-btn-submit:hover{
+  background-color: #676b67  !important;
+  color:white  !important;
+  border-radius: 25px  !important;
+  padding: 1.5rem 2.25rem  !important;
+}
+
+.dt-p{
+  color: #4c554c !important;
+  font-weight: normal !important;
+  font-size: 16px !important;
+}

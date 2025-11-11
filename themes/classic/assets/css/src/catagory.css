@@ -1,0 +1,23 @@
+.price_final_aluclass {
+  color: var(--red);
+  font-weight: bold;
+  margin-left: 5px;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 496px) {
+  .price_final_aluclass,
+  .price_final_no_discount_aluclass,
+  article.product-miniature.js-product-miniature span.price {
+    font-size: 0.9rem;
+  }
+}
+
+.discount_list_products_aluclass {
+  background: var(--red);
+  color: #FFF;
+  padding: 0px 4px;
+  margin-left: 5px;
+}
+
+

@@ -247,4 +247,27 @@ class Product extends ProductCore
 
     return round($sumRepair / $numRepair, 1);
   }
+
+  public function getIpUser()
+  {
+    $ipequl = false;
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+      $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+      $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+      $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    $sql = "SELECT ip_config FROM `sc_system_value` where id = 1";
+    $ipconfigMarioKart = Db::getInstance()->getValue($sql);
+    $arrayipconfigMarioKart = explode(";", $ipconfigMarioKart);
+
+
+
+    if (in_array($ip, $arrayipconfigMarioKart)) {
+      $ipequl = true;
+    }
+
+    return $ipequl;
+  }
 }

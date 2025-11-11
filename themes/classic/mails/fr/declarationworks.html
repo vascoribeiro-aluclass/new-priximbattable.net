@@ -1,0 +1,80 @@
+<html>
+              <head>
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <style>
+              body {
+                font-family:Open-sans;
+                background-color: #fafafa;
+      }
+      .coupondes{
+        border-width: 2px;
+        border-style: dashed;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .coupon {
+
+        width: 80%;
+        border-radius: 15px;
+        margin: 0 auto;
+        max-width: 600px;
+
+      }
+      .img{
+        margin-top:20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        height: auto
+      }
+
+      .container {
+        padding: 2px 16px;
+        background-color: white;
+      }
+
+      .promo {
+        background: #ff3333;
+        color: white;
+        padding: 3px;
+      }
+      .in
+      .expire {
+        color: black;
+      }
+      </style>
+      </head>
+      <body>
+        <div class="coupon" style="-webkit-text-size-adjust:none;background-color:#fff;width:650px;font-family:Open-sans, sans-serif;color:#555454;font-size:13px;line-height:18px;margin:auto">
+          <div class="container">
+            <div class="container">
+              <a title="{shop_name}" href="{shop_url}" style="color:#337ff1">
+                <img class="img" src="{shop_logo}" alt="{shop_name}" />
+              </a>
+              <p></p>
+              <p></p>
+                <h2>Bonjour, </h2>
+            </div>
+            <div class="container">
+              <span><strong>Nom : </strong> </span>
+              <span>{customer_name}</span> <br>
+              <span><strong>EMail : </strong></span>
+              <span>{customer_mail}</span><br>
+              <span><strong>Commande : </strong></span>
+              <span>{ref}</span>
+            </div>
+            <div class="container">
+             <strong>Description : </strong><br>
+              <span>{description}</span>
+            </div>
+            <div class="container" >
+              <div><span>Telecharger des fichiers <a
+                href="{linkzip}" style="color: #337ff1;">ICI</a> </span> </div>
+            </div>
+
+          </div>
+        </div>
+      </body>
+        </html>

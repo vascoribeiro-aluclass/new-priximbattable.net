@@ -1,0 +1,81 @@
+<html>
+              <head>
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <style>
+              body {
+                font-family:Open-sans;
+                background-color: #fafafa;
+      }
+      .coupondes{
+        border-width: 2px;
+        border-style: dashed;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .coupon {
+
+        width: 80%;
+        border-radius: 15px;
+        margin: 0 auto;
+        max-width: 600px;
+
+      }
+      .img{
+        margin-top:20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        height: auto
+      }
+
+      .container {
+        padding: 2px 16px;
+        background-color: white;
+      }
+
+      .promo {
+        background: #ff3333;
+        color: white;
+        padding: 3px;
+      }
+      .in
+      .expire {
+        color: black;
+      }
+      </style>
+      </head>
+      <body>
+        <div class="coupon" style="-webkit-text-size-adjust:none;background-color:#fff;width:650px;font-family:Open-sans, sans-serif;color:#555454;font-size:13px;line-height:18px;margin:auto">
+          <div class="container">
+            <div class="container">
+              <a title="{shop_name}" href="{shop_url}" style="color:#337ff1">
+                <img class="img" src="https://priximbattable.net/img/priximbattable-logo.png" alt="{shop_name}" />
+              </a>
+              <p></p>
+              <p></p>
+                <h2>Bonjour {nom}, </h2>
+            </div>
+            <div class="container" >
+              <div>Vous disposez maintenant d&#039;un coupon de <strong>{percentage}%</strong> &agrave; utiliser sur tous nos produits {shop_name}, valable <strong>1 jour</strong>.<br /><br />Attention : Cet e-mail sert uniquement &agrave; informer le client du code de coupon. Veuillez ne pas r&eacute;pondre &agrave; cet e-mail.</div>
+            </div>
+            <div class="container">
+              <p></p>
+              <div class = "coupondes">
+                  <h1 style="color:red; font-size: 33px;">{percentage}% R&Eacute;DUCTION</h1>
+                <p></p>
+                <h5>Utiliser le code promotionnel: </h5>
+                <p></p>
+                <h1><span class="promo">{coupon}</span></h1>
+              </div>
+              <p></p>
+              <p></p>
+              <div class="expire">Le code expire : {data}.<br></div>
+
+              <span><a href="{shop_url}" style="color:#337ff1">{shop_name}</a></span>
+            </div>
+          </div>
+        </div>
+      </body>
+        </html>

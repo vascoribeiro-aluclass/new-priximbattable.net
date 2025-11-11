@@ -1,0 +1,18 @@
+[/{shop_url}] 
+
+Bonjour,
+Une nouvelle demande de partenariat à été demandé pour le site {shop_name}. 
+
+Voici les détails :
+
+    {lastname} {firstname}
+    {email}
+    {phone}
+    {function}
+    {company}
+    {siret}
+    {dirigeant}
+    {website}
+    {service_description}
+
+{shop_name} [/{shop_url}]

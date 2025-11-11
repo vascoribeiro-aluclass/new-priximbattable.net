@@ -1,0 +1,164 @@
+
+input.field, select.field{
+width:450px;
+border:0;
+background-color:#e3e3e3;
+border-radius:13px;
+padding:5px 15px 5px 15px;
+height:48px!important;
+line-height:48px!important;
+color:#9e9e9e!important;
+margin-bottom:15px;
+}
+textarea.field{
+width:450px;
+border:0;
+background-color:#e3e3e3;
+border-radius:13px;
+padding:5px 15px 5px 15px;
+height:350px;
+line-height:40px!important;
+color:#9e9e9e!important;
+margin-bottom:15px;
+}
+
+input.field2{
+width: 309px;
+height: 54px;
+color:#FFF;
+background: var(--red) 0% 0% no-repeat padding-box;
+border: 2px solid #70707042;
+border-radius: 15px;
+}
+
+.contenainer_form{
+width: 100%;
+background-color: #F5F5F5;
+}
+h1.titre_form{
+text-align: center;
+font: normal normal 900 43px/29px Montserrat, Arial;
+letter-spacing: 0px;
+color: #222222;
+}
+h1.titre_form span{
+text-align: left;
+font: normal normal normal 19px/12px Montserrat, Arial;
+letter-spacing: 0px;
+color: #222222;
+}
+
+.block_service_client{
+	display:block;
+	float:left;
+	width:100%;
+	text-align: left;
+font: normal normal normal 13px/19px Montserrat, Arial;
+letter-spacing: 0px;
+color: #6A6A6A;
+margin-bottom:30px;
+}
+.block_service_client img{
+	float:left;
+	margin-right:30px;
+	max-width:300px;
+}
+.block_service_client p{
+	padding-top:-30px;
+}
+#infos_service_client{
+	width:47%;
+	float:left;
+}
+.separateur{
+	clear:left;
+	display:block;
+	margin-top:15px;
+border-bottom:1px solid #E5E5E5;
+}
+#form_service_client{
+	border:0px solid #000;
+	float:left;
+	width:47%;
+}
+
+h2.type_service{
+clear: left;
+display:block;
+				width:350px;
+				border-radius:10px;
+				background-color:#E5E5E5!important;
+			margin:30px auto!important;
+				height:30px!important;
+				line-height:30px!important;
+				text-align:center;
+
+font: normal normal medium 20px/26px Montserrat, Arial!important;
+letter-spacing: 0px;
+color: #929292;
+}
+
+
+#affluence{
+				display:block;
+				width:450px;
+				
+	height:280px;
+				border:0px solid #000;
+			}
+			#courbes{
+				width:450px;
+				height:240px;
+				display:block;
+				transform: rotate(180deg);
+			}
+			#horaires{
+				width:420px;
+				height:30px;
+				display:block;
+				margin-left:70px;
+			}
+			.tranche{
+				display:block;
+				bottom:0!important;
+				float:left;
+				margin-left:5px;
+				width:30px;
+				height:20px;
+			}
+			.courbe{
+				display:block;
+				bottom:0!important;
+				float:left;
+				margin-left:5px;
+				width:30px;
+				background-color: #CCC;
+				height:90px;
+				border-radius:0px 0px 5px 5px;
+			}
+			.actif{
+				background-color: #e74c3c;
+			}
+			.haut2{
+				height:120px;
+			}
+			.haut3{
+				height:140px;
+			}
+			.haut4{
+				height:160px;
+			}
+			.haut5{
+				height:180px;
+			}
+			.infobulle{
+				display:block;
+				width:350px;
+				border-radius:10px;
+				background-color:#E5E5E5!important;
+				color:#929292!important;
+				height:30px!important;
+				line-height:30px!important;
+				text-align:center;
+				margin-left:80px;
+			}
