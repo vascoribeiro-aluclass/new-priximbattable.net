@@ -1,0 +1,1 @@
+!function(i){i(document).ready(function(){i("body").append('<div id="autoResizeTextareaCopy" style="box-sizing: border-box; -moz-box-sizing: border-box;  -ms-box-sizing: border-box; -webkit-box-sizing: border-box; visibility: hidden;"></div>');i("#autoResizeTextareaCopy")})}(jQuery);
