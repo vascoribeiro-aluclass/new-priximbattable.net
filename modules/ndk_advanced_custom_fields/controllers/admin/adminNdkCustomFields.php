@@ -23,7 +23,8 @@ class AdminNdkCustomFieldsController extends ModuleAdminController
     $this->explicitSelect = true;
     $this->allow_export = true;
     $this->_defaultOrderBy = 'position';
-    $this->_default_pagination = '1000';
+    $this->_default_pagination = '50';
+
 
     parent::__construct();
     $this->types = array(
@@ -219,16 +220,15 @@ class AdminNdkCustomFieldsController extends ModuleAdminController
     $this->addJs(_MODULE_DIR_ . 'ndk_advanced_custom_fields/views/js/admin.js');
     $this->addCSS(_MODULE_DIR_ . 'ndk_advanced_custom_fields/views/css/admin.css', 'all', false);
 
-   Media::addJsDef([
+    Media::addJsDef([
       'tokenproduct ' => Tools::getAdminTokenLite('AdminProducts'),
       'tryThisFilter' => $this->l('↑ Try this filter ↑')
     ]);
 
     if (!Tools::getValue('id_ndk_customization_field')) {
-      $this->_select = 'a.*, pl.name as pname, cl.name as cname, gl.name as groupname, g.id_ndk_customization_field_group ';
+      $this->_select = 'a.*, cl.name as cname, gl.name as groupname, g.id_ndk_customization_field_group ';
       $this->_join = '
-            LEFT JOIN `' . _DB_PREFIX_ . 'product` p ON (FIND_IN_SET( p.`id_product`, a.`products`))
-            LEFT JOIN `' . _DB_PREFIX_ . 'product_lang` pl ON (pl.`id_product`= p.`id_product` AND pl.`id_lang` = ' . (int)Context::getContext()->language->id . ')
+
 
             LEFT JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_group` g ON (FIND_IN_SET( a.`id_ndk_customization_field`, g.`fields`))
             LEFT JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_group_lang` gl ON (gl.`id_ndk_customization_field_group`= g.`id_ndk_customization_field_group` AND gl.`id_lang` = ' . (int)Context::getContext()->language->id . ')
@@ -239,6 +239,7 @@ class AdminNdkCustomFieldsController extends ModuleAdminController
 
       $this->_orderBy = 'a.position';
       $this->_group = 'GROUP BY a.id_ndk_customization_field';
+
 
       //$this->_orderWay = 'DESC';
       Db::getInstance(_PS_USE_SQL_SLAVE_)->query('SET SQL_BIG_SELECTS=1');
@@ -267,31 +268,31 @@ class AdminNdkCustomFieldsController extends ModuleAdminController
 
 
 
-      $products_array = array();
-      // foreach ($result as $row) {
-      //   if ($row['name'] != '')
-      //     $products_array[$row['products']] = $row['name'];
-      // }
+      // $products_array = array();
+      // // foreach ($result as $row) {
+      // //   if ($row['name'] != '')
+      // //     $products_array[$row['products']] = $row['name'];
+      // // }
 
 
-      $products_array = array_unique($products_array);
-      asort($products_array);
+      // $products_array = array_unique($products_array);
+      // asort($products_array);
 
-      $categories_array = array();
-      // foreach ($result2 as $row2)
-      //   $categories_array[$row2['categories']] = $row2['name'];
+      // $categories_array = array();
+      // // foreach ($result2 as $row2)
+      // //   $categories_array[$row2['categories']] = $row2['name'];
 
-      asort($categories_array);
+      // asort($categories_array);
 
-      $groups_array = array();
-      // foreach ($result3 as $row3)
-      //   $groups_array[$row3['id_ndk_customization_field_group']] = $row3['name'];
+      // $groups_array = array();
+      // // foreach ($result3 as $row3)
+      // //   $groups_array[$row3['id_ndk_customization_field_group']] = $row3['name'];
 
-      $groups_array = array_unique($groups_array);
-      asort($groups_array);
+      // $groups_array = array_unique($groups_array);
+      // asort($groups_array);
 
-      $part1 = array_slice($this->fields_list, 0, 3);
-      $part2 = array_slice($this->fields_list, 3);
+      // $part1 = array_slice($this->fields_list, 0, 3);
+      // $part2 = array_slice($this->fields_list, 3);
       // $part1['products'] = array(
       //   'title' => $this->l('Product'),
       //   'type' => 'select',
@@ -318,8 +319,9 @@ class AdminNdkCustomFieldsController extends ModuleAdminController
       //   'order_key' => 'groupname'
       // );
 
-      $this->fields_list = array_merge($part1, $part2);
+      // $this->fields_list = array_merge($part1, $part2);
     }
+
 
 
 
