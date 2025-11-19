@@ -107,16 +107,18 @@ class AluMenu extends Module
         foreach ($stringCategoryArray as $stringCategoryValue) {
           $parenthtml = '';
           $arrayCategory = Db::getInstance(_PS_USE_SQL_SLAVE_)->ExecuteS('SELECT `name`, CONCAT (  c.`id_category`, \'-\' ,  cl.`link_rewrite`) as link, cl.`link_rewrite`
-          FROM `sp_category_lang` cl
-          INNER JOIN `sp_category` c on c.`id_category` = cl.`id_category`
+          FROM `' . _DB_PREFIX_ . 'category_lang` cl
+          INNER JOIN `' . _DB_PREFIX_ . 'category` c on c.`id_category` = cl.`id_category`
           WHERE cl.`id_lang` = ' . (int)$langid . ' and c.active = 1 and c.id_category = ' . (int)$stringCategoryValue . ' and c.id_shop_default = 1
           ORDER BY c.position');
 
 
+
+
           if (!empty($arrayCategory)) {
             $arrayCategoryParent = Db::getInstance(_PS_USE_SQL_SLAVE_)->ExecuteS('SELECT  c.`id_category`,`name`, CONCAT (  c.`id_category`, \'-\' ,  cl.`link_rewrite`) as link, cl.`link_rewrite`
-            FROM `sp_category_lang` cl
-            INNER JOIN `sp_category` c on c.`id_category` = cl.`id_category`
+            FROM `' . _DB_PREFIX_ . 'category_lang` cl
+            INNER JOIN `' . _DB_PREFIX_ . 'category` c on c.`id_category` = cl.`id_category`
             WHERE cl.`id_lang` = ' . (int)$langid . ' and c.active = 1 and c.id_parent = ' . (int)$stringCategoryValue . ' and c.id_shop_default = 1
             ORDER BY c.position');
 
@@ -138,11 +140,15 @@ class AluMenu extends Module
             } else {
               if ($stringCategoryValue <> 101) {
                 $arrayCategoryParent = Db::getInstance(_PS_USE_SQL_SLAVE_)->ExecuteS('SELECT  p.`id_product`,`name`, CONCAT (  p.`id_product`, \'-\' ,  pl.`link_rewrite`) as link, pl.`link_rewrite`
-                  FROM `sp_product_lang` pl
-                  INNER JOIN `sp_product` p on p.`id_product` = pl.`id_product`
-                INNER JOIN `sp_category_product` c on c.`id_product` =p.`id_product` and  c.`id_category` = ' . (int)$stringCategoryValue . '
+                  FROM `' . _DB_PREFIX_ . 'product_lang` pl
+                  INNER JOIN `' . _DB_PREFIX_ . 'product` p on p.`id_product` = pl.`id_product`
+                INNER JOIN `' . _DB_PREFIX_ . 'category_product` c on c.`id_product` =p.`id_product` and  c.`id_category` = ' . (int)$stringCategoryValue . '
                   WHERE pl.`id_lang` = ' . (int)$langid . ' and p.active = 1 and p.id_category_default = ' . (int)$stringCategoryValue . ' and p.id_shop_default = 1
                   ORDER BY c.position, p.id_product');
+
+
+
+
 
 
 
