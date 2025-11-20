@@ -215,9 +215,16 @@ class Product extends ProductCore
     $context = Context::getContext();
     $cartRules = $context->cart->getCartRules();
     $preco_reduction_value = $preco_final_sem_desc_seo_sem_portes - ($preco_final_sem_desc_seo_sem_portes * ($reduction_value / 100));
-    $retorno['reduction_percent'] = (key_exists('obj', $cartRules[0]) ? $cartRules[0]['obj']->reduction_percent : 0);
-    $retorno['reduction_percent_price'] = (key_exists('obj', $cartRules[0]) ?  $preco_reduction_value - (($cartRules[0]['obj']->reduction_percent / 100) * $preco_reduction_value) : 0);
-    $retorno['reduction_percent_name'] = (key_exists('obj', $cartRules[0]) ? $cartRules[0]['obj']->name : '');
+    if(key_exists(0, $cartRules) ){
+         $retorno['reduction_percent'] = (key_exists('obj', $cartRules[0]) ? $cartRules[0]['obj']->reduction_percent : 0);
+          $retorno['reduction_percent_price'] = (key_exists('obj', $cartRules[0]) ?  $preco_reduction_value - (($cartRules[0]['obj']->reduction_percent / 100) * $preco_reduction_value) : 0);
+          $retorno['reduction_percent_name'] = (key_exists('obj', $cartRules[0]) ? $cartRules[0]['obj']->name : '');
+    }else{
+               $retorno['reduction_percent'] = 0;
+          $retorno['reduction_percent_price'] = 0;
+          $retorno['reduction_percent_name'] = '';
+    }
+  
     $retorno['preco_com_desconto_catalogo'] = number_format($preco_final_sem_desc_seo - ($preco_final_sem_desc_seo * ($reduction_value / 100)), 2, '.', '');
     $retorno['preco_com_desconto_catalogo_view'] = number_format($preco_final_sem_desc_seo - ($preco_final_sem_desc_seo * ($reduction_value / 100)), 2, ',', ' ') . " €";
     return $retorno;
@@ -269,5 +276,14 @@ class Product extends ProductCore
     }
 
     return $ipequl;
+  }
+
+  public function checkDescriptionFile($product_id) {
+    $file_description = "./descricoes/".$product_id.".html";
+    if (file_exists($file_description)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

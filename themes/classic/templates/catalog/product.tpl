@@ -856,12 +856,12 @@
                     </div>
                     <div class="col-md-12 product_nota_centre product_nota_box_text_generic">
                       <p style="color: #FFFFFF; font-size: 12px; margin-top: 0.2rem;">L'indice de</br>
-                                        <strong>Réparabilité</strong>
-                                      </p>
+                                          <strong>Réparabilité</strong>
+                                        </p>
+                                      </div>
                                     </div>
-                                  </div>
-                              </a>
-                            </div> *}
+                                </a>
+                              </div> *}
             </div>
             <!--<div class="col-md-1">
               </div>-->
@@ -1126,7 +1126,7 @@
                 <div class="row">
                   <div class="col-md-12 text-center">
                     <div class="btn btn-primary my-1" id="alu-button-after-image">Voir fiche technique</div>
-                    <!--<div class="btn btn-primary my-1" id="comments-button-after-image" style="background-color: #F1C40F;">Voir les Avis</div>-->
+                    
                   </div>
                 </div>
 
@@ -1138,68 +1138,11 @@
           <div class="col-md-2 cart-flutua-scroll" style="">
             {include file='catalog/_partials/column-info.tpl'}
           </div>
-
+ 
           <div class="col-md-6" style="padding-bottom: 16px;">
             {block name='page_header_container'}
               {block name='page_header'}
-                <h1 class="h1" itemprop="name" id="name_title_product">{block name='page_title'}{$product.name}{/block}</h1>
 
-                <!--<div class="row">
-                                                                                    <div class="col-md-6">
-                                                                                      <a href="/avis-client" target="_blank">
-                                                                                        <div class="col-md-4 nota-google-product">
-                                                                                          <div style="/*! display: flex; */flex-direction: column;text-align: center;">
-                                                                                            <img loading="lazy" src="/img/cms/home/google.png" alt="Google" class="img-fluid" style="width: 60px;"><span>
-                                                                                              {for $foo=1 to 5 max=5}
-
-
-
-
-
-
-
-
-
-                    {if {$foo} > $scoreReview['GOOGLE']}
-                                                                                                                                  <i class="fa fa-star fa-1x starWhite"></i>
-
-
-
-
-
-
-
-
-
-                    {else}
-                                                                                                                                  <i class="fa fa-star fa-1x starYellow"></i>
-
-
-
-
-
-
-
-
-
-                    {/if}
-
-
-
-
-
-
-
-
-
-                  {/for}
-                                                                                            </span>
-                                                                                            <strong>{$scoreReview['GOOGLE']} </strong>
-                                                                                          </div>
-                                                                                        </div>
-                                                                                      </a>
-                                                                                    </div>
-                                                                                  </div>-->
                 {/block}
               {/block}
               {block name='product_prices'}
@@ -1208,11 +1151,7 @@
 
               <div class="product-information">
                 {block name='product_description_short'}
-                  {*
-       {assign var='infoProduto' value=Product::infoProduto({$product.id}, {$product.price_amount},
-       {$product.price_tax_exc})} *}
-                  {* {if {$infoProduto['cont_ndk']} == 0} *}
-                    {* {if {$infoProduto['cont_reducao']} != 0} *}
+
                       <span id='specificPrice'></span>
                       <span id='oldPrice' class='specificBlock'></span>
                       <span id='specificReduct' class='specificBlock'></span>
@@ -1221,9 +1160,7 @@
                           <div class="col-sm-5  alu_total_price">
                             <span class="alu_total_price_alu">
                               <span class="labelPriceUp">Total : </span>
-                              {* <span class="price productPriceUp" itemprop="price">{$infoProduto['reducao']}&nbsp;</span> *}
-                              {* <span class="price productPriceUp" itemprop="price" content="{$product.price_amount}">{$product.price}</span>
-                          <span class="price productPriceUpHT" itemprop="price"></span> *}
+ 
                               {if {$product.id} != '1120'}
                                 {if {$infoProduto['cont_ndk']} > 0}
 
@@ -1273,21 +1210,20 @@
                                   le détail de l’offre sur le site du partenaire.</span>
                               {/if}
                             </div>
-                            {* <span class="price productPriceUp" content="{$product.price_amount}">{$product.price}</span> *}
+                           
                           </div>
                         </div>
                       </div>
-                    {* {/if} *}
-                  {* {/if} *}
+
 
                   {if {$product.id} != '1120'}
                     {if {$checaDescontosCatalogo['reduction']} >= 1}
 
-                        <p class="txt-promo-limit">Offre de {$checaDescontosCatalogo['reduction']} déjà appliquée sur ce prix, offre
-                          limitée
+                      <p class="txt-promo-limit">Offre de {$checaDescontosCatalogo['reduction']} déjà appliquée sur ce prix, offre
+                        limitée
                         jusqu'au {$checaDescontosCatalogo['to']|date_format:"%e %B"}.</p>
 
-            {* <p class="txt-promo-limit">Offre de {$checaDescontosCatalogo['reduction']} déjà appliquée sur ce prix, offre limitée jusqu'au {$checaDescontosCatalogo['to']|date_format:"%e %B"}.</p> *}
+      
                     {/if}
                   {/if}
 
@@ -1327,17 +1263,17 @@
 
                       <!-- PORTAS DE GARAGEM SECCIONADAS -->
                       {if $product.id == "12227" || $product.id == "640271" ||
-                                                                                      $product.id == "12228" || $product.id == "640272" ||
-                                                                                      $product.id == "170307" || $product.id == "640273" ||
-                                                                                      $product.id == "12223" || $product.id == "640274" ||
-                                                                                      $product.id == "321715" || $product.id == "640275" ||
-                                                                                      $product.id == "170397" || $product.id == "640276" ||
-                                                                                      $product.id == "12225" || $product.id == "640277" ||
-                                                                                      $product.id == "12226" || $product.id == "640278" ||
-                                                                                      $product.id == "170225" || $product.id == "640279" ||
-                                                                                      $product.id == "13613" || $product.id == "640280" ||
-                                                                                      $product.id == "171280" || $product.id == "640281"
-                                                                                    }
+                                                                                              $product.id == "12228" || $product.id == "640272" ||
+                                                                                              $product.id == "170307" || $product.id == "640273" ||
+                                                                                              $product.id == "12223" || $product.id == "640274" ||
+                                                                                              $product.id == "321715" || $product.id == "640275" ||
+                                                                                              $product.id == "170397" || $product.id == "640276" ||
+                                                                                              $product.id == "12225" || $product.id == "640277" ||
+                                                                                              $product.id == "12226" || $product.id == "640278" ||
+                                                                                              $product.id == "170225" || $product.id == "640279" ||
+                                                                                              $product.id == "13613" || $product.id == "640280" ||
+                                                                                              $product.id == "171280" || $product.id == "640281"
+                                                                                            }
                       <ul id="ndk_perso">
                         <li {if $option_str_sur['active_product_standard'] == 1} class="encours" {/if}>
                           <div class="tooltip-info-pgs">
@@ -1422,7 +1358,9 @@
 
 
 
+
                 {block name='product_customization'}
+
 
 
 
@@ -1444,7 +1382,9 @@
 
 
 
+
                 {/block}
+
 
 
 

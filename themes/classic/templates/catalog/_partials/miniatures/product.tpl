@@ -80,14 +80,17 @@
                 {if {$product.price_amount|intval} < 6001}
                   {assign var="multony" value=4}
                 {else}
-                    {assign var="multony" value=48} {/if} {if $multony == 4} {$imgcredit = 'alma4x'}
+                  {assign var="multony" value=48} 
+                {/if} 
+
+                {if $multony == 4} {$imgcredit = 'alma4x'}
                   {$linkcredit = '/content/67-payez-vos-achats-en-3-ou-4-fois-avec-alma'} {else} {$imgcredit = 'Oney48'}
                   {$linkcredit = '/content/61-le-paiement-en-12-24-36-48-60-ou-84-fois-avec-oney-chez-priximbattable'} {/if}
                   <a href="{$linkcredit}" target="_blank" data-toggle="tooltip"> <span style="width: 100%; padding: 0 5px;"
                     class="price productPriceUpx4  alu_oney_show_box_mini">{$multony}x
                     {($precoAtualizadoSEO['preco_com_desconto_sem_formato']/$multony)|round:2}€<img {if $countproduct > 4}
                       loading="lazy" {else} fetchpriority="high"
-                      {/if} style="width: 110px;display: inline-block;"
+                    {/if} style="width: 110px;display: inline-block;"
                       src="/img/{$imgcredit}.png" width="110px" height="auto" alt=""></span></a>
               </div>
 
