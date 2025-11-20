@@ -407,6 +407,8 @@ class ProductControllerCore extends ProductPresentingFrontControllerCore
     {
         $active_product_standard = 0;
         $active_product_surmesure = 0;
+          $id_product_standard = 0;
+          $id_product_surmesure = 0;
         $querystandard = 'SELECT * FROM `' . _DB_PREFIX_ . 'ndk_links_models` where `id_product_standard` = ' .  $product_id;
         if ($results = Db::getInstance()->executeS($querystandard)) {
             $active_product_standard = 1;
@@ -424,8 +426,8 @@ class ProductControllerCore extends ProductPresentingFrontControllerCore
             }
         }
 
-        $product_standard = new Product($id_product_standard, true, $this->context->language->id, 1);
-        $product_surmesure = new Product($id_product_surmesure, true, $this->context->language->id, 1);
+        $product_standard = new Product($id_product_standard, true, 1, 1);
+        $product_surmesure = new Product($id_product_surmesure, true, 1, 1);
 
         $array_option_str_sur['id_product_standard'] = $id_product_standard;
         $array_option_str_sur['id_product_surmesure'] =  $id_product_surmesure;
@@ -438,15 +440,15 @@ class ProductControllerCore extends ProductPresentingFrontControllerCore
         $array_verrie = array(121343,121351,77537,1213419);
         $array_garagesec = array (12227, 12228, 170307, 12223, 321715, 170397, 12225, 12226, 170225, 13613, 171280);
 
-        if(in_array($id_product_standard, $array_verrie)){
-            $array_option_str_sur['text_product_standard'] =  'Feste Version';
-            $array_option_str_sur['text_product_surmesure'] = 'Schärpe-Version';
-         } elseif (in_array($id_product_standard, $array_garagesec)) {
-            $array_option_str_sur['text_product_standard'] =  'Torsionsfeder';
-            $array_option_str_sur['text_product_surmesure'] = 'Zugfeder';
+        if (in_array($id_product_standard, $array_verrie)) {
+            $array_option_str_sur['text_product_standard'] =  'Version Fixe';
+            $array_option_str_sur['text_product_surmesure'] = 'Version Ouvrant';
+        } elseif (in_array($id_product_standard, $array_garagesec)) {
+            $array_option_str_sur['text_product_standard'] =  'Ressort à Torsion';
+            $array_option_str_sur['text_product_surmesure'] = 'Ressort à Traction';
         } else {
-            $array_option_str_sur['text_product_standard'] =  'Standard Version';
-            $array_option_str_sur['text_product_surmesure'] = 'Nach Maß Version';
+            $array_option_str_sur['text_product_standard'] =  'Version Standard';
+            $array_option_str_sur['text_product_surmesure'] = 'Version Sur Mesure';
         }
 
         return $array_option_str_sur;
