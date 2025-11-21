@@ -15,23 +15,22 @@
 		{/if}
 		{if $field.tooltip !=''}
       <span class="tooltipDescMark">
-        <div class="tooltip-ndk">
-          <div class="tooltipDescription"> {$field.tooltip nofilter}</div>
-        </div>
-      </span>
+      <div class="tooltip-ndk">
+        <div class="tooltipDescription"> {$field.tooltip nofilter}</div>
+      </div>
+    </span>
 		{/if}
 	</label>
-		<span class="progress-field-required">
-			<span class="progress-required-text">
-				{if $field.required}
-					(Obligatorisch)
-				{else}
-					(Optional)
-				{/if}
-			</span>
+	<span class="progress-field-required">
+		<span class="progress-required-text">
+			{if $field.required}
+				(Obligatoire)
+			{else}
+				(Optionnel)
+			{/if}
 		</span>
-		<div class="pt-1 fieldPane clearfix" style="display: none;">
-
+	</span>
+		<div class="pt-1  fieldPane clearfix"  style="display: none;">
 			<div class="clear clearfix" id="main-{$field.id_ndk_customization_field|escape:'intval'}">
 				{if $field.notice !=''}
 					<div class="field_notice clearfix clear">{$field.notice nofilter}</div>
@@ -48,7 +47,7 @@
 									{/foreach}
 						{/if}
 					{else}
-						<option value=""  data-group="{$field.id_ndk_customization_field|escape:'intval'}">-- Wählen Sie eine Option --</option>
+						<option value=""  data-group="{$field.id_ndk_customization_field|escape:'intval'}">-- Faites un choix --</option>
 					{/if}
 					{foreach from=$field.values item=value}
 					{if $field.price_type == 'percent'}

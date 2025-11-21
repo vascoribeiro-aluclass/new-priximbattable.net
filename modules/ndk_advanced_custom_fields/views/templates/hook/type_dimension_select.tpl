@@ -15,23 +15,22 @@
 		{/if}
 		{if $field.tooltip !=''}
       <span class="tooltipDescMark">
-        <div class="tooltip-ndk">
-          <div class="tooltipDescription"> {$field.tooltip nofilter}</div>
-        </div>
-      </span>
+      <div class="tooltip-ndk">
+        <div class="tooltipDescription"> {$field.tooltip nofilter}</div>
+      </div>
+    </span>
 		{/if}
 	</label>
 	<span class="progress-field-required">
 		<span class="progress-required-text">
 			{if $field.required}
-				(Obligatorisch)
+				(Obligatoire)
 			{else}
-				(Optional)
+				(Optionnel)
 			{/if}
 		</span>
 	</span>
-	<div class="fieldPane clearfix" style="display: none;">
-
+	<div class="fieldPane clearfix"  style="display: none;">
 		{if $field.notice !=''}
 			<div class="field_notice clearfix clear">{$field.notice nofilter}</div>
 		{/if}
@@ -46,7 +45,7 @@
 
 
 			<select id="dimension_text_width_{$field.id_ndk_customization_field|escape:'intval'}" data-message="{l s='Informe' mod='ndk_advanced_custom_fields'} {$field.name|escape:'htmlall':'UTF-8'}"  name="ndkcsfield[{$field.id_ndk_customization_field|escape:'intval'}][width]" data-val="" data-group="{$field.id_ndk_customization_field|escape:'intval'}" data-price="" type="text" class="form-control-ndk dimension_text dimension_text_width dimension_text_{$field.id_ndk_customization_field|escape:'intval'} {if $field.required == 1} required_field{/if}" data-id="{$field.target|escape:'htmlall':'UTF-8'}" data-view="{$field.target_child|escape:'htmlall':'UTF-8'}">
-				    <option value="">-- Wählen Sie eine Option --</option>
+				<option value="">-- Faites un choix --</option>
 				{foreach from=$field.price_range_width item=width}
 					<option value="{$width.width}">{$width.width}</option>
 				{/foreach}
@@ -61,7 +60,7 @@
 
 
 			<select id="dimension_text_height_{$field.id_ndk_customization_field|escape:'intval'}" data-message="{l s='Informe' mod='ndk_advanced_custom_fields'} {$field.name|escape:'htmlall':'UTF-8'}"   name="ndkcsfield[{$field.id_ndk_customization_field|escape:'intval'}][height]" data-val="" data-group="{$field.id_ndk_customization_field|escape:'intval'}" data-price="" type="text" class="form-control-ndk dimension_text dimension_text_height dimension_text_{$field.id_ndk_customization_field|escape:'intval'} {if $field.required == 1} required_field{/if}" data-id="{$field.target|escape:'htmlall':'UTF-8'}" data-view="{$field.target_child|escape:'htmlall':'UTF-8'}" >
-				<option value="">-- Wählen Sie eine Option --</option>
+				<option value="">-- Faites un choix --</option>
 				{foreach from=$field.price_range_height item=height name=heightLoop}
 					{if $smarty.foreach.heightLoop.index > 0}
 						<option value="{$height.height}">{$height.height}</option>
