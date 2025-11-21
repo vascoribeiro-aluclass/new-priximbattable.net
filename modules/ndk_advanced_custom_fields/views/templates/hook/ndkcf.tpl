@@ -27,11 +27,11 @@
     <div id="productprogressbar" style="height: 88px;">
       <div class="ndkcfTitle" style="border: 1px solid #dbdbdb !important;
 			box-shadow: 0 0 7px #dedede;padding: 8px 8px 8px 8px !important;">
-        <h2 style="font-size: 1rem;">Status Ihrer Anpassung</h2>
+        <h2 style="font-size: 1rem;">État de votre personnalisation</h2>
         <div class="progress">
-          <span class="progress-text-begin">Fortschritt : 0%</span>
+          <span class="progress-text-begin">Progression : 0%</span>
           <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-            <span class="progress-text">0% Vollständig</span>
+            <span class="progress-text">0% Compléter</span>
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@
               src="/img/iconscart/print.svg">
           </picture>
         </div>
-        <div class="mon_text">Mein Angebot</div>
+        <div class="mon_text">Mon Devis</div>
       </div>
 
       {* <span class="hidden-md-down">
@@ -191,7 +191,7 @@
 
       <span class="mon_devis  button exclusive btn embedAluDevisProd"
         style="background: rgb(210, 210, 210) none repeat scroll 0% 0%; margin-right: 20px; "><i
-          class="material-icons ">print</i> Mein Angebot</span>
+          class="material-icons ">print</i> Mon Devis</span>
       <span class="hidden-md-up ">
         {if $cart.products_count > 0}
           <a rel="nofollow" href="/panier?action=show" style="color:black;">

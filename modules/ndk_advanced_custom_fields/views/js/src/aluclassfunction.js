@@ -124,37 +124,87 @@ function ProgressBar() {
 
 }
 
-    //open modal Devis - Vasco aluclass
+
+//open modal Devis - Vasco aluclass
 $('#modalEmbedDevisProd_close').click(function () {
-    $('#modalEmbedDevisProd').modal('hide');
-    return false;
+  $('#modalEmbedDevisProd').modal('hide');
+  return false;
 });
 
 $('.embedAluDevisProd').click(function () {
-    var required = $(".form-group:not([class*='disabled_value_by'])").find('.required_field');
-    var requiredcount = 0;
-    var selectcount = 0;
+  var required = $(".form-group:not([class*='disabled_value_by'])").find('.required_field');
+  var requiredcount = 0;
+  var selectcount = 0;
 
-    requiredcount = GetRequiredProgressBar(required);
-    selectcount = GetSelectProgressBar(required);
+  requiredcount = GetRequiredProgressBar(required);
+  selectcount = GetSelectProgressBar(required);
 
-    progress = (selectcount / requiredcount) * 100;
+  progress = (selectcount / requiredcount) * 100;
 
-    if(progress < 99){
-      $("#modalinfomessage").html('Bitte füllen Sie alle Pflichtfelder aus, bevor Sie einen Kostenvoranschlag anfordern.');
-      $('#modalEmbedDevisProd').modal('hide');
-      $("#modalinfo").modal('show');
-      return false;
+  if(progress < 99){
+    $("#modalinfomessage").html('Veuillez remplir tous les champs obligatoires avant de demander un devis.');
+    $('#modalEmbedDevisProd').modal('hide');
+    $("#modalinfo").modal('show');
+    return false;
+  }else{
+
+    var form = $('#ndkcsfields :not(.ndk-accessory-quantity[value="0"])');
+    myDatas =  form.find('input, select, textarea').not('.ndk-accessory-quantity[value=0]').not('.ndk_attribute_select, .dontSend').serialize()
+    var formExit = document.getElementById("ndkcsfields");
+    if(formExit) {
+      $('body').append('<div class="ndk-loader" id="ndkloader"><div class="sk-folding-cube"><div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div></div></div>');
+      $.ajax({
+          type: "POST",
+          url: prestashop.urls.base_url + "modules/ndk_advanced_custom_fields/createNdkcsfields.php",
+          data: myDatas+ '&devisproduct=true',
+          dataType: "json",
+          success:function(data){
+            htmlOutput[0] = '<div class="print-page-breaker">' + $('#image-block').html() + '</div>';
+            $.ajax({
+              type: "POST",
+              url: baseUrl + 'modules/ndk_advanced_custom_fields/createPdf.php',
+              data: { htmlNodes: htmlOutput, idCustomer: data.id_customer, idProduct: data.id_product, idCustomization: data.id_customization, preview_field: data.preview_field, base_url: baseUrl, images: '', fonts: allFonts },
+              dataType: "html",
+              success: function () {
+                $('#ndkloader').remove();
+                $('#modalEmbedDevisProd').modal('show');
+                 $('#generateproductid').val(data.id_product);
+                 let catidprod = $("#cat_id_prod").val();
+                 let name_title_product = $("#name_title_product").html();
+                 let productPriceCustomize = $(".productPriceUp").html();
+
+                 productPriceCustomize = productPriceCustomize.replace("€", "").replace(/\s/g, "");
+                 productPriceCustomize = productPriceCustomize.replace(",", ".");
+                 productPriceCustomize = productPriceCustomize.replace("&nbsp;", "").replace("&nbsp;", "");
+                 productPriceCustomize = parseFloat(productPriceCustomize);
+
+                 dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                 dataLayer.push({
+                   event: "add_to_cart",
+                   ecommerce: {
+                     currency: "EUR",
+                     value: productPriceCustomize,
+                     items: [
+                     {
+                       item_id: catidprod,
+                       item_name: name_title_product
+                     }
+                     ]
+                   }
+                 });
+                 console.log(dataLayer);
+              },
+
+            });
+          }
+      });
     }else{
-      $('#customer-information-prod').show();
-      $('#devis-messagem-prod').hide();
 
       $('#modalEmbedDevisProd').modal('show');
-
-
-
-      return false;
     }
+
+    return false;
+  }
 });
 
 // Mostra erro no próprio campo NDK [groupid = id do campo NDK; message = messagem a ser mostada]
@@ -164,17 +214,25 @@ function ShowNDKFieldError(groupid, message) {
   $(".submitNdkcsfields").hide();
   $(".mon_devis").hide();
   $(".form-group[data-field='" + groupid + "']").css('background', '#F2DEDE').focus();
-  $(".form-group[data-field='" + groupid + "']").parent().find('.error').remove();
+  $(".form-group[data-field='" + groupid + "'] > .error").remove();
+  $(".form-group[data-field='" + groupid + "'] > fieldPane >.error").remove();
+  $(".form-group[data-field='" + groupid + "']").removeClass('focusRequired');
   $(".form-group[data-field='" + groupid + "']").append(message);
 }
 // Remove erro no próprio campo NDK [groupid = id do campo NDK]
 function HideNDKFieldError(groupid) {
   $(".form-group[data-field='" + groupid + "']").css('background', '#ffffff').focus();
-  $(".form-group[data-field='" + groupid + "']").parent().find('.error').remove();
-  $('.submitContainer').show();
-  $('.div_PrazoEntregaDir').show();
-  $(".submitNdkcsfields").show();
-  $(".mon_devis").show();
+  $(".form-group[data-field='" + groupid + "'] > .error").remove();
+  $(".form-group[data-field='" + groupid + "']").removeClass('focusRequired');
+  $(".form-group[data-field='" + groupid + "'] > .fieldPane > .error").remove();
+  var allListElements = $( ".error.alert-danger" );
+
+  if(allListElements.length == 0){
+    $('.submitContainer').show();
+    $('.div_PrazoEntregaDir').show();
+    $(".submitNdkcsfields").show();
+    $(".mon_devis").show();
+  }
 }
 
 //mostra campo ndk e coloca o campo como obrigatório [idFieldNDKAlu = id do campo NDK]
@@ -187,6 +245,7 @@ function RemoveField(idFieldNDKAlu) {
   $("img[data-group='" + idFieldNDKAlu + "']").removeClass("selected-value ");
   $("img[data-group='" + idFieldNDKAlu + "']").removeClass("selected-color");
   $("#ndkcsfield_" + idFieldNDKAlu + "").removeClass("required_field");
+  $("#ndkcsfield_" + idFieldNDKAlu + "").val(""); // Joana - Acrescentado esta linha para zerar os valores dos campos
   $("div[data-field='" + idFieldNDKAlu + "']").hide();
   $("#visual_" + idFieldNDKAlu + "").remove();
 }
@@ -258,6 +317,38 @@ function CustomizedImagemNDK(idFieldNDK, idValueFieldNDK, pastaImagens, zIndex, 
     cor = "3005";
   } else if (campoCor.match(/1015/)) {
     cor = "1015";
+  } else if (campoCor.match(/1013/)) {
+    cor = "1013";
+  } else if (campoCor.match(/3007/)) {
+    cor = "3007";
+  } else if (campoCor.match(/6009/)) {
+    cor = "6009";
+  } else if (campoCor.match(/6021/)) {
+    cor = "6021";
+  } else if (campoCor.match(/7011/)) {
+    cor = "7011";
+  } else if (campoCor.match(/7012/)) {
+    cor = "7012";
+  } else if (campoCor.match(/7022/)) {
+    cor = "7022";
+  } else if (campoCor.match(/7024/)) {
+    cor = "7024";
+  } else if (campoCor.match(/7030/)) {
+    cor = "7030";
+  } else if (campoCor.match(/7038/)) {
+    cor = "7038";
+  } else if (campoCor.match(/7040/)) {
+    cor = "7040";
+  } else if (campoCor.match(/8017/)) {
+    cor = "8017";
+  } else if (campoCor.match(/9001/)) {
+    cor = "9001";
+  } else if (campoCor.match(/9006/)) {
+    cor = "9006";
+  } else if (campoCor.match(/9007/)) {
+    cor = "9007";
+  } else if (campoCor.match(/9010/)) {
+    cor = "9010";
   } else {
     cor = "7016";
   }
@@ -293,6 +384,38 @@ function CustomizedImagemNDKColor(campoCor, idFieldNDKSelect, idFieldNDK, pastaI
     cor = "3005";
   } else if (campoCor.match(/1015/)) {
     cor = "1015";
+  } else if (campoCor.match(/1013/)) {
+    cor = "1013";
+  } else if (campoCor.match(/3007/)) {
+    cor = "3007";
+  } else if (campoCor.match(/6009/)) {
+    cor = "6009";
+  } else if (campoCor.match(/6021/)) {
+    cor = "6021";
+  } else if (campoCor.match(/7011/)) {
+    cor = "7011";
+  } else if (campoCor.match(/7012/)) {
+    cor = "7012";
+  } else if (campoCor.match(/7022/)) {
+    cor = "7022";
+  } else if (campoCor.match(/7024/)) {
+    cor = "7024";
+  } else if (campoCor.match(/7030/)) {
+    cor = "7030";
+  } else if (campoCor.match(/7038/)) {
+    cor = "7038";
+  } else if (campoCor.match(/7040/)) {
+    cor = "7040";
+  } else if (campoCor.match(/8017/)) {
+    cor = "8017";
+  } else if (campoCor.match(/9001/)) {
+    cor = "9001";
+  } else if (campoCor.match(/9006/)) {
+    cor = "9006";
+  } else if (campoCor.match(/9007/)) {
+    cor = "9007";
+  } else if (campoCor.match(/9010/)) {
+    cor = "9010";
   } else {
     cor = "7016";
   }
@@ -424,7 +547,7 @@ function GetPergentageColor(idFieldNDK) {
 function VerreireLimitOptionOpen(idValueAcess, quantverr, idFieldAcess) {
   var price_data_value = $(".ndk-radio[data-id-value='" + idValueAcess + "']").attr('data-price');
   price_data_value = quantverr * parseInt(price_data_value);
-  $('label[for=radio_' + idFieldAcess + '_' + idValueAcess + ']').text(' Ja, alle Trennwände haben eine Öffnungsoption.: + ' + price_data_value + ' €');
+  $('label[for=radio_' + idFieldAcess + '_' + idValueAcess + ']').text(' Oui, tous les verrières ont une option d\'ouverture.: + ' + price_data_value + ' €');
 }
 
 /*
@@ -581,7 +704,6 @@ function ArrayShowPortillonHanover() {
   return arrayPortllon;
 }
 
-
 function ArrayShowPortillonLabel() {
   var arrayPortllon = {
     "1200": 5192,
@@ -616,15 +738,15 @@ function PortailShowPortillon(selectValeu, arrayPortllon) {
 function AlertMedidaJanelaCintree(heightPE, dimensionTextHeight, idFieldNDK) {
   var heightdif = parseInt(heightPE) - parseInt(dimensionTextHeight);
   if (parseInt(dimensionTextHeight) < 300) {
-    message = '<span class="error alert-danger clear clearfix">Die Höhe der Seitenteile muss mehr als 300 mm betragen.</span>';
+    message = '<span class="error alert-danger clear clearfix">La hauteur des côtés doit être supérieure à 300 mm.</span>';
     HideNDKFieldError(idFieldNDK);
     ShowNDKFieldError(idFieldNDK, message);
   } else if (parseInt(dimensionTextHeight) < parseInt(heightdif)) {
-    message = '<span class="error alert-danger clear clearfix">Die Seitenhöhe muss größer sein als die Höhe des unteren Teils des Fensters.</span>';
+    message = '<span class="error alert-danger clear clearfix">La hauteur latérale doit être supérieure à la hauteur du surbaissé de la fenêtre.</span>';
     HideNDKFieldError(idFieldNDK);
     ShowNDKFieldError(idFieldNDK, message);
   } else if (parseInt(dimensionTextHeight) > parseInt(heightPE)) {
-    message = '<span class="error alert-danger clear clearfix">Die Seitenhöhe darf nicht höher sein als die Höhe des Durchgangs des Maßfeldes.</span>';
+    message = '<span class="error alert-danger clear clearfix">La hauteur de la latérale ne peut être supérieure à la hauteur du passage du champ des dimensions.</span>';
     HideNDKFieldError(idFieldNDK);
     ShowNDKFieldError(idFieldNDK, message);
   } else {
@@ -648,7 +770,7 @@ function Cintreecheck(groupvalue, widthPE, heightPE) {
     if (parseInt(heightPE) > parseInt(widthCAL)) {
       HideNDKFieldError(groupvalue);
     } else {
-      message = '<span class="error alert-danger clear clearfix">Die Maße ' + widthPE + 'mm x ' + heightPE + 'mm sind nicht herstellbar.</span>';
+      message = '<span class="error alert-danger clear clearfix">Les mesures ' + widthPE + 'mm x ' + heightPE + 'mm ne sont pas possible à fabriquer.</span>';
       HideNDKFieldError(groupvalue);
       ShowNDKFieldError(groupvalue, message);
     }
@@ -673,42 +795,44 @@ function HideDimensionsGlassDoor(idDimensions, dataIdValue, idDimensionsGo) {
   if (typeof (dataIdValue) != "undefined") {
 
     if ($.inArray(dataIdValue, glassNotHeight) !== -1) {
-      console.log("glassNotHeight");
       $(".dimension_text_height_" + idDimensions).addClass('disabled_value_by');
       $("#dimension_text_height_" + idDimensions).addClass('disabled_value_by');
       $(".dimension_text_width_" + idDimensions).removeClass('disabled_value_by');
       $("#dimension_text_width_" + idDimensions).removeClass('disabled_value_by');
 
       $("#dimension_text_height_" + idDimensions).val($('#dimension_text_height_' + idDimensionsGo).val());
-      $(".dimension_text_height_" + idDimensionsGo).html("Höhe der Tür (Max 2200 mm)");
-      $(".dimension_text_width_" + idDimensionsGo).html("Breite (mm)");
+      $(".dimension_text_height_" + idDimensionsGo).html("Hauteur de la porte (min 1800 mm - max 2200 mm)");
+      $(".dimension_text_width_" + idDimensionsGo).html("Largeur de la porte + vitre (en mm)");
     }
     if ($.inArray(dataIdValue, glassNotWidth) !== -1) {
-      console.log("glassNotWidth");
       $("#dimension_text_height_" + idDimensions).removeClass('disabled_value_by');
       $(".dimension_text_height_" + idDimensions).removeClass('disabled_value_by');
       $(".dimension_text_width_" + idDimensions).addClass('disabled_value_by');
       $("#dimension_text_width_" + idDimensions).addClass('disabled_value_by');
 
       $("#dimension_text_width_" + idDimensions).val($('#dimension_text_width_' + idDimensionsGo).val());
-      $(".dimension_text_width_" + idDimensionsGo).html("Breite der Tür ( Max 1090mm)");
-      $(".dimension_text_height_" + idDimensionsGo).html("Höhe (mm)");
+      $(".dimension_text_width_" + idDimensionsGo).html("Largeur de la porte (min 800 mm - max 1090 mm)");
+      $(".dimension_text_height_" + idDimensionsGo).html("Hauteur de la porte + vitre (en mm)");
 
     }
     if ($.inArray(dataIdValue, glassNotWidth) === -1 && $.inArray(dataIdValue, glassNotHeight) === -1) {
-      console.log("glassAll");
       $("#dimension_text_height_" + idDimensions).removeClass('disabled_value_by');
       $(".dimension_text_height_" + idDimensions).removeClass('disabled_value_by');
       $(".dimension_text_width_" + idDimensions).removeClass('disabled_value_by');
       $("#dimension_text_width_" + idDimensions).removeClass('disabled_value_by');
-      $(".dimension_text_height_" + idDimensionsGo).html("Höhe (mm)");
-      $(".dimension_text_width_" + idDimensionsGo).html("Breite (mm)");
+      $(".dimension_text_height_" + idDimensionsGo).html("Hauteur de la porte + vitre (en mm)");
+      $(".dimension_text_width_" + idDimensionsGo).html("Largeur de la porte + vitre (en mm)");
+    }
+   var heightglasscheck = $("#dimension_text_height_" + idDimensions).val();
+   var widthglasscheck =  $("#dimension_text_width_" + idDimensions).val();
+    if(parseInt(heightglasscheck) > 0 && parseInt(widthglasscheck) > 0){
+      $("#dimension_text_height_" + idDimensions).trigger('change');
+      $("#dimension_text_width_" + idDimensions).trigger('change');
     }
 
-    $("#dimension_text_height_" + idDimensions).trigger('change');
-    $("#dimension_text_width_" + idDimensions).trigger('change');
   }
 }
+
 
 function CalculoAileOrTapee(precoML, heightT, widthT, recalculate) {
   var dim = (parseInt(heightT * 2) + parseInt(widthT)) / 1000;
@@ -731,7 +855,9 @@ function AlterPriceSelect(ndkcsfield, options, heightT, widthT) {
       if (res[0] != '--') {
         precoTotal = $('#' + ele).data('price');
         precoTotal = (CalculoAileOrTapee(precoTotal, heightT, widthT, false)).toFixed(2);
-        $('label[for=' + ele + ']').text(res[0] + ' : ' + precoTotal + ' €');
+        var pricedesc = precoTotal-(precoTotal*valorReducao);
+
+        $('label[for=' + ele + ']').html('<i>'+res[0]+' : + <s>'+precoTotal+' €</s></i><i style="color: var(--red);"> '+pricedesc.toFixed(2)+' €</i>');
       }
     }
   });
@@ -739,20 +865,28 @@ function AlterPriceSelect(ndkcsfield, options, heightT, widthT) {
 
 
 function CalculoDimensaoVidro(AreaPET, AreaPE, groupTextMessage, groupPriceUpdate, widthPET, heightPET) {
-
-  if (AreaPET > AreaPE) {
-    result = AreaPET - AreaPE;
-    resultM2 = (result / 1000000);
-    $("div[data-field='" + groupTextMessage + "'] div.field_notice").html(" <p>Glasgröße: " + resultM2 + " m²</p>");
-    updatePriceNdk((resultM2 * 700) * 1.2, groupPriceUpdate);
-  } else if (AreaPET == AreaPE) {
-    $("div[data-field='" + groupTextMessage + "'] div.field_notice").html(" ");
-    updatePriceNdk(0, groupPriceUpdate);
-  } else if (AreaPET < AreaPE) {
-    $("div[data-field='" + groupTextMessage + "'] div.field_notice").html(" ");
-    updatePriceNdk(0, groupPriceUpdate);
+  try {
+    if (AreaPET > AreaPE) {
+      result = AreaPET - AreaPE;
+      resultM2 = (result / 1000000);
+      $("div[data-field='" + groupTextMessage + "'] div.field_notice").html("<p>Dimension du verre: " + resultM2 + " m²</p>");
+      updatePriceNdk((resultM2 * 774) * 1.2, groupPriceUpdate);
+       HideNDKFieldError(groupPriceUpdate);
+    } else if (AreaPET == AreaPE) {
+      $("div[data-field='" + groupTextMessage + "'] div.field_notice").html(" ");
+      updatePriceNdk(0, groupPriceUpdate);
+      throw '<span class="error alert-danger clear clearfix">Les dimensions de la porte sont supérieures aux dimensions totales.</span>';
+    } else if (AreaPET < AreaPE) {
+      $("div[data-field='" + groupTextMessage + "'] div.field_notice").html(" ");
+      updatePriceNdk(0, groupPriceUpdate);
+      throw '<span class="error alert-danger clear clearfix">Les dimensions de la porte sont supérieures aux dimensions totales.</span>';
+    }
+  } catch (error) {
+     HideNDKFieldError(groupPriceUpdate);
+     ShowNDKFieldError(groupPriceUpdate, error);
   }
 }
+
 
 
 /*
@@ -764,8 +898,10 @@ function CalculoDimensaoVidro(AreaPET, AreaPE, groupTextMessage, groupPriceUpdat
 */
 
 function PregolaGrandLuxLarguraProfundidade(activities, ndkcsfieldValue, dimensionID) {
+  var i =0;
   lame = $('#' + ndkcsfieldValue + '').val();
   Nlames = lame.substring(0, 2);
+
   for (i = 0; i < activities.length; i++) {
     if (parseInt(Nlames) == parseInt(activities[i][1])) {
       $("#dimension_text_height_" + dimensionID).val(parseInt(activities[i][0]));
@@ -792,7 +928,7 @@ function checkPilares(ValueDroit, ValueGauche, ID_ndk) {
     if (parseInt(Nlames) == parseInt(activitiesDP[i][1])) {
 
       ValueMin = (parseInt(activitiesDP[i][0]) - 6000);
-      ValueMax = (parseInt(activitiesDP[i][0]) - 4000);
+      ValueMax = (parseInt(activitiesDP[i][0]) - 3000);
 
       if ((parseInt(ValueDroit) + parseInt(ValueGauche)) < parseInt(ValueMin) && parseInt(ValueMin) > 500) {
         ValueMax = ValueMax / 2;
@@ -806,7 +942,7 @@ function checkPilares(ValueDroit, ValueGauche, ID_ndk) {
         if (parseInt(ValueMax) > 1500) {
           ValueMax = 1500;
         }
-        message = '<span class="error alert-danger clear clearfix">Bei dieser Gesamtbreite muss der Versatz nach innen zwischen liegen ' + parseInt(ValueMin) + 'mm und ' + parseInt(ValueMax) + 'mm.</span>';
+        message = '<span class="error alert-danger clear clearfix">Pour cette largeur totale, le déplacement vers l\'intérieur doit se situer entre ' + parseInt(ValueMin) + 'mm et ' + parseInt(ValueMax) + 'mm.</span>';
 
         if (parseInt($('#text_' + ID_ndk).val()) > parseInt(ValueMax) || parseInt(ValueMin) > parseInt($('#text_' + ID_ndk).val()))
           ShowNDKFieldError(ID_ndk, message);
@@ -827,7 +963,7 @@ function checkPilares(ValueDroit, ValueGauche, ID_ndk) {
         if (parseInt(ValueMax) > 1500) {
           ValueMax = 1500;
         }
-        message = '<span class="error alert-danger clear clearfix">Bei dieser Gesamtbreite muss der Versatz nach innen zwischen liegen ' + parseInt(ValueMin) + 'mm und ' + parseInt(ValueMax) + 'mm.</span>';
+        message = '<span class="error alert-danger clear clearfix">Pour cette largeur totale, le déplacement vers l\'intérieur doit se situer entre ' + parseInt(ValueMin) + 'mm et ' + parseInt(ValueMax) + 'mm.</span>';
         if (parseInt($('#text_' + ID_ndk).val()) > parseInt(ValueMax) || parseInt(ValueMin) > parseInt($('#text_' + ID_ndk).val()))
           ShowNDKFieldError(ID_ndk, message);
         else
@@ -898,13 +1034,13 @@ function AlterPriceRadioWindows(typeApplication, options, heightT, widthT) {
         } else {
           precoTotal = (CalculoAileWindows(precoTotal, heightT, widthT, false)).toFixed(2);
         }
+        var pricedesc = precoTotal-(precoTotal*valorReducao);
 
-        $('label[for=' + ele + ']').text(res[0] + ' : ' + precoTotal + ' €');
+        $('label[for=' + ele + ']').html('<i>'+res[0]+' : + <s>'+precoTotal+' €</s></i><i style="color: var(--red);"> '+pricedesc.toFixed(2)+' €</i>');
       }
     }
   });
 }
-
 
 
 function CalculoPVCsWindows(precoML, heightT, widthT, recalculate) {
@@ -921,7 +1057,8 @@ function AlterPriceCroisillonsWindows( croisillons, heightPE, widthPE) {
     precoTotal = croisillons.eq(i).attr("data-price");
     if(precoTotal > 0){
       precoTotal = (CalculoPVCsWindows(precoTotal, heightPE, widthPE, false)).toFixed(2);
-      $('#descriptionPrice_'+croisillons.eq(i).attr("data-id-value")).text(' + ' + precoTotal + ' €');
+      var pricedesc = precoTotal-(precoTotal*valorReducao);
+      $('#descriptionPrice_'+croisillons.eq(i).attr("data-id-value")).html(' + <s>' + precoTotal + ' €</s><span style="color: var(--red);"> '+pricedesc.toFixed(2)+' €</span>');
     }
   }
 }
