@@ -16,23 +16,22 @@
 		{/if}
 		{if $field.tooltip !=''}
       <span class="tooltipDescMark">
-        <div class="tooltip-ndk">
-          <div class="tooltipDescription"> {$field.tooltip nofilter}</div>
-        </div>
-      </span>
+      <div class="tooltip-ndk">
+        <div class="tooltipDescription"> {$field.tooltip nofilter}</div>
+      </div>
+    </span>
 		{/if}
 		</label>
 		<span class="progress-field-required">
 			<span class="progress-required-text">
 				{if $field.required}
-					(Obligatorisch)
+					(Obligatoire)
 				{else}
-					(Optional)
+					(Optionnel)
 				{/if}
 			</span>
 		</span>
-		<div class="fieldPane clearfix" style="display: none;">
-
+		<div class="fieldPane clearfix"  style="display: none;">
 			<div class="clearfix" id="main-{$field.id_ndk_customization_field|escape:'intval'}">
 				 <div id="textwarringcolor_{$field.id_ndk_customization_field|escape:'intval'}"><p> </p></div>
 				{if $field.notice !=''}
@@ -50,7 +49,7 @@
 						{assign var='valuePrice' value=Tools::convertPrice($value.price, Context::getContext()->currency->id)|round:2}
 					{/if}
 					{if $value.set_quantity == 0 || $value.quantity > 0}
-					<li class="color-ndk {if $field.is_visual == 1}visual-effect {/if}" data-title="{$value.value|escape:'htmlall':'UTF-8'}" data-value="{$value.id|escape:'intval'}" title="{$value.value|escape:'htmlall':'UTF-8'}"
+					<li class="color-ndk {if $field.is_visual == 1}visual-effect {/if}" data-value="{$value.value|escape:'htmlall':'UTF-8'}" title="{$value.value|escape:'htmlall':'UTF-8'}"
 					data-src="{if $value.is_image}{if isset($is_https) && $is_https}{$base_dir_ssl}{else}{$base_dir}{/if}img/scenes/ndkcf/{$value.id|escape:'intval'}.jpg{else}0{/if}" data-group="{$field.id_ndk_customization_field|escape:'intval'}"  data-zindex="{$field.zindex|escape:'htmlall':'UTF-8'}"
 					data-dragdrop="{$field.draggable|escape:'intval'}"
 					data-resizeable="{$field.resizeable|escape:'intval'}"
@@ -66,7 +65,7 @@
 							{else}
                 {if $reduction_value < 100}
                   <s>{convertPrice price=$valuePrice}</s></i>
-                  <i style="color: var(--primary);"> {convertPrice price=$valuePrice-($valuePrice*($reduction_value/100))}</i>
+                  <i style="color: var(--red);"> {convertPrice price=$valuePrice-($valuePrice*($reduction_value/100))}</i>
                 {else}
                   {convertPrice price=$valuePrice}</i>
                 {/if}
@@ -81,13 +80,14 @@
               {else}
                 </i>
 							{/if}
+
 						{/if}
 						{if $value.description !=''}
               <span class="tooltipDescMark">
-                <div class="tooltip-ndk">
-                  <div class="tooltipDescription"> {$value.description nofilter}</div>
-                </div>
-              </span>
+              <div class="tooltip-ndk">
+                <div class="tooltipDescription"> {$value.description nofilter}</div>
+              </div>
+            </span>
 							{/if}
 						</center>
 						<span style="background:{if $value.is_texture}url('{if isset($is_https) && $is_https}{$base_dir_ssl}{else}{$base_dir}{/if}img/scenes/ndkcf/thumbs/{$value.id|escape:'intval'}-texture.jpg'){/if} {$value.color|escape:'htmlall':'UTF-8'}">&nbsp;</span>

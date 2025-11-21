@@ -24,14 +24,13 @@
 		<span class="progress-field-required">
 			<span class="progress-required-text">
 				{if $field.required}
-					(Obligatorisch)
+					(Obligatoire)
 				{else}
-					(Optional)
+					(Optionnel)
 				{/if}
 			</span>
 		</span>
-		<div class="fieldPane clearfix" style="display: none;">
-
+		<div class="fieldPane clearfix"  style="display: none;">
 		{if $field.notice !=''}
 			<div class="field_notice clearfix clear">{$field.notice nofilter}</div>
 		{/if}
@@ -72,7 +71,7 @@
 					data-quantity-available="{if $value.set_quantity >0}{$value.quantity}{else}999999999{/if}"
 					{if $field.is_mask_image}data-mask-image="{if isset($is_https) && $is_https}{$base_dir_ssl}{else}{$base_dir}{/if}img/scenes/ndkcf/mask/{$field.id_ndk_customization_field|escape:'intval'}.jpg"{/if}
 
-					 value="{$value.id|escape:'intval'}" data-price="{if $valuePrice > 0}{$valuePrice|escape:'htmlall':'UTF-8'}{else}{$fieldPrice|escape:'htmlall':'UTF-8'}{/if}" data-id="{$field.target|escape:'htmlall':'UTF-8'}" data-view="{$field.target_child|escape:'htmlall':'UTF-8'}" data-value-id="{$value.id|escape:'intval'}" data-hide-field="{if $value.influences_restrictions|strpos:"all" !== false}1{else}0{/if}" data-id-value="{$field.id_ndk_customization_field|escape:'intval'}-{$value.id|escape:'intval'}"/>
+					 value="{$value.value|escape:'htmlall':'UTF-8'}" data-price="{if $valuePrice > 0}{$valuePrice|escape:'htmlall':'UTF-8'}{else}{$fieldPrice|escape:'htmlall':'UTF-8'}{/if}" data-id="{$field.target|escape:'htmlall':'UTF-8'}" data-view="{$field.target_child|escape:'htmlall':'UTF-8'}" data-value-id="{$value.id|escape:'intval'}" data-hide-field="{if $value.influences_restrictions|strpos:"all" !== false}1{else}0{/if}" data-id-value="{$field.id_ndk_customization_field|escape:'intval'}-{$value.id|escape:'intval'}"/>
 					<label for="checkbox_{$field.id_ndk_customization_field|escape:'htmlall':'UTF-8'}_{$value.id|escape:'htmlall':'UTF-8'}">{$value.value|escape:'htmlall':'UTF-8'}
 					{if $valuePrice > 0} : {l s="+" mod='ndk_advanced_custom_fields'}
 						{if $field.price_type == 'percent'}
@@ -80,7 +79,7 @@
 						{else}
               {if $reduction_value < 100}
                 <s>{convertPrice price=$valuePrice}</s>
-                <span style="color: var(--primary);"> {convertPrice price=$valuePrice-($valuePrice*($reduction_value/100))}</span>
+                <span style="color: var(--red);"> {convertPrice price=$valuePrice-($valuePrice*($reduction_value/100))}</span>
               {else}
                 {convertPrice price=$valuePrice}
               {/if}
