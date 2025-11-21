@@ -6,7 +6,7 @@ class Product extends ProductCore
 {
 
   /* paulo ++ função criada para verificar no front office se há descontos ativos no catálogo */
-  public function checaDescontosCatalogo($idcategory = false)
+  public function checaDescontosCatalogo($idcategory = false, $idproduct = false)
   {
     $hoje = date("Y-m-d H:i:s");
     $retorno['cont_rules'] = 0;
@@ -16,14 +16,18 @@ class Product extends ProductCore
     $cont_rules = 0;
 
     if ($idcategory) {
-      $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule_customize where id_category = ' . (int)$idcategory . '  AND NOW() BETWEEN `from` AND `to` ORDER BY id_specific_price_rule ASC');
+      $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule_customize_product where id_product= '.(int)$idproduct.'  AND NOW() BETWEEN `from` AND `to` ORDER BY id_specific_price_rule ASC');
+
       if (empty($reducao_catalogo)) {
-        $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule ORDER BY id_specific_price_rule ASC');
+        $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule_customize where id_category = '.(int)$idcategory.'  AND NOW() BETWEEN `from` AND `to` ORDER BY id_specific_price_rule ASC');
+        if (empty($reducao_catalogo)) {
+          $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule ORDER BY id_specific_price_rule ASC');
+        }
       }
+
     } else {
       $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule ORDER BY id_specific_price_rule ASC');
     }
-
 
     foreach ($reducao_catalogo as $valueReducao) {
       if ($hoje >= $valueReducao['from']) {
@@ -36,33 +40,96 @@ class Product extends ProductCore
             $legenda_desconto = (int)$valueReducao['reduction'] . "%";
             $legenda_desconto_value = (int)$valueReducao['reduction'];
           }
-          // setlocale(LC_TIME, 'pt_PT');
           $retorno['cont_rules'] = $cont_rules;
           $retorno['reduction'] = $legenda_desconto;
           $retorno['reduction_value'] = $legenda_desconto_value;
           // $retorno['to'] = $valueReducao['to'];
-          $nameMonth = array(
-            "01" => "Januar",
-            "02" => "Februar",
-            "03" => "März",
-            "04" => "April",
-            "05" => "Mai",
-            "06" => "Juni",
-            "07" => "Juli",
-            "08" => "August",
-            "09" => "September",
-            "10" => "Oktober",
-            "11" => "November",
-            "12" => "Dezember"
-          );
-          $retorno['from'] = substr($valueReducao['from'], 8, 2) . ". " . $nameMonth[substr($valueReducao['from'], 5, 2)];
-          $retorno['to'] = substr($valueReducao['to'], 8, 2) . ". " . $nameMonth[substr($valueReducao['to'], 5, 2)];
+          // $nameMonth = array(
+          //   "01" => "janvier",
+          //   "02" => "février",
+          //   "03" => "mars",
+          //   "04" => "avril",
+          //   "05" => "mai",
+          //   "06" => "juin",
+          //   "07" => "juillet",
+          //   "08" => "août",
+          //   "09" => "septembre",
+          //   "10" => "octobre",
+          //   "11" => "novembre",
+          //   "12" => "décembre"
+          // );
+          // $retorno['from'] = substr($valueReducao['from'], 8, 2) . " " . $nameMonth[substr($valueReducao['from'], 5, 2)];
+          // $retorno['to'] = substr($valueReducao['to'], 8, 2) . " " . $nameMonth[substr($valueReducao['to'], 5, 2)];
+          $retorno['from'] = $valueReducao['from'];
+          $retorno['to'] = $valueReducao['to'];
         }
       }
     }
     return $retorno;
   }
 
+  public static function getNotFreeShipping($idProd)
+  {
+    if ($idProd == 755098) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 757177) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 757409) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 757419) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 757422) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 758914) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 758917) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 758930) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 813396) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 850337) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 850353) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1020935) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1021065) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1021069) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1021071) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1021073) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1036497) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1036501) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1036502) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1036503) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1036504) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1036505) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1036506) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1036508) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1036510) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 1036509) {
+      $notfreeshipping = false;
+    } elseif ($idProd == 640125) {
+      $notfreeshipping = false;
+    } else {
+      $notfreeshipping = true;
+    }
+
+    return $notfreeshipping;
+  }
 
   /* paulo -- função criada para verificar no front office se há descontos ativos no catálogo */
 
@@ -74,7 +141,7 @@ class Product extends ProductCore
     $price = round($price * $tax, 2);
 
     $arrayporte['porteprice_com_iva'] = $price;
-    if ($arrayporte['free_shipping']) {
+    if ($arrayporte['free_shipping'] && Product::getNotFreeShipping($idProd)) {
       $arrayporte['porteprice_text'] = "" . number_format($price, 2, ',', ' ') . "";
       $arrayporte['porteprice_com_aumento'] = CEIL($arrayporte['porteprice'] / 0.60);
       $arrayporte['porteprice_com_iva_com_aumento'] = CEIL($arrayporte['porteprice_com_iva'] / 0.60);
@@ -93,38 +160,8 @@ class Product extends ProductCore
     return $arrayporte;
   }
 
-  public function infoProdutoCatalogo($id_prod, $preco_com_iva, $preco_sem_iva, $is_count_ndk = true)
-  {
-    $calcula = 0;
-    $cont_num_ndk = 0;
 
-
-    // captura info do produto
-    $nota_product = Db::getInstance()->executeS('select (SELECT ROUND(AVG(`grade`), 1) FROM `' . _DB_PREFIX_ . 'product_comment` where `validate` = 1 AND `deleted` = 0 AND `id_product` = ' . $id_prod . ') as nota , (SELECT count(`id_product_comment`) FROM `' . _DB_PREFIX_ . 'product_comment` where `validate` = 1 AND `deleted` = 0 AND `id_product` = ' . $id_prod . ') as num_nota');
-    $bd_preco_sem_iva = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'product WHERE id_product=' . $id_prod . '');
-    $bd_preco_sem_iva = $bd_preco_sem_iva[0]['price'];
-    $fator_iva = $preco_com_iva / $preco_sem_iva;
-    $arrayporte = Product::getCarrierPrice($id_prod, $fator_iva);
-
-    $preco_final_sem_desc = (($bd_preco_sem_iva * $fator_iva) - $calcula) + $arrayporte['porteprice_com_iva_com_aumento'];
-    $preco_final_sem_desc_seo = $preco_final_sem_desc;
-    $preco_final_sem_desc = number_format($preco_final_sem_desc, 2, ',', '.') . " €";
-
-    $preco_final_sem_desc_sem_portes = (($bd_preco_sem_iva * $fator_iva) - $calcula);
-    $preco_final_sem_desc_seo_sem_portes = $preco_final_sem_desc_sem_portes;
-    $preco_final_sem_desc_sem_portes = number_format($preco_final_sem_desc_sem_portes, 2, ',', '.') . " €";
-
-    // retornos
-    $retorno['preco_corrigido'] = number_format(($bd_preco_sem_iva * $fator_iva), 2, ',', '.') . " €";
-    $retorno['preco_final_sem_desc'] = $preco_final_sem_desc;
-    $retorno['preco_final_sem_desc_sem_portes'] = $preco_final_sem_desc_sem_portes;
-    $retorno['preco_final_sem_desc_seo'] = $preco_final_sem_desc_seo;
-    $retorno['preco_final_sem_desc_seo_sem_portes'] = $preco_final_sem_desc_seo_sem_portes;
-
-    return $retorno;
-  }
-
-  /* paulo ++ função criada para exibir o preço do produto sem ndk no front office */
+   /* paulo ++ função criada para exibir o preço do produto sem ndk no front office */
   public function infoProduto($id_prod, $preco_com_iva, $preco_sem_iva, $is_count_ndk = true)
   {
     $calcula = 0;
@@ -212,14 +249,14 @@ class Product extends ProductCore
   /* paulo ++ função criada para exibir o preço do produto com desconto do catálogo (se necessário) */
   public function precoAtualizadoSEO($preco_final_sem_desc_seo, $reduction_value, $preco_final_sem_desc_seo_sem_portes = 0)
   {
+   
     $context = Context::getContext();
     $cartRules = $context->cart->getCartRules();
     $preco_reduction_value = $preco_final_sem_desc_seo_sem_portes - ($preco_final_sem_desc_seo_sem_portes * ($reduction_value / 100));
-
-    $retorno['reduction_percent'] = (key_exists('obj', $cartRules[0]) ? $cartRules[0]['obj']->reduction_percent : 0);
-    $retorno['reduction_percent_price'] = (key_exists('obj', $cartRules[0]) ?  $preco_reduction_value - (($cartRules[0]['obj']->reduction_percent / 100) * $preco_reduction_value) : 0);
-    $retorno['reduction_percent_name'] = (key_exists('obj', $cartRules[0]) ? $cartRules[0]['obj']->name : '');
-
+    $retorno['reduction_percent'] = key_exists(0, $cartRules) ? (key_exists('obj', $cartRules[0]) ? $cartRules[0]['obj']->reduction_percent : 0) : 0;
+    $retorno['reduction_percent_price'] = key_exists(0, $cartRules) ? (key_exists('obj', $cartRules[0]) ?  $preco_reduction_value - (($cartRules[0]['obj']->reduction_percent / 100) * $preco_reduction_value) : 0) : 0;
+    $retorno['reduction_percent_name'] = key_exists(0, $cartRules) ? (key_exists('obj', $cartRules[0]) ? $cartRules[0]['obj']->name : '') : 0;
+    $retorno['preco_com_desconto_sem_formato'] = $preco_final_sem_desc_seo - ($preco_final_sem_desc_seo * ($reduction_value / 100));
     $retorno['preco_com_desconto_catalogo'] = number_format($preco_final_sem_desc_seo - ($preco_final_sem_desc_seo * ($reduction_value / 100)), 2, '.', '');
     $retorno['preco_com_desconto_catalogo_view'] = number_format($preco_final_sem_desc_seo - ($preco_final_sem_desc_seo * ($reduction_value / 100)), 2, ',', ' ') . " €";
     return $retorno;

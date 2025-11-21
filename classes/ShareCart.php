@@ -168,7 +168,7 @@ class ShareCart
 
     $resultcart = Db::getInstance()->executeS($query);
     $cart = $resultcart[0];
-    $text_sql = ShareCart::GetSql($cart,"sp_cart_share");
+    $text_sql = ShareCart::GetSql($cart,"ps_cart_share");
     $text_sql_array = Db::getInstance()->execute($text_sql);
     $id_cart_share = (int)Db::getInstance()->Insert_ID();
     // cart Fim
@@ -202,7 +202,7 @@ class ShareCart
 
       if(13432 != $product['id_product']){
         $product['id_cart_share'] = $id_cart_share;
-        $text_sql = ShareCart::GetSql($product,"sp_cart_product_share");
+        $text_sql = ShareCart::GetSql($product,"ps_cart_product_share");
         $text_sql_array = Db::getInstance()->execute($text_sql);
          // cart product Fim
         if($product['id_customization'] > 0) {
@@ -217,10 +217,10 @@ class ShareCart
           $resultProducts = Db::getInstance()->executeS($query);
           $row = $resultProducts[0];
           $row['id_cart_share'] = $id_cart_share;
-          $text_sql = ShareCart::GetSql($row,"sp_customization_share");
+          $text_sql = ShareCart::GetSql($row,"ps_customization_share");
           $text_sql_array = Db::getInstance()->execute($text_sql);
           // customization end
-          // sp_customization_field inicio
+          // ps_customization_field inicio
 
           $query = new DbQuery();
           $query->select('*');
@@ -230,31 +230,31 @@ class ShareCart
           foreach($resultdatas as $data){
             $id_customization_field = $data['id_customization_field'];
             $data['id_cart_share'] = $id_cart_share;
-            $text_sql = ShareCart::GetSql($data,"sp_customization_field_share");
+            $text_sql = ShareCart::GetSql($data,"ps_customization_field_share");
             $text_sql_array = Db::getInstance()->execute($text_sql);
             // customization end
 
-            // sp_customized_data inicio
+            // ps_customized_data inicio
             $query = "SELECT * FROM `". _DB_PREFIX_ . "customized_data` where `index` =  ".$id_customization_field;
             $result_customized_data = Db::getInstance()->executeS($query);
 
             foreach($result_customized_data as $value_customized_data){
               $value_customized_data['id_cart_share'] = $id_cart_share;
-              $text_sql = ShareCart::GetSql($value_customized_data,"sp_customized_data_share");
+              $text_sql = ShareCart::GetSql($value_customized_data,"ps_customized_data_share");
               $text_sql_array = Db::getInstance()->execute($text_sql);
             }
-            // sp_customized_data end
+            // ps_customized_data end
 
-            // sp_customization_field_lang inicio
+            // ps_customization_field_lang inicio
             $query = "SELECT * FROM `". _DB_PREFIX_ . "customization_field_lang` where `id_customization_field` =  ".$id_customization_field;
             $result_customization_field_lang = Db::getInstance()->executeS($query);
 
             foreach($result_customization_field_lang as $value_customization_field_lang){
               $value_customization_field_lang['id_cart_share'] = $id_cart_share;
-              $text_sql = ShareCart::GetSql($value_customization_field_lang,"sp_customization_field_lang_share");
+              $text_sql = ShareCart::GetSql($value_customization_field_lang,"ps_customization_field_lang_share");
               $text_sql_array = Db::getInstance()->execute($text_sql);
             }
-             // sp_customization_field_lang end
+             // ps_customization_field_lang end
 
           }
         }
@@ -280,7 +280,7 @@ class ShareCart
 
     $resultcart = Db::getInstance()->executeS($query);
     $cart = $resultcart[0];
-    $text_sql = ShareCart::GetSql($cart, "sp_cart_share");
+    $text_sql = ShareCart::GetSql($cart, "ps_cart_share");
     $text_sql_array = Db::getInstance()->execute($text_sql);
     $id_cart_share = (int)Db::getInstance()->Insert_ID();
     // cart Fim
@@ -297,7 +297,7 @@ class ShareCart
 
       if (13432 != $product['id_product']) {
         $product['id_cart_share'] = $id_cart_share;
-        $text_sql = ShareCart::GetSql($product, "sp_cart_product_share");
+        $text_sql = ShareCart::GetSql($product, "ps_cart_product_share");
         $text_sql_array = Db::getInstance()->execute($text_sql);
         // cart product Fim
         if ($product['id_customization'] > 0) {
@@ -312,10 +312,10 @@ class ShareCart
           $resultProducts = Db::getInstance()->executeS($query);
           $row = $resultProducts[0];
           $row['id_cart_share'] = $id_cart_share;
-          $text_sql = ShareCart::GetSql($row, "sp_customization_share");
+          $text_sql = ShareCart::GetSql($row, "ps_customization_share");
           $text_sql_array = Db::getInstance()->execute($text_sql);
           // customization end
-          // sp_customization_field inicio
+          // ps_customization_field inicio
 
           $query = new DbQuery();
           $query->select('*');
@@ -325,31 +325,31 @@ class ShareCart
           foreach ($resultdatas as $data) {
             $id_customization_field = $data['id_customization_field'];
             $data['id_cart_share'] = $id_cart_share;
-            $text_sql = ShareCart::GetSql($data, "sp_customization_field_share");
+            $text_sql = ShareCart::GetSql($data, "ps_customization_field_share");
             $text_sql_array = Db::getInstance()->execute($text_sql);
             // customization end
 
-            // sp_customized_data inicio
+            // ps_customized_data inicio
             $query = "SELECT * FROM `" . _DB_PREFIX_ . "customized_data` where `index` =  " . $id_customization_field;
             $result_customized_data = Db::getInstance()->executeS($query);
 
             foreach ($result_customized_data as $value_customized_data) {
               $value_customized_data['id_cart_share'] = $id_cart_share;
-              $text_sql = ShareCart::GetSql($value_customized_data, "sp_customized_data_share");
+              $text_sql = ShareCart::GetSql($value_customized_data, "ps_customized_data_share");
               $text_sql_array = Db::getInstance()->execute($text_sql);
             }
-            // sp_customized_data end
+            // ps_customized_data end
 
-            // sp_customization_field_lang inicio
+            // ps_customization_field_lang inicio
             $query = "SELECT * FROM `" . _DB_PREFIX_ . "customization_field_lang` where `id_customization_field` =  " . $id_customization_field;
             $result_customization_field_lang = Db::getInstance()->executeS($query);
 
             foreach ($result_customization_field_lang as $value_customization_field_lang) {
               $value_customization_field_lang['id_cart_share'] = $id_cart_share;
-              $text_sql = ShareCart::GetSql($value_customization_field_lang, "sp_customization_field_lang_share");
+              $text_sql = ShareCart::GetSql($value_customization_field_lang, "ps_customization_field_lang_share");
               $text_sql_array = Db::getInstance()->execute($text_sql);
             }
-            // sp_customization_field_lang end
+            // ps_customization_field_lang end
 
           }
         }
@@ -459,7 +459,7 @@ class ShareCart
             Product::getIdTaxRulesGroupByIdProduct((int)$product['id_product'], Context::getContext())
           );
 
-          $query = "SELECT `id_product_original`, ".$id_product_new." as `id_product_customization`,`link`,`title` FROM `sp_link_customization_product` where `id_product_customization` =  ". $id_product_old;
+          $query = "SELECT `id_product_original`, ".$id_product_new." as `id_product_customization`,`link`,`title` FROM `ps_link_customization_product` where `id_product_customization` =  ". $id_product_old;
           $resultconfiguracao = Db::getInstance()->executeS($query);
           if (count($resultconfiguracao) > 0) {
             $rowconf = $resultconfiguracao[0];
@@ -481,7 +481,7 @@ class ShareCart
           $row['id_address_delivery'] = $id_address_delivery;
           $row['id_cart'] = $new_cart->id;
 
-          $text_sql = ShareCart::GetSql($row, "sp_customization");
+          $text_sql = ShareCart::GetSql($row, "ps_customization");
           $text_sql_array = Db::getInstance()->execute($text_sql);
           $id_customization_new = (int)Db::getInstance()->Insert_ID();
 
@@ -489,18 +489,18 @@ class ShareCart
           $resultdatas = Db::getInstance()->executeS($query);
 
           foreach ($resultdatas as $data) {
-            // sp_customization_field
+            // ps_customization_field
             unset($data['id_cart_share']);
             unset($data['date_share']);
             $id_customization_field = $data['id_customization_field'];
             unset($data['id_customization_field']);
             $data['id_product'] = $id_product_new;
 
-            $text_sql = ShareCart::GetSql($data, "sp_customization_field");
+            $text_sql = ShareCart::GetSql($data, "ps_customization_field");
             $text_sql_array = Db::getInstance()->execute($text_sql);
             $id_customization_field_new = (int)Db::getInstance()->Insert_ID();
 
-            // sp_customized_data
+            // ps_customized_data
             $query = "SELECT * FROM `" . _DB_PREFIX_ . "customized_data_share` where `index` =  " . $id_customization_field . " and `id_cart_share` = " . $idcartshare;
             $result_customized_data = Db::getInstance()->executeS($query);
 
@@ -509,11 +509,11 @@ class ShareCart
               unset($value_customized_data['date_share']);
               $value_customized_data['id_customization'] = $id_customization_new;
               $value_customized_data['index'] = $id_customization_field_new;
-              $text_sql = ShareCart::GetSql($value_customized_data, "sp_customized_data");
+              $text_sql = ShareCart::GetSql($value_customized_data, "ps_customized_data");
               $text_sql_array = Db::getInstance()->execute($text_sql);
             }
 
-            // sp_customization_field_lang
+            // ps_customization_field_lang
             $query = "SELECT * FROM `" . _DB_PREFIX_ . "customization_field_lang_share` where `id_customization_field` =  " . $id_customization_field . " and `id_cart_share` = " . $idcartshare;
             $result_customization_field_lang = Db::getInstance()->executeS($query);
 
@@ -521,7 +521,7 @@ class ShareCart
               unset($value_customization_field_lang['id_cart_share']);
               unset($value_customization_field_lang['date_share']);
               $value_customization_field_lang['id_customization_field'] = $id_customization_field_new;
-              $text_sql = ShareCart::GetSql($value_customization_field_lang, "sp_customization_field_lang");
+              $text_sql = ShareCart::GetSql($value_customization_field_lang, "ps_customization_field_lang");
               $text_sql_array = Db::getInstance()->execute($text_sql);
             }
           }

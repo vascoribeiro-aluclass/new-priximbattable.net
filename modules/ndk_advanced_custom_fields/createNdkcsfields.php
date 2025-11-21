@@ -98,7 +98,7 @@ if ($oldIdCustomization > 0) {
 
   $customisation->delete();
 } else {
-  $newCustomProd = NdkCf::createProductCustom($product, $ndkcfIdCombination, 0, $cusText, $devischeck);
+  $newCustomProd = NdkCf::createProductCustom($product, $ndkcfIdCombination, 0, $cusText, false);
   // Se necessário, lógica adicional para $devischeck pode ser adicionado aqui
 }
 

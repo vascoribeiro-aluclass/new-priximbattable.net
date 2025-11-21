@@ -23,8 +23,7 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 {assign var='checaDescontosCatalogo' value=Product::checaDescontosCatalogo({$product.id_category_default},{$product.id})}
-{assign var='infoProduto' value=Product::infoProdutoCatalogo({$product.id},
-{$product.price_amount},{$product.orderprice},{$product.price_tax_exc},false)}
+{assign var='infoProduto' value=Product::infoProduto({$product.id}, {$product.price_amount}, {$product.price_tax_exc})}
 
 {assign var='precoAtualizadoSEO' value=Product::precoAtualizadoSEO({$infoProduto['preco_final_sem_desc_seo']},
 {$checaDescontosCatalogo['reduction_value']})}

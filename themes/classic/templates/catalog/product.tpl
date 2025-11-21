@@ -1142,7 +1142,7 @@
           <div class="col-md-6" style="padding-bottom: 16px;">
             {block name='page_header_container'}
               {block name='page_header'}
-
+<h1 class="h1" itemprop="name" id="name_title_product">{block name='page_title'}{$product.name}{/block}</h1>
                 {/block}
               {/block}
               {block name='product_prices'}
