@@ -1,0 +1,145 @@
+.fixed_zone{
+	border:1px solid #ccc;
+	background: repeating-linear-gradient(
+	  45deg,
+	  rgba(0, 0, 0, 0.1),
+	  rgba(0, 0, 0, 0.1) 10px,
+	  rgba(0, 0, 0, 0.2) 10px,
+	  rgba(0, 0, 0, 0.2) 20px
+	);
+}
+
+.help-block img{
+	max-width:300px;
+	height:auto;
+	
+}
+
+td.editableDom, td.editable-value:hover{
+	background:#333!important;
+	color: #FFF!important;
+	font-weight:bold
+}
+
+.specificPriceBlock {
+	margin-left: 10%;
+	margin-right: 10%;
+	border: 1px solid #dedede;
+	padding: 15px;
+	margin-bottom: 15px;
+	position:relative
+}
+
+.removeSpecificPrice {
+	font-size: 18px;
+	margin-top: 15px;
+	cursor:pointer
+}
+
+.addSpecificPrice {
+	font-size: 18px;
+	border: 1px solid;
+	padding: 0;
+	margin-top: 10px;
+	float: left;
+	border-radius: 50%;
+	color: #2eacce;
+	cursor: pointer;
+	width: 28px;
+	height: 28px;
+	text-align: center;
+}
+
+#saved {
+	background: none repeat scroll 0 0 #bfd36e;
+	bottom: 0;
+	color: #fff;
+	font-size: 35px;
+	font-weight: bold;
+	height: 100%;
+	left: 0;
+	opacity: 0.8;
+	/* padding: 50% 10%; */
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	vertical-align: middle;
+	width: 100%;
+	z-index: 99;
+	line-height: 6em;
+}
+
+.bootstrap .table thead > tr.filter > th{
+	text-align:center
+}
+.filter_attention {
+	text-align: center;
+	/* width: 100%; */
+	display: inline-block;
+	background: #333;
+	padding: 5px 10px;
+	color: #fff;
+	margin: 5px auto;
+}
+
+#target_zoning img{
+	border:1px solid #dedede
+}
+
+.AjaxremoveFile{
+	font-size:16px;
+	cursor:pointer
+}
+
+.chosen-container {
+	display: inline-block;
+	font-size: 12px;
+	position: relative;
+	vertical-align: middle;
+	width: 100% !important;
+}
+
+.chosen-container-multi .chosen-choices .search-choice .search-choice-close{
+	background:none
+}
+.chosen-container-multi .chosen-choices .search-choice .search-choice-close::after {
+	content: "x";
+	display: inline-block;
+	/* float: right; */
+	/* font-family: "FontAwesome"; */
+	font-size: 17px;
+	line-height: 8px;
+	font-weight: bold;
+}
+
+#maintab-AdminNdkCustomFieldsNo a.title::before, #maintab-AdminNdkCustomFields a.title::before {
+	display: block;
+	font-family: "FontAwesome";
+	content: "\f0d0";
+	position: absolute;
+	left: 8px;
+	z-index: 2;
+	font-size: 16px;
+}
+
+#maintab-AdminNdkCustomFieldsNo a.title, #maintab-AdminNdkCustomFields a.title {
+	background: #BE8528 !important;
+	color: #343943 !important;
+	margin-bottom:2px
+}
+
+#maintab-AdminNdkCustomFieldsNo a.title:hover, #maintab-AdminNdkCustomFields a.title:hover{
+	background:#FBB244!important
+}
+
+#large_scene_image svg{
+	width:auto
+}
+
+.form-group .print-page-breaker, .configCover {
+	max-width: 600px !important;
+	width: 48%;
+	display: inline-block;
+	margin: 1%;
+}

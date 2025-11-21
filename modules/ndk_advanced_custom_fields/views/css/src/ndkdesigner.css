@@ -1,0 +1,338 @@
+/**
+ *  Tous droits réservés NDKDESIGN
+ *
+ *  @author Hendrik Masson <postmaster@ndk-design.fr>
+ *  @copyright Copyright 2013 - 2014 Hendrik Masson
+ *  @license   Tous droits réservés
+*/
+
+.ndkhiddenuploadfile, .ndkhiddenimglibrary{
+	display: none;
+}
+
+.designer-item{
+	margin:15px 0;
+}
+
+h4.itemToggler {
+	font-size: 14px;
+	text-transform: none;
+	padding: 5px;
+	border: none;
+	background: none;
+	border-bottom: 1px dotted #dedede;
+	margin-left: 15px;
+	margin-right: 15px;
+	font-weight: normal;
+	cursor:pointer;
+}
+h4.itemToggler:hover{
+	background:#333;
+	color: #FFF;
+}
+
+h4.itemToggler:after{
+	display: inline-block;
+	font-family: "FontAwesome";
+	font-size: 14px;
+	padding: 0;
+	font-weight: lighter;
+	line-height: 24px;
+	content:"\f07d";
+	cursor:-webkit-grab;
+	float:right
+}
+
+.designer-item textarea.noborder{
+	resize: both;
+	    overflow: auto;
+}
+
+.customFontLetter {
+	display: inline-block;
+	width: auto;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	/* text-indent: -5000px; */
+	position: relative;
+	top: 0;
+	bottom: 0;
+	max-width: 70px;
+	max-height: 100%;
+	margin: auto -3px;
+}
+.customFontLetter img {
+	height: 100%;
+	max-width: 100%;
+	width: auto;
+	display: block;
+	float: left;
+}
+
+.custom-font-rendering {
+	width: auto;
+	text-align: center;
+	color: #CCC;
+	display: block;
+	margin: auto;
+	z-index:9;
+	height:60px;
+	overflow-x:auto
+	
+}
+
+.previewText{
+	text-align:center;
+	margin:8px 0
+}
+
+.submitCSText{
+	padding: 5px 10px;
+	margin: auto;
+	display: table;
+	width: 100%;
+	text-align: center;
+}
+
+.customFontTextElement {
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: relative;
+	text-align: center;
+	
+}
+
+.multiply-mode-multiply{
+	mix-blend-mode:multiply;
+}
+
+.multiply-mode-color{
+	mix-blend-mode:color;
+}
+
+
+
+/* @group Slider Css */
+
+.sliderBlock{
+	position:relative;
+	margin-bottom:30px!important;
+	min-height:100px
+}
+.sliderBlock .form-group.ndkackFieldItem {
+	position:absolute!important;
+	/*left:-5000px;*/
+	width:100%;
+	visibility:hidden;
+	-webkit-animation-duration: 0.7s;
+	animation-duration: 0.7s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	opacity:0;
+	z-index:-1;
+}
+
+/*.sliderBlock .form-group.ndkackFieldItem.slideInRight{
+	left:auto;
+	right:-5000px
+}*/
+
+.sliderBlock .form-group.ndkackFieldItem.activeItem {
+	left: auto!important;
+	right:auto!important;
+	visibility:visible;
+	opacity:1;
+	z-index:auto
+}
+
+.sliderBlock .view_tab {
+    position: relative;
+    z-index: 9;
+}
+
+
+
+.sliderBlock .form-group.ndkackFieldItem .fieldPane{
+	display:block!important
+}
+
+.sliderBlock .form-group.ndkackFieldItem .toggler {
+	text-align: center;
+	padding-bottom: 20px !important;
+	padding-right:20px!important
+}
+
+.sliderBlock .form-group.ndkackFieldItem .toggler::after{
+	display:none
+}
+
+.ndkcfnav {
+	position: absolute;
+	padding-bottom: 16px;
+	width: 100%;
+	top: 12px;
+	display:none
+}
+
+.sliderBlock .ndkcfnav, .sliderBlock .ndkcfPager{
+	display:block
+}
+
+.nextNdkcfItem, .prevNdkcfItem {
+	display: inline-block;
+	font-size: 24px;
+	font-weight: normal;
+	cursor: pointer;
+	padding: 3px;
+	color: #97B8C5;
+}
+
+.nextNdkcfItem{
+	float:right;
+	margin-right:5px
+}
+
+.prevNdkcfItem{
+	float:left;
+	margin-left:5px
+}
+
+.ndkcfPager{
+	position: absolute;
+	padding-bottom: 16px;
+	width: 100%;
+	display:none;
+	top:-20px;
+	text-align:center
+}
+
+.ndkcfPagerItem{
+	width:8px;
+	height:8px;
+	display:inline-block;
+	margin-right:12px;
+	background:#000;
+	border-radius:8px
+}
+
+.ndkcfPagerItem.activePager{
+	background:#97B8C5;
+}
+
+.nextNdkcfItem::after, .prevNdkcfItem::after {
+	display: inline-block;
+	font-family: "FontAwesome";
+	font-size: 14px;
+	padding: 0;
+	font-weight: lighter;
+	line-height: 24px;
+}
+
+.nextNdkcfItem::after{
+	content:"\f054";
+	float:right;
+}
+
+.prevNdkcfItem::after{
+	content:"\f053";
+	float:left
+}
+
+
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+
+@-webkit-keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInLeft {
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+}
+
+@-webkit-keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+}
+
+/* @end */
+
+
+.orientation_selection {
+	text-align: center;
+	padding: 15px;
+	margin: 15px 0;
+	border-bottom: 1px solid #dedede;
+	border-top: 1px solid #dedede;
+	/* display: block; */
+	width: 100%;
+	clear: both;
+}
+
+.active_orientation{
+	background: #97b8c5;
+	color: #fff;
+}
+
+input.surface {
+	width: auto;
+	display: inline-block;
+}
+
