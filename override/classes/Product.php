@@ -159,7 +159,29 @@ class Product extends ProductCore
 
     return $arrayporte;
   }
+  public function infoProdutoCatalogo($id_prod, $preco_com_iva, $bd_preco_sem_iva, $preco_sem_iva, $is_count_ndk = true)
+  {
 
+    $fator_iva = $preco_com_iva / $preco_sem_iva;
+    $arrayporte = Product::getCarrierPrice($id_prod, $fator_iva);
+
+    $preco_final_sem_desc = (($bd_preco_sem_iva * $fator_iva)) + $arrayporte['porteprice_com_iva_com_aumento'];
+    $preco_final_sem_desc_seo = $preco_final_sem_desc;
+    $preco_final_sem_desc = number_format($preco_final_sem_desc, 2, ',', '.') . " €";
+
+    $preco_final_sem_desc_sem_portes = (($bd_preco_sem_iva * $fator_iva));
+    $preco_final_sem_desc_seo_sem_portes = $preco_final_sem_desc_sem_portes;
+    $preco_final_sem_desc_sem_portes = number_format($preco_final_sem_desc_sem_portes, 2, ',', '.') . " €";
+
+    // retornos
+    $retorno['preco_corrigido'] = number_format(($bd_preco_sem_iva * $fator_iva), 2, ',', '.') . " €";
+    $retorno['preco_final_sem_desc'] = $preco_final_sem_desc;
+    $retorno['preco_final_sem_desc_sem_portes'] = $preco_final_sem_desc_sem_portes;
+    $retorno['preco_final_sem_desc_seo'] = $preco_final_sem_desc_seo;
+    $retorno['preco_final_sem_desc_seo_sem_portes'] = $preco_final_sem_desc_seo_sem_portes;
+
+    return $retorno;
+  }
 
    /* paulo ++ função criada para exibir o preço do produto sem ndk no front office */
   public function infoProduto($id_prod, $preco_com_iva, $preco_sem_iva, $is_count_ndk = true)
