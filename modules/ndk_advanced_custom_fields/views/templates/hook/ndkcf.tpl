@@ -138,7 +138,7 @@
       <input class="dontCare image-url" type="hidden" name="image-url[]" value=" " id="image-url-0" />
       <input id="ndkcf_id_product" class="dontCare" type="hidden" name="id_product"
         value="{$product_id|escape:'intval'}" />
-        <input id="ndkcf_id_product_edit" class="dontCare" type="hidden" name="id_product_edit"
+      <input id="ndkcf_id_product_edit" class="dontCare" type="hidden" name="id_product_edit"
         value="{$parameditproduct|escape:'intval'}" />
       <input class="dontCare" id="ndkcf_id_combination" type="hidden" name="ndkcf_id_combination" value="" />
       <input class="dontCare" type="hidden" name="cusText"
@@ -151,22 +151,17 @@
         value="{l s='Combination' mod='ndk_advanced_custom_fields'}" />
       <input class="dontCare" type="hidden" name="previewText"
         value="{l s='Preview' mod='ndk_advanced_custom_fields'}" />
-      {*
-      <button form="ndkcsfields" id="submitNdkcsfields" name="submitNdkcsfields"
-        class="button exclusive btn btn-primary">
-        <span><i class="material-icons " style="margin-right: 0px;">shopping_cart</i>
-        {l s='Add to cart' mod='ndk_advanced_custom_fields'}</span>
-      </button>*}
 
-      <button form="ndkcsfields" id="submitNdkcsfields" name="submitNdkcsfields"
-        class="submitNdkcsfields add_panier_btn  exclusive  ">
+        <button form="ndkcsfields" id="submitNdkcsfields" name="submitNdkcsfields"
+        class="submitNdkcsfields add_panier_btn  exclusive   mt-1">
         <div class="add_panier_circle ">
           <i class="material-icons ">shopping_cart</i>
         </div>
         <div class="mon_text">{l s='Add to cart' mod='ndk_advanced_custom_fields'}</div>
       </button>
 
-      <div class="mon_devis mon_btn_size  exclusive  embedAluDevisProd" style="float: right;  margin-right: 20px;">
+      <div class="mon_devis mon_btn_size  exclusive  embedAluDevisProd  mt-1"
+        style="float: right;  margin-right: 20px;">
         <div class="mon_circle mon_devis_circle">
           <picture>
             <source srcset="/img/iconscart/print.webp" type="image/webp">
@@ -177,33 +172,17 @@
         <div class="mon_text">Mon Devis</div>
       </div>
 
-      {* <span class="hidden-md-down">
-          {if $cart.products_count > 0}
-            <a rel="nofollow" href="/panier?action=show" style="color:black;">
-          {/if}
-            <span class="mon_devis  button exclusive btn " style="background: rgb(210, 210, 210) none repeat scroll 0% 0%; margin-right: 20px;">
-              <i class="material-icons ">shopping_cart</i> Panier </span>
-              <span class="cart-products-count " style="margin-top: 25px; margin-left: -115px; ">{$cart.products_count}</span>
-          {if $cart.products_count > 0}
-            </a>
-          {/if}
-      </span>
 
-      <span class="mon_devis  button exclusive btn embedAluDevisProd"
-        style="background: rgb(210, 210, 210) none repeat scroll 0% 0%; margin-right: 20px; "><i
-          class="material-icons ">print</i> Mon Devis</span>
-      <span class="hidden-md-up ">
-        {if $cart.products_count > 0}
-          <a rel="nofollow" href="/panier?action=show" style="color:black;">
-        {/if}
-          <span class="mon_devis  button exclusive btn " style="background: rgb(210, 210, 210) none repeat scroll 0% 0%; margin-top: 10px;">
-            <i class="material-icons ">shopping_cart</i> Panier </span>
-            <span class="cart-products-count-mobile " style="margin-top: 35px; margin-left: -90px; ">{$cart.products_count}</span>
-        {if $cart.products_count > 0}
-          </a>
-        {/if}
-      </span>*}
-
+      <div class="exclusive  AluwishlistProd  mt-1"
+        style="float: right;  margin-right: 20px; color: #000; border-radius: 50px; opacity: 1; font-size: 13px; display: flex; cursor: pointer;">
+        <div class=" mon_wishlist_circle">
+          <picture>
+            <img src="/img/heart.svg" alt="favoris" class="mon_icon heartwishlist" id="wishlistimg"
+              style="height:25px;">
+          </picture>
+        </div>
+        <div class="mon_text"><span id="wishlisttext"> Ajouter à mes favoris </span></div>
+      </div>
     </div>
   </form>
 
