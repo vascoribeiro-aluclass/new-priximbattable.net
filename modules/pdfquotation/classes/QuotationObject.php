@@ -84,8 +84,8 @@ class QuotationObject extends ObjectModel
         SELECT
             cp.id_product,
             q.ref_quotation
-        FROM `sp_quotation` q
-        INNER JOIN sp_devis_product_historic cp ON cp.ref_quotation = q.ref_quotation
+        FROM `' . _DB_PREFIX_ . 'quotation` q
+        INNER JOIN ' . _DB_PREFIX_ . 'devis_product_historic cp ON cp.ref_quotation = q.ref_quotation
         WHERE q.id_customer = '.(int)$idCustomer.'
         AND q.deleted = 1
         AND q.date_add <= DATE_ADD(CURDATE(), INTERVAL 2 MONTH)
@@ -126,13 +126,13 @@ class QuotationObject extends ObjectModel
               ),
             2) AS total_products,
             cp.date_add as date_add,
-            GROUP_CONCAT( CONCAT(sp_product_lang.name) SEPARATOR "\n") as products_name
-        FROM `sp_quotation` q
-        INNER JOIN sp_devis_product_historic cp ON cp.ref_quotation = q.ref_quotation
-        INNER JOIN sp_product_lang ON sp_product_lang.id_product = cp.id_product
-        INNER JOIN sp_product p ON p.id_product = cp.id_product
-        left join sp_cart_cart_rule ccr on ccr.id_cart = q.id_cart
-        left join sp_cart_rule cr on cr.id_cart_rule = ccr.id_cart_rule
+            GROUP_CONCAT( CONCAT(' . _DB_PREFIX_ . 'product_lang.name) SEPARATOR "\n") as products_name
+        FROM `' . _DB_PREFIX_ . 'quotation` q
+        INNER JOIN ' . _DB_PREFIX_ . 'devis_product_historic cp ON cp.ref_quotation = q.ref_quotation
+        INNER JOIN ' . _DB_PREFIX_ . 'product_lang ON ' . _DB_PREFIX_ . 'product_lang.id_product = cp.id_product
+        INNER JOIN ' . _DB_PREFIX_ . 'product p ON p.id_product = cp.id_product
+        left join ' . _DB_PREFIX_ . 'cart_cart_rule ccr on ccr.id_cart = q.id_cart
+        left join ' . _DB_PREFIX_ . 'cart_rule cr on cr.id_cart_rule = ccr.id_cart_rule
         WHERE q.id_customer = '.(int)$idCustomer.'
         AND q.deleted = 1
         AND q.date_add <= DATE_ADD(CURDATE(), INTERVAL 2 MONTH)
