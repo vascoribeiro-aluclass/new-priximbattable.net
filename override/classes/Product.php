@@ -188,6 +188,7 @@ class Product extends ProductCore
   {
     $calcula = 0;
     $cont_num_ndk = 0;
+    $price  =0;
 
     // verifica se tem ndk
     if ($is_count_ndk) {
@@ -229,7 +230,7 @@ class Product extends ProductCore
     // captura info do produto
     $nota_product = Db::getInstance()->executeS('select (SELECT ROUND(AVG(`grade`), 1) FROM `' . _DB_PREFIX_ . 'product_comment` where `validate` = 1 AND `deleted` = 0 AND `id_product` = ' . $id_prod . ') as nota , (SELECT count(`id_product_comment`) FROM `' . _DB_PREFIX_ . 'product_comment` where `validate` = 1 AND `deleted` = 0 AND `id_product` = ' . $id_prod . ') as num_nota');
     $bd_preco_sem_iva = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'product WHERE id_product=' . $id_prod . '');
-    $bd_preco_sem_iva = $bd_preco_sem_iva[0]['price'];
+    $bd_preco_sem_iva = array_key_exists('price', $bd_preco_sem_iva[0]) ? $bd_preco_sem_iva[0]['price'] : 0;
     $fator_iva = $preco_com_iva / $preco_sem_iva;
     $arrayporte = Product::getCarrierPrice($id_prod, $fator_iva);
 

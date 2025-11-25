@@ -365,7 +365,7 @@ class ndk_advanced_custom_fields extends Module
     $config_boxes = $this->display(__FILE__, 'config_boxes.tpl');
     //$config_boxes = $this->context->smarty->fetch($this->local_path.'views/templates/hook/config_boxes.tpl');
     //CONFIG BOXES
-    if (sizeof($cache_found) > 0 && $cache_found['key_cache'] == $key_cache && Tools::getValue('no_cache', 0) == 0 && (int)Tools::getValue('id_product') > 0) {
+    if ( (is_array($cache_found) ? sizeof($cache_found) : 0) > 0 && $cache_found['key_cache'] == $key_cache && Tools::getValue('no_cache', 0) == 0 && (int)Tools::getValue('id_product') > 0) {
       $this->context->smarty->assign('template', $cache_found['content']);
       $this->context->smarty->assign('config_boxes', $config_boxes);
       return $this->display(__FILE__, 'ndkcf_cached.tpl');

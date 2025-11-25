@@ -89,7 +89,14 @@
     {$fabricadoLINK = '/content/32-fabricant' }
   {/if}
 
-  {if {$product.price_amount} <= 6000} {$parcelas = '4'} {else} {$parcelas = '48'} {/if} {*Model for devis begin*}
+  {if {$product.price_amount} <= 6000}      
+    {assign var="multony" value=4}              
+    {$parcelas = '4'} 
+  {else} 
+    {$parcelas = '48'} 
+    {assign var="multony" value=48}
+  {/if} 
+    {*Model for devis begin*}
     {if $multony == 4} {$imgcredit = 'alma4x'} {$linkcredit = '/content/61-payez-vos-achats-en-3-ou-4-fois-avec-alma'}
     {else} {$imgcredit = 'Oney48'}
     {$linkcredit = '/content/67-le-paiement-en-12-24-36-48-60-ou-84-fois-avec-oney-chez-priximbattable'} {/if} <div

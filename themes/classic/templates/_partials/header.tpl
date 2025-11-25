@@ -110,7 +110,7 @@
                     </div>
                   </div>
                   <input name="catalogue_name" id="catalogue_name" type="hidden"
-                    value="{if is_object($category)}{$category->name} {elseif 'name'|array_key_exists:$category}{$category.name}{else}catalogue{/if}">
+                    value="catalogue">
                 </section>
                 <footer class="form-footer clearfix" style="text-align: end;">
                   <button class="btn btn-primary pull-xs-right sendcatalogo" type="button" id="btn_tag_pdf_catalgo">

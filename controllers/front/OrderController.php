@@ -271,6 +271,8 @@ class OrderControllerCore extends FrontController
     public function initContent()
     {
 
+        $shipfree = Tools::getValue('shipfree');
+
         $this->registerStylesheet('aluclassic', '/assets/css/shoppingcart.css', ['media' => 'all', 'priority' => 1001]);
         $this->registerStylesheet('aluclassic2', '/assets/css/orderclient.css', ['media' => 'all', 'priority' => 1001]);
 
@@ -308,7 +310,7 @@ class OrderControllerCore extends FrontController
         if (!$this->checkoutProcess->hasErrors()) {
             if ($_SERVER['REQUEST_METHOD'] !== 'GET' && !$this->ajax) {
                 return $this->redirectWithNotifications(
-                    $this->checkoutProcess->getCheckoutSession()->getCheckoutURL()
+                    $this->checkoutProcess->getCheckoutSession()->getCheckoutURL()."?shipfree=".$shipfree
                 );
             }
         }
@@ -316,6 +318,7 @@ class OrderControllerCore extends FrontController
         $this->context->smarty->assign([
             'checkout_process' => new RenderableProxy($this->checkoutProcess),
             'cart' => $presentedCart,
+            'shipfree' => $shipfree
         ]);
 
         $this->context->smarty->assign([
