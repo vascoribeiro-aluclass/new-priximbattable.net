@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;800;900&display=swap');
+
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 0 10px 0;
+}
+
+.wrapper p {
+  font-family: Montserrat;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #FFF;
+  margin: 0 0 10px 0;
+}
+
+.wrapper button {
+  color: #FFF;
+  /*border: 2px solid #E00303;*/
+  border: 2px solid #0ababa;
+  padding: 5px 10px 3px 10px;
+  /*background: #E00303;*/
+  background: #0ababa;
+  font-family: Montserrat;
+  font-weight: 600;
+  border-radius: 6px;
+  text-transform: uppercase;
+  cursor: pointer;
+}

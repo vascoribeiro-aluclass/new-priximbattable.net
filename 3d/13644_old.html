@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <title></title> -->
+    <!-- <meta charset="utf-8"> -->
+       <!-- <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"> -->
+    <link href="css/headerScreen.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="js/headerScreen.js"></script>
+    <script src="js/threejs/three.js"></script>
+
+    <script src="js/controls/OrbitControls.js"></script>
+
+    <script src="js/curves/NURBSCurve.js"></script>
+    <script src="js/curves/NURBSUtils.js"></script>
+    <script src="js/loaders/FBXLoader.js"></script>
+
+    <script src="js/Detector.js"></script>
+    <script src="js/libs/inflate.min.js"></script>
+    <script src="js/libs/stats.min.js"></script>
+
+    <script>
+        if (!Detector.webgl) Detector.addGetWebGLMessage();
+
+        var container, stats, controls;
+        var camera, scene, renderer, light;
+
+        init();
+        animate();
+
+        function init() {
+            container = document.createElement('div');
+            document.body.appendChild(container);
+
+            camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 2000 );
+            camera.position.z = 550;
+
+            controls = new THREE.OrbitControls(camera);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.25;
+            controls.enableZoom = false;
+
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xffffff);
+
+            light = new THREE.HemisphereLight(0xffffff, 0x444444);
+            light.position.set(0, 1, 1);
+            scene.add(light);
+
+            light = new THREE.DirectionalLight(0xffffff);
+            light.position.set(0, 1, 0);
+            scene.add(light);
+
+            var loader = new THREE.FBXLoader();
+            loader.load('13644.fbx', function(object) {
+                scene.add(object);
+                object.position.y -= 60;
+            }, (ev) => {
+                console.log(ev);
+            }, (e) => {
+                console.log(e);
+            });
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(2);
+            container.appendChild(renderer.domElement);
+        }
+
+
+
+        function animate() {
+            requestAnimationFrame(animate);
+            render();
+        }
+        function render() {
+        renderer.render(scene, camera);
+        }
+    </script>
+
+</body>
+</html>
