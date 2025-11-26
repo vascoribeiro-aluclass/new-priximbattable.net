@@ -100,7 +100,7 @@ $contentNotaTrustpilot = '';*/
 
 
   // Executa a consulta SQL e armazena os resultados em um array
-  $notaBD = Db::getInstance()->executeS("SELECT `id`,`nome`, `nota` FROM `sp_notas_externas`");
+  $notaBD = Db::getInstance()->executeS("SELECT `id`,`nome`, `nota` FROM `ps_notas_externas`");
   $notas_array = [];
 
   foreach ($notaBD as $notas) {

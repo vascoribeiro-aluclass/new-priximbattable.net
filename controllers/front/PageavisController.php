@@ -26,7 +26,7 @@ class PageavisControllerCore extends FrontController{
 
     static function Getparts(){
 
-        return include './themes/aluclassic/templates/pageavis.php';
+        return include './themes/classic/templates/pageavis.php';
     }
 
 
