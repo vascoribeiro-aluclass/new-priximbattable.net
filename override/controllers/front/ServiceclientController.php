@@ -63,6 +63,9 @@ class ServiceclientController extends FrontController
 
 			$message .= "<br /> Motif : ".$motif."<br /><br />";
 
+
+
+
 			if($_POST['contact_facture'] == "" || $_POST['contact_facture'] == " "){
 				$_POST['contact_facture'] = "Numéro de commande non renseigné";
 			}
@@ -88,13 +91,29 @@ class ServiceclientController extends FrontController
 				);
 
 
-			$bdd = new PDO('mysql:host=192.168.0.3;dbname=priximbattde;charset=utf8;port=3306', 'priximbattde', 'YgYMugu7EhU3');
+			$bdd = new PDO('mysql:host=127.0.0.1;dbname=priximbattfr;charset=utf8;port=3306', 'priximbattfr', 'hu9wL5yB8YH4');
 
+      $type_conversion  = null;
+      $code_conversion = null;
+      $date_conversion = null;
+      $name_conversion = null;
+
+      if (isset($_COOKIE["PBCLID"])) {
+        $type_conversion  = $_COOKIE["PBCLKID_TYPE"];
+        $code_conversion = $_COOKIE["PBCLID"];
+        $date_conversion = $_COOKIE["PBCLKID_DATE"];
+        $name_conversion = 'Lead';
+      }
+
+      $sql = "INSERT INTO `sc_rappel` (`sc_rappel_nom`,`sc_rappel_tel`,`sc_rappel_email`,`sc_rappel_type`,`sc_rappel_message`,`type_conversion`,`code_conversion`,`date_conversion`,`name_conversion`)
+      VALUES ('".$_POST['contact_nom']." ".$_POST['contact_prenom']."','".$_POST['contact_tel']."','".$_POST['contact_email']."','email','Ref. Commande : ".$_POST['contact_facture']."<br><br>".$_POST['contact_descriptif']."','".$type_conversion."','".$code_conversion."','".$date_conversion."','".$name_conversion."'); ";
+      $bdd->exec($sql);
 
 $reponse = $bdd->query('SELECT sav_utilisateur_id, sav_utilisateur_nom
 							FROM sav_utilisateur
-                               WHERE sav_utilisateur_acces="Utilisateur"
-							   ORDER BY RAND() LIMIT 1');
+              WHERE sav_utilisateur_acces="Utilisateur"
+							ORDER BY RAND() LIMIT 1');
+
 // On affiche le resultat
 while ($donnees = $reponse->fetch())
 {
@@ -107,6 +126,7 @@ $sav_utilisateur_id = $donnees['sav_utilisateur_id'];
 		  SET
 		      rappel_client_nom='".$_POST['contact_nom']."',
 			  	rappel_client_numero='".$_POST['contact_tel']."',
+          rappel_client_email='".$_POST['contact_email']."'
 			   rappel_client_cde='".$_POST['contact_facture']."',
 			   rappel_client_intervenant='".$sav_intervenant."',
 			   rappel_client_utilisateur_id='".$sav_utilisateur_id."',
@@ -116,7 +136,7 @@ $sav_utilisateur_id = $donnees['sav_utilisateur_id'];
 
 		$sav_id = $bdd->lastInsertId();
 
-			$msg="Votre demande a bien été envoyée !";
+			$msg="Votre demande a bien été envoyée au service client.";
 			$_POST=""; //On réinitialise le formulaire
 		}
 			$this->context->smarty->assign(array('msg' => $msg));

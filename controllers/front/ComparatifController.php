@@ -3,7 +3,6 @@
 
 class ComparatifControllerCore extends FrontController
 {
-
     protected $product;
     protected $compara;
     protected $posPrix;
@@ -13,7 +12,7 @@ class ComparatifControllerCore extends FrontController
     public function initContent()
     {
         $ctg_id = (int) Tools::getValue('ctg');
-        $lang = Configuration::get('PS_LANG_DEFAULT');
+
         $order = Tools::getValue('order');
 
         $this->compara = new Comparatif('asdasd');
@@ -21,7 +20,6 @@ class ComparatifControllerCore extends FrontController
         $arrayTable = array();
 
         $excel = SimpleXLSX::parse($_SERVER['DOCUMENT_ROOT'].'/excel_compare/'.$ctg_id.'.xlsx');
-
 
         if($excel){
             $arrayTable = $excel->rows();
@@ -34,25 +32,25 @@ class ComparatifControllerCore extends FrontController
                     }else{
                         $posPrix = $i;
                         $arrayPrix = explode("::", $arrayTable[$c][$i]);
-                        $this->product = new Product($arrayPrix[1], true, $lang, 1);
+                        $this->product = new Product($arrayPrix[1], true, 1, 1);
                         $portesarray = AluclassCarrier::getCarrierBeginPrice($arrayPrix[1]);
                         $price = $this->product->price;
                         $portes = 0;
                         $portesDesc = 0;
                         if($portesarray['free_shipping']){
-                          $portes = (($portesarray['porteprice']*("1.".$this->product->tax_rate)))/0.67;
+                            $portes = ceil(($portesarray['porteprice']*("1.".$this->product->tax_rate)))/0.60;
                         }elseif($portesarray['half_free_shipping']){
-                          $portes = ((($portesarray['porteprice'] - $portesarray['show_price'])*("1.".$this->product->tax_rate)))/0.67;
+                          $portes = ((($portesarray['porteprice'] - $portesarray['show_price'])*("1.".$this->product->tax_rate)))/0.7;
                         }
 
-                        $Desconto = $this->product->checaDescontosCatalogo();
+                       $Desconto = $this->product->checaDescontosCatalogo($this->product->id_category_default,$this->product->id );
                         if(count($Desconto)>0){
                             $desc_reb = 100-$Desconto["reduction_value"];
                             $portesDesc = ($portes*("0.".$desc_reb));
 
-                            $arrayTable[$c][$i] =  number_format((float)round((($price *("1.".$this->product->tax_rate)))/("0.".$desc_reb)+$portes, 2), 2, '.', '')."::".number_format((float)round((($price*("1.".$this->product->tax_rate)))+$portesDesc, 2), 2, '.', '')."::".$Desconto["reduction_value"];
+                            $arrayTable[$c][$i] =  number_format((float)round((($price *("1.".$this->product->tax_rate)))/("0.".$desc_reb)+$portes, 0,PHP_ROUND_HALF_UP), 2, '.', '')."::".number_format((float)round((($price*("1.".$this->product->tax_rate)))+$portesDesc, 2), 2, '.', '')."::".$Desconto["reduction_value"];
                         }else{
-                            $arrayTable[$c][$i] =  number_format((float)round(($price *("1.".$this->product->tax_rate))+$portes, 2), 2, '.', '')."::".number_format((float)round(($price*("1.".$this->product->tax_rate))+$portes, 2), 2, '.', '');
+                            $arrayTable[$c][$i] =  number_format((float)round(($price *("1.".$this->product->tax_rate))+$portes, 0,PHP_ROUND_HALF_UP), 2, '.', '')."::".number_format((float)round(($price*("1.".$this->product->tax_rate))+$portes, 2), 2, '.', '');
                         }
                     }
                     $checkimg = strpos($arrayTable[$c][$i], 'img::');
@@ -61,11 +59,10 @@ class ComparatifControllerCore extends FrontController
                     }else{
                         $posImg = $i;
                         $arrayImg = explode("::", $arrayTable[$c][$i]);
-                        $this->product = new Product($arrayImg[1], true, $lang, 1);
+                        $this->product = new Product($arrayImg[1], true, 1, 1);
                         $arrImg = Product::getCover($arrayImg[1]);
 
-
-                        $arrayTable[$c][$i] = "https://".$_SERVER['SERVER_NAME']."/".$arrImg['id_image']."-home_default/".$this->product->link_rewrite.".jpg";
+                        $arrayTable[$c][$i] = "https://cdn-fr.priximbattable.net/".$arrImg['id_image']."-home_default/".$this->product->link_rewrite.".jpg";
                     }
 
                     $checklink = strpos($arrayTable[$c][$i], 'link::');
@@ -74,7 +71,7 @@ class ComparatifControllerCore extends FrontController
                     }else{
                         $posLink = $i;
                         $arrayLink = explode("::", $arrayTable[$c][$i]);
-                        $this->product = new Product($arrayLink[1], true, $lang, 1);
+                        $this->product = new Product($arrayLink[1], true, 1, 1);
 
                         $arrayTable[$c][$i] = $this->product->getLink();
                     }
@@ -107,9 +104,9 @@ class ComparatifControllerCore extends FrontController
 
                         $arrayTras= explode("::", $arrayTable[$c][$i]);
                         $portesarray = AluclassCarrier::getCarrierBeginPrice($arrayTras[1]);
-                        $this->product = new Product($arrayTras[1], true, $lang, 1);
-                        $portes =  $portes = ($portesarray['porteprice']*("1.".$this->product->tax_rate));//(($portesarray['porteprice']*("1.".$this->product->tax_rate)))/0.67;
-
+                        $this->product = new Product($arrayTras[1], true, 1, 1);
+                        $portes = ($portesarray['porteprice']*("1.".$this->product->tax_rate));//(($portesarray['porteprice']*("1.".$this->product->tax_rate)))/0.67;
+                        $portes = number_format((float)$portes, 2, '.', '');
                          if($portesarray['free_shipping']){
                           $arrayTable[$c][$i] = 'PORT::OUI::'.$portes;
                          }else{
@@ -152,12 +149,16 @@ class ComparatifControllerCore extends FrontController
         }
 
         $arraySelectFilter = array(
-            "TP" => "Preis",
-            "DESIGN" => "Tor-Design",
-            "DECOR" => "Dekor",
-            "HAUTEUR" => "Höhe",
+            "TP" => "Prix",
+            "DESIGN" => "Design de portail",
+            "DECOR" => "Décor",
+            "HAUTEUR" => "Hauteur",
         );
 
+        // print_r('<pre>');
+        // print_r($arrayTable);
+        // print_r('</pre>');
+        // exit;
         $this->context->smarty->assign(
             array(
                 'Comptable' => $arrayTable,
