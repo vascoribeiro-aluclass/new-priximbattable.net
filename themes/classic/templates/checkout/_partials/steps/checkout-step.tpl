@@ -23,7 +23,7 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
  {block name='step'}
- <section   {if $identifier == 'checkout-delivery-step'} hidden {/if} id = "{$identifier}"
+ <section   id = "{$identifier}"
              class = "{[
                          'checkout-step'   => true,
                          '-current'        => $step_is_current,

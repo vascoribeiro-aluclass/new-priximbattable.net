@@ -951,7 +951,7 @@
         <div style="margin-top: 19px; position: absolute; z-index: 2; margin-left: -10px;">
           <div class="row">
             <div class="col-md-12" style="text-align: center;" title="Liste de Souhaits">
-              <a href="https://priximbattable.net/liste-de-souhaits">
+              <a href="/liste-de-souhaits">
                 <picture>
                   {if $iswishlist}
                   <img loading="lazy" src="/img/heart_red.svg" alt="Liste de Souhaits" class="logo img-responsive phoneIcon "
@@ -969,7 +969,7 @@
           <div class="row">
             <div class="col-md-12" style="text-align: center;"
               title="04 72 80 93 54 ou Pour nous contacter par d'autres moyens cliquez ici">
-              <a href="https://priximbattable.net/service-client.php">
+              <a href="/service-client.php">
                 <picture>
                   <source srcset="/img/phoneCall.webp" type="image/webp">
                   <img loading="lazy" src="/img/phoneCall.png" alt="" class="logo img-responsive phoneIcon" style="height: 32px;">

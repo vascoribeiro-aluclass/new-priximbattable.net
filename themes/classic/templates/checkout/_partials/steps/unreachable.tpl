@@ -23,7 +23,7 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
  {block name='step'}
- <section {if $identifier == 'checkout-delivery-step'} hidden {/if}  class="checkout-step -unreachable" id="{$identifier}">
+ <section  class="checkout-step -unreachable" id="{$identifier}">
    <h1 class="step-title h3">
      <span class="step-number"> <i class="material-icons rtl-no-flip " style="color: #c4c4c4;">&#xE876;</i></span> {$title}
    </h1>
