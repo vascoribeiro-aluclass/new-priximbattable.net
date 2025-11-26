@@ -338,6 +338,7 @@
     </div>
     <div class="col-md-9 col-xs-8">
       <small>
+        {if isset($customization)}
         {foreach from=$customization.fields item="field"}
         {if {$field.label} != 'Aperçu' && {$field.label} != 'Preview' && {$field.label} != 'preview' && {$field.label}
         != 'reference'}
@@ -351,6 +352,7 @@
         {/if}<br>
         {/if}
         {/foreach}
+        {/if}
       </small>
     </div>
   </div>
@@ -733,6 +735,7 @@
       </div>
       <div class="col-md-12 col-xs-12">
         <small>
+          {if isset($customization)}
           {foreach from=$customization.fields item="field"}
           {if {$field.label} != 'Aperçu' && {$field.label} != 'Preview' && {$field.label} != 'preview' && {$field.label}
           != 'reference'}
@@ -746,6 +749,7 @@
           {/if}<br>
           {/if}
           {/foreach}
+          {/if}
         </small>
       </div>
     </div>
