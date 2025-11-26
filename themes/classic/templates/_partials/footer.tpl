@@ -184,7 +184,7 @@
 
             {* <div class="email">
               <i class="material-icons">email</i>
-              <a href="mailto:toujoursun@dev.priximbattable.net">toujoursun@dev.priximbattable.net</a>
+              <a href="mailto:toujoursun@priximbattable.net">toujoursun@priximbattable.net</a>
             </div> *}
             {* <div class="times">
               <i class="material-icons">access_time</i><span>Horaires d'ouverture:</span> <br />
