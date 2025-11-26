@@ -332,7 +332,7 @@ class SpFooterLinks extends Module
 			$customhtml = new SpFooterLinksClass(Tools::getValue ('id_spfooterlinks'));
 			foreach (Language::getLanguages (false) as $lang)
 				$customhtml->title_module[(int)$lang['id_lang']] = $customhtml->title_module[(int)$lang['id_lang']]
-					.$this->l(' (Copy)');
+					.' (Copy)';
 			$customhtml->duplicate();
 			$this->clearCacheItemForHook ();
 			Tools::redirectAdmin ($currentIndex.'&configure='.$this->name.'&token='
@@ -422,23 +422,22 @@ class SpFooterLinks extends Module
 		$this->html .= '
 	 	<div class="panel">
 			<div class="panel-heading">
-			'.$this->l('Module Manager').'
+			Module Manager
 			<span class="panel-heading-action">
 					<a class="list-toolbar-btn" href="'.$currentIndex.'&configure='.$this->name
 			.'&token='.Tools::getAdminTokenLite ('AdminModules').'&addItem">
-			<span data-toggle="tooltip" class="label-tooltip" data-original-title="'
-			.$this->l('Add new module').'" data-html="true"><i class="process-icon-new "></i></span></a>
+			<span data-toggle="tooltip" class="label-tooltip" data-original-title="Add new module" data-html="true"><i class="process-icon-new "></i></span></a>
 			</span>
 			</div>
 			<table width="100%" class="table" cellspacing="0" cellpadding="0">
 			<thead>
 			<tr class="nodrag nodrop">
-				<th>'.$this->l('ID').'</th>
-				<th>'.$this->l('Ordering').'</th>
-				<th class=" left">'.$this->l('Title').'</th>
-				<th class=" left">'.$this->l('Hook into').'</th>
-				<th class=" left">'.$this->l('Status').'</th>
-				<th class=" right"><span class="title_box text-right">'.$this->l('Actions').'</span></th>
+				<th>ID</th>
+				<th>Ordering</th>
+				<th class=" left">Title</th>
+				<th class=" left">Hook into</th>
+				<th class=" left">Status</th>
+				<th class=" right"><span class="title_box text-right">Actions</span></th>
 			</tr>
 			</thead>
 			<tbody id="gird_items">';
@@ -459,7 +458,7 @@ class SpFooterLinks extends Module
 					.Tools::getAdminTokenLite ('AdminModules')
 					.'&editItem&id_spfooterlinks='.$customhtml['id_spfooterlinks'].'\'">'.$customhtml['title_module']
 					.' '.($customhtml['is_shared'] ? '<span class="label color_field"
-		style="background-color:#108510;color:white;margin-top:5px;">'.$this->l('Shared').'</span>' : '').'</td>
+		style="background-color:#108510;color:white;margin-top:5px;">Shared</span>' : '').'</td>
 					<td class="  " onclick="document.location = \''.$currentIndex.'&configure='.$this->name
 					.'&token='.Tools::getAdminTokenLite ('AdminModules').'&editItem&id_spfooterlinks='
 					.$customhtml['id_spfooterlinks'].'\'">'
@@ -481,21 +480,20 @@ class SpFooterLinks extends Module
 								</button>
 								<ul class="dropdown-menu">
 									<li>
-							<a onclick="return confirm(Are you sure want duplicate this item?);"  title="'.$this->l('Duplicate').'" href="'.$currentIndex.'&configure='
+							<a onclick="return confirm(Are you sure want duplicate this item?);"  title="Duplicate" href="'.$currentIndex.'&configure='
 					.$this->name.'&token='
 					.Tools::getAdminTokenLite ('AdminModules').'&duplicateItem&id_spfooterlinks='
 					.$customhtml['id_spfooterlinks'].'">
-											<i class="icon-copy"></i> '.$this->l('Duplicate').'
+											<i class="icon-copy"></i> Duplicate
 										</a>								
 									</li>
 									<li class="divider"></li>
 									<li>
-										<a title ="'.$this->l('Delete').'" onclick="return confirm(\''
-					.$this->l('Are you sure?', __CLASS__, true, false).'\');" href="'.$currentIndex
+										<a title ="Delete" onclick="return confirm(\'Are you sure?\');" href="'.$currentIndex
 					.'&configure='.$this->name.'&token='
 					.Tools::getAdminTokenLite ('AdminModules').'&deleteItem&id_spfooterlinks='
 					.$customhtml['id_spfooterlinks'].'">
-											<i class="icon-trash"></i> '.$this->l('Delete').'
+											<i class="icon-trash"></i> Delete
 										</a>
 									</li>
 								</ul>
@@ -510,7 +508,7 @@ class SpFooterLinks extends Module
 			$this->html .= '<td colspan="5" class="list-empty">
 								<div class="list-empty-msg">
 									<i class="icon-warning-sign list-empty-icon"></i>
-									'.$this->l('No records found').'
+									No records found
 								</div>
 							</td>';
 		}
