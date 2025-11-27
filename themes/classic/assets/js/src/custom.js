@@ -2251,8 +2251,8 @@ $("#closeGifts").click(function () {
 });
 
 function ListProductShow() {
-  var currentLocation = window.location.hostname;
-  currentLocation = "https://" + currentLocation + "/commande?ajax=1&action=cartlistshow";
+
+  currentLocation = "/commande?ajax=1&action=cartlistshow";
 
   $("tooltiptext-list-cart").html(' <img src="/img/loadlistproduct.gif" alt="" class="load" style="height: 100px;">');
   $.ajax({
