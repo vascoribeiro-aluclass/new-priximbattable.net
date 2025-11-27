@@ -318,7 +318,7 @@ End TrustBox widget -->
 
     <div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
       <?php
-      $result_carousels = Db::getInstance()->executeS('SELECT * FROM sp_comments_google ORDER BY id_comments DESC LIMIT 0, 5');
+      $result_carousels = Db::getInstance()->executeS('SELECT * FROM ps_comments_google ORDER BY id_comments DESC LIMIT 0, 5');
       if (($result_carousels) and (count($result_carousels) != 0)) {
       ?>
         <div class="row featurette" style="flex: 2; min-width: 53%; max-width: 95%; padding: 40px 10px; background:#f8f9fa; color:#000; font-family: poppins, sans-serif; font-size: 18px; font-weight: bold; text-align: center; text-decoration: none !important;">
@@ -450,9 +450,9 @@ End TrustBox widget -->
     <section style="margin-top: -1rem; margin-bottom: 1rem;">
       <?php
       //1-conexão com o banco de dados
-      //$limite = Db::getInstance()->executeS("SELECT `id_product`,`title`,`content`,`customer_name`,`grade`, `date_add`, `validate` FROM `sp_product_comment`where `validate` = 1 ORDER BY `date_add` DESC LIMIT $inicio,$fim");
-      //  $limite = Db::getInstance()->executeS("SELECT `id_product`,`title`,`content`,`customer_name`,`grade`, `date_add`, `validate` FROM `sp_product_comment`where `validate` = 1 AND `deleted` = 0 ORDER BY `date_add` DESC LIMIT $inicio,$fim");
-      $todos = Db::getInstance()->executeS("SELECT * FROM `sp_product_comment` where `validate` = 1 AND `deleted` = 0");
+      //$limite = Db::getInstance()->executeS("SELECT `id_product`,`title`,`content`,`customer_name`,`grade`, `date_add`, `validate` FROM `ps_product_comment`where `validate` = 1 ORDER BY `date_add` DESC LIMIT $inicio,$fim");
+      //  $limite = Db::getInstance()->executeS("SELECT `id_product`,`title`,`content`,`customer_name`,`grade`, `date_add`, `validate` FROM `ps_product_comment`where `validate` = 1 AND `deleted` = 0 ORDER BY `date_add` DESC LIMIT $inicio,$fim");
+      $todos = Db::getInstance()->executeS("SELECT * FROM `ps_product_comment` where `validate` = 1 AND `deleted` = 0");
       //echo "<hr>";
       //echo 'Verifica o numero total de registros na base<br><br>';
       //var_dump(count($todos));
@@ -463,7 +463,7 @@ End TrustBox widget -->
 
 
       //3-número de resultados armazenados no banco de dados
-      $sql  = 'SELECT * FROM `sp_product_comment` WHERE validate = 1 AND deleted = 0  ORDER BY `date_add` ASC LIMIT 0, 6';
+      $sql  = 'SELECT * FROM `ps_product_comment` WHERE validate = 1 AND deleted = 0  ORDER BY `date_add` ASC LIMIT 0, 6';
 
 
       //4-verifica o número total de páginas //defina quantos resultados você quer por página
@@ -506,7 +506,7 @@ End TrustBox widget -->
 
         // percorre os campos da tabela e cria a visualizacao
         // $results = Db::getInstance()->executeS($limite);
-        $limite = Db::getInstance()->executeS("SELECT `id_product`,`title`,`content`,`customer_name`,`grade`, `date_add`, `validate` FROM `sp_product_comment`where `validate` = 1 AND `deleted` = 0 ORDER BY `date_add` DESC LIMIT $inicio,$resultpage");
+        $limite = Db::getInstance()->executeS("SELECT `id_product`,`title`,`content`,`customer_name`,`grade`, `date_add`, `validate` FROM `ps_product_comment`where `validate` = 1 AND `deleted` = 0 ORDER BY `date_add` DESC LIMIT $inicio,$resultpage");
         foreach ($limite as $results) {
 
           $title = $results['title'];
@@ -623,11 +623,11 @@ End TrustBox widget -->
               $attributeFilter = ($idProductAttribute ? ' AND ai.`id_product_attribute` = ' . $idProductAttribute : '');
 
               $sql = 'SELECT *
-                    FROM `sp_image` i
-                    LEFT JOIN `sp_image_lang` il ON (i.`id_image` = il.`id_image`)';
+                    FROM `ps_image` i
+                    LEFT JOIN `ps_image_lang` il ON (i.`id_image` = il.`id_image`)';
 
               if ($idProductAttribute) {
-                $sql .= ' LEFT JOIN `sp_product_attribute_image` ai ON (i.`id_image` = ai.`id_image`)';
+                $sql .= ' LEFT JOIN `ps_product_attribute_image` ai ON (i.`id_image` = ai.`id_image`)';
               }
 
               $sql .= ' WHERE i.`id_product` = ' . $idProduct . ' AND il.`id_lang` = ' . $idLang . $attributeFilter . '

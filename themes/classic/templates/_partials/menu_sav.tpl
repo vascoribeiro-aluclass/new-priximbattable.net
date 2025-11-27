@@ -741,7 +741,7 @@
                       <img loading="lazy" src="/img/cms/menu-about-us/drapeau-allemagne.png" alt="" class="img-fluid" />
                     </picture>
                   </span>
-                  <span>preisverruckt.de</span>
+                  <span>preisverrueckt.de</span>
                   <span style="height: 20px;">Prochainement !</span>
                 </div>
               </a>
@@ -1992,7 +1992,7 @@
                                       class="img-fluid" />
                                   </picture>
                                 </span>
-                                <span>preisverruckt.de</span>
+                                <span>preisverrueckt.de</span>
                                 <span style="height: 20px;">Prochainement !</span>
                               </div>
                             </a>

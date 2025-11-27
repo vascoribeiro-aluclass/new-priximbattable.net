@@ -104,7 +104,7 @@ class AluVideo extends Module
   // public function getData()
   // {
   //   // Exemplo de query SELECT
-  //   $sql = 'SELECT * FROM ' . _DB_PREFIX_ . 'sp_video_gallery_product';
+  //   $sql = 'SELECT * FROM ' . _DB_PREFIX_ . 'ps_video_gallery_product';
 
   //   // Executa a query e armazena os resultados em um array
   //   $resultados = Db::getInstance()->executeS($sql);
