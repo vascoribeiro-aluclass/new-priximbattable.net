@@ -109,7 +109,7 @@ class OrderDetailControllerCore extends FrontController
                               WHEN `phone_mobile` = '' THEN `phone`
                               ELSE `phone_mobile`
                           END as phone
-                          FROM `sp_address`
+                          FROM `ps_address`
                           where `id_customer` = ".(int) $customer->id ."
                           LIMIT 1");
                       $row_address  = current( $result_address );
