@@ -183,16 +183,16 @@ class Product extends ProductCore
     return $retorno;
   }
 
-   /* paulo ++ função criada para exibir o preço do produto sem ndk no front office */
+  /* paulo ++ função criada para exibir o preço do produto sem ndk no front office */
   public function infoProduto($id_prod, $preco_com_iva, $preco_sem_iva, $is_count_ndk = true)
   {
     $calcula = 0;
     $cont_num_ndk = 0;
-    $price  =0;
 
     // verifica se tem ndk
     if ($is_count_ndk) {
       $checa_ndk = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'ndk_customization_field WHERE products LIKE "%' . $id_prod . '%"');
+
       foreach ($checa_ndk as $prods) {
         if (substr_count($prods["products"], ',') > 0) {
           $ids_prods = explode(",", $prods["products"]);
@@ -230,7 +230,7 @@ class Product extends ProductCore
     // captura info do produto
     $nota_product = Db::getInstance()->executeS('select (SELECT ROUND(AVG(`grade`), 1) FROM `' . _DB_PREFIX_ . 'product_comment` where `validate` = 1 AND `deleted` = 0 AND `id_product` = ' . $id_prod . ') as nota , (SELECT count(`id_product_comment`) FROM `' . _DB_PREFIX_ . 'product_comment` where `validate` = 1 AND `deleted` = 0 AND `id_product` = ' . $id_prod . ') as num_nota');
     $bd_preco_sem_iva = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'product WHERE id_product=' . $id_prod . '');
-    $bd_preco_sem_iva = array_key_exists('price', $bd_preco_sem_iva[0]) ? $bd_preco_sem_iva[0]['price'] : 0;
+    $bd_preco_sem_iva = $bd_preco_sem_iva[0]['price'];
     $fator_iva = $preco_com_iva / $preco_sem_iva;
     $arrayporte = Product::getCarrierPrice($id_prod, $fator_iva);
 
@@ -243,9 +243,8 @@ class Product extends ProductCore
     $preco_final_sem_desc_sem_portes = number_format($preco_final_sem_desc_sem_portes, 2, ',', '.') . " €";
 
     $bd_prazos = Db::getInstance()->executeS('SELECT time  FROM `' . _DB_PREFIX_ . 'afgx_product_info_extra_xml` pi
-      INNER JOIN `' . _DB_PREFIX_ . 'afgx_product_info_handling_time_xml` ht on ht.id_handling_time = pi.id_handling_time
-      WHERE pi.`id_product` =' . $id_prod . '');
-
+                                                        INNER JOIN `' . _DB_PREFIX_ . 'afgx_product_info_handling_time_xml` ht on ht.id_handling_time = pi.id_handling_time
+                                                        WHERE pi.`id_product` =' . $id_prod . '');
     $prazos = 40;
     if (count($bd_prazos) > 0) {
       $prazos = $bd_prazos[0]['time'];

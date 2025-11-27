@@ -1842,7 +1842,7 @@ class ndk_advanced_custom_fields extends Module
         }
       }
 
-      $checaDescontosCatalogo = Product::checaDescontosCatalogo((int)$id_category_default);
+      $checaDescontosCatalogo = Product::checaDescontosCatalogo($id_category_default,$id_product);
       $this->context->smarty->assign(array(
         'reduction_value' => (is_array($checaDescontosCatalogo) ? $checaDescontosCatalogo['reduction_value'] : 100),
         'field' => $field,

@@ -114,7 +114,7 @@ if (Tools::getValue('action') && Tools::getValue('action') == 'getAttributePrice
   #$result['taxa'] = $usetax;
   $moeda_atual = (int)Context::getContext()->currency->id;
   if ($moeda_atual == 2) {
-    $result['price'] = $result['price'] / 1.19;
+    $result['price'] = $result['price'] / 1.2;
   }
 
   $result['weight'] = Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue(
@@ -124,6 +124,7 @@ if (Tools::getValue('action') && Tools::getValue('action') == 'getAttributePrice
 		' . Shop::addSqlAssociation('product_attribute', 'pa') . '
 		WHERE pa.`id_product_attribute` = ' . (int)$id_product_attribute
   );
+
 
 
   echo json_encode($result);
@@ -211,7 +212,7 @@ if (Tools::getValue('action') && Tools::getValue('action') == 'getSpecificPrice'
   // se for franco suico
   $moeda_atual = (int)Context::getContext()->currency->id;
   if ($moeda_atual == 2) {
-    $reduction['old_price'] = $reduction['old_price'] / 1.19;
+    $reduction['old_price'] = $reduction['old_price'] / 1.2;
   }
 
   $hoje = date("Y-m-d H:i:s");
@@ -219,9 +220,12 @@ if (Tools::getValue('action') && Tools::getValue('action') == 'getSpecificPrice'
   $id_category_default = Db::getInstance()->getRow('SELECT id_category_default FROM `' . _DB_PREFIX_ . 'product` WHERE id_product = ' . (int)Tools::getValue('id_product'));
 
   if ($id_category_default) {
-    $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule_customize where id_category = ' . (int)$id_category_default['id_category_default'] . '  AND NOW() BETWEEN `from` AND `to` ORDER BY id_specific_price_rule ASC');
+    $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule_customize_product where id_product = ' . (int)Tools::getValue('id_product'). '  AND NOW() BETWEEN `from` AND `to` ORDER BY id_specific_price_rule ASC');
     if (empty($reducao_catalogo)) {
-      $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule ORDER BY id_specific_price_rule ASC');
+      $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule_customize where id_category = ' . (int)$id_category_default['id_category_default'] . '  AND NOW() BETWEEN `from` AND `to` ORDER BY id_specific_price_rule ASC');
+      if (empty($reducao_catalogo)) {
+        $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule ORDER BY id_specific_price_rule ASC');
+      }
     }
   } else {
     $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule ORDER BY id_specific_price_rule ASC');
@@ -258,13 +262,15 @@ if (Tools::getValue('action') && Tools::getValue('action') == 'getSpecificPrice'
 
 if (Tools::getValue('action') && Tools::getValue('action') == 'getDescontosCatalogo') {
   $hoje = date("Y-m-d H:i:s");
-
   $id_category_default = Db::getInstance()->getRow('SELECT id_category_default FROM `' . _DB_PREFIX_ . 'product` WHERE id_product = ' . (int)Tools::getValue('id_product'));
 
   if ($id_category_default) {
-    $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule_customize where id_category = ' . (int)$id_category_default['id_category_default'] . ' AND NOW() BETWEEN `from` AND `to`  ORDER BY id_specific_price_rule ASC');
+    $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule_customize_product where id_product = ' . (int)Tools::getValue('id_product'). '  AND NOW() BETWEEN `from` AND `to` ORDER BY id_specific_price_rule ASC');
     if (empty($reducao_catalogo)) {
-      $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule ORDER BY id_specific_price_rule ASC');
+      $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule_customize where id_category = ' . (int)$id_category_default['id_category_default'] . '  AND NOW() BETWEEN `from` AND `to` ORDER BY id_specific_price_rule ASC');
+      if (empty($reducao_catalogo)) {
+        $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule ORDER BY id_specific_price_rule ASC');
+      }
     }
   } else {
     $reducao_catalogo = Db::getInstance()->executeS('SELECT * FROM ' . _DB_PREFIX_ . 'specific_price_rule ORDER BY id_specific_price_rule ASC');
@@ -286,7 +292,7 @@ if (Tools::getValue('action') && Tools::getValue('action') == 'getDescontosCatal
     }
   }
   $descontosCatalogo['totalDescontos'] = $cont_rules;
-
+  //$retDescontos = array($cont_rules, $descontosCatalogo['tipoReducao'], $descontosCatalogo['valorReducao']);
   echo json_encode($descontosCatalogo);
 }
 
@@ -325,6 +331,50 @@ if (Tools::getValue('id_value') && Tools::getValue('id_value') > 0 && Tools::get
   echo Tools::jsonEncode($result);
 }
 
+if (Tools::getValue('action') && Tools::getValue('action') == 'getRangePricefield') {
+  $precentageuser = Tools::getValue('precentageuser');
+  $jsonfield = json_decode($precentageuser);
+
+  $item_price =  NdkCf::getDimensionPrice((int)Tools::getValue('group'), Tools::getValue('width'), Tools::getValue('height'));
+  $id_address = (int)Context::getContext()->cart->id_address_invoice;
+  $address = Address::initialize($id_address, true);
+  $tax_manager = TaxManagerFactory::getManager($address, Product::getIdTaxRulesGroupByIdProduct((int)Tools::getValue('id_product'), Context::getContext()));
+  $product_tax_calculator = $tax_manager->getTaxCalculator();
+  $usetax = Group::getPriceDisplayMethod(Group::getPriceDisplayMethod(Context::getContext()->customer->id_default_group));
+  $usetax = Product::$_taxCalculationMethod == PS_TAX_INC;
+
+  if (Product::$_taxCalculationMethod == 0) {
+    $usetax = true;
+  } else {
+    $usetax = false;
+  }
+
+  if ($usetax)
+    # $item_price = $product_tax_calculator->addTaxes($item_price);
+    // Aluclass NFI (Ogliano @ aluclass[point]dev[at]gmail.com) - start
+    if ($item_price == 3 && $item_price == 999999) {
+      $item_price = $item_price;
+    }
+  if ($item_price <> 3 && $item_price <> 999999) {
+    $item_price = $product_tax_calculator->addTaxes($item_price);
+  }
+  // Aluclass NFI (Ogliano @ aluclass[point]dev[at]gmail.com) - end
+
+  $arrayprice = array();
+  $arraypricevalue = array();
+  $sql = 'SELECT `price` FROM `' . _DB_PREFIX_ . 'product` WHERE `id_product` =' . (int)Tools::getValue('id_product');
+  $price = Db::getInstance()->getValue($sql);
+
+  foreach ($jsonfield as $value) {
+    $arraypricevalue['idfield'] = $value->idfield;
+    $arraypricevalue['type'] = $value->type;
+    $arraypricevalue['price'] = ($item_price + $product_tax_calculator->addTaxes($price)) * ($value->pregentage / 100);
+    $arrayprice[] = $arraypricevalue;
+  }
+
+  echo json_encode($arrayprice);
+}
+
 if (Tools::getValue('action') && Tools::getValue('action') == 'getRangePrice') {
   $item_price =  NdkCf::getDimensionPrice((int)Tools::getValue('group'), Tools::getValue('width'), Tools::getValue('height'));
   $id_address = (int)Context::getContext()->cart->id_address_invoice;
@@ -350,6 +400,12 @@ if (Tools::getValue('action') && Tools::getValue('action') == 'getRangePrice') {
     $item_price = $product_tax_calculator->addTaxes($item_price);
   }
   // Aluclass NFI (Ogliano @ aluclass[point]dev[at]gmail.com) - end
+
+  // $value = Tools::getValue('group');
+  // if($value == '5042' || $value == '5046' || $value == '5050' || $value == '5054'  || $value == '5021' || $value == '4997' || $value == '5018' || $value == '5019' || $value == '5023' || $value == '5027' || $value == '5031' || $value == '5035'){
+  //   $item_price =  $item_price - ($item_price*0.4);
+  //   $item_price = $item_price/0.7;
+  // }
 
   echo $item_price;
 }

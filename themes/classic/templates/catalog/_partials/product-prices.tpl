@@ -67,10 +67,12 @@
 
                 {if {$infoProduto['cont_ndk']} > 0}
                   <span content="{$product.price_amount}"
-                    class="current_price_aluclass price_risk_aluclass">{$infoProduto['preco_final_sem_desc']}</span>
+                    class="current_price_aluclass price_risk_aluclass fr">{$infoProduto['preco_final_sem_desc']}</span>
                 {else}
+                      <span content="{$product.price_amount}"
+                    class="current_price_aluclass price_risk_aluclass fr">{$infoProduto['preco_final_sem_desc']}</span>
                   <span content="{$product.price_amount}"
-                    class="current_price_aluclass price_risk_aluclass">{$infoProduto['preco_final_sem_desc_sem_portes']}</span>
+                    class="current_price_aluclass price_risk_aluclass pt">{$infoProduto['preco_final_sem_desc_sem_portes']}</span>
                 {/if}
 
                 {* <span content="{$product.price_amount}" class="current_price_aluclass price_risk_aluclass">{$infoProduto['preco_final_sem_desc']}</span> *}
