@@ -499,7 +499,7 @@
 
         <!--<div id="div-text-birthday"class="col-md-6" style="text-align: center; padding-top: 5px; padding-bottom: 5px;">
             {* <p class="alu_p_fabricante1">
-              <a href="https://priximbattable.net/101-bonnes-affaires" class="botaoApp3D">Bonnes Affaires -40%</a>
+              <a href="/101-bonnes-affaires" class="botaoApp3D">Bonnes Affaires -40%</a>
             </p> *}
             {* <span class="text-birthday">On Fête 2024</span> *}
           </div>
@@ -649,7 +649,7 @@
                     </picture>
                     <div class="div-notas-logo-info-mobile">
                       <div class="logos-avis-logo-info avis-h-checkout avis-h-checkout-addrs bi-none-logo-info-mobile">
-                        <a href="https://priximbattable.net/avis-client" target="_blank" class="gap-img-logo-info-mobile notas-avis-color-logo-info">
+                        <a href="/avis-client" target="_blank" class="gap-img-logo-info-mobile notas-avis-color-logo-info">
                           <div class="border-avis">
                             <picture>
                               <source srcset="/img/cms/Avis/logo-google.webp" type="image/webp">
@@ -667,7 +667,7 @@
                         </a>
                       </div>
                       <div class="logos-avis-logo-info avis-h-checkout avis-h-checkout-addrs bi-none-logo-info-mobile2">
-                        <a href="https://priximbattable.net/avis-client" target="_blank" class="gap-img-logo-info-mobile notas-avis-color-logo-info">
+                        <a href="/avis-client" target="_blank" class="gap-img-logo-info-mobile notas-avis-color-logo-info">
                           <div class="border-avis">
                             <picture>
                               <source srcset="/img/cms/Avis/logo-priximbattable.webp" type="image/webp">
@@ -702,7 +702,7 @@
           <div class="float-xs-right" id="_mobile_user_info"></div>
           <div class="float-xs-right" id="_mobile_contact">
             <div class="user-info">
-              <a href="https://priximbattable.net/nous-contacter">
+              <a href="/nous-contacter">
                 <i class="material-icons">mail_outline&nbsp;</i>
               </a>
             </div>
@@ -714,7 +714,7 @@
           </div>
           <div class="float-xs-right" id="_mobile_wishlist">
             <div class="user-info">
-              <a href="https://priximbattable.net/index.php?controller=WishList"><i class="material-icons"
+              <a href="/index.php?controller=WishList"><i class="material-icons"
                   {if $iswishlist} style="color: red;" {/if}>favorite</i></a>
             </div>
           </div>
@@ -725,7 +725,7 @@
       <!--<div id="bar-birthday" class="hidden-md-down col-md-12 bar-hide">
           <div class="col-md-3 text-center">
             <p class="alu_p_fabricante1">
-              <a href="https://priximbattable.net/101-bonnes-affaires" class="botaoApp3D">DÉSTOCKAGE</a>
+              <a href="/101-bonnes-affaires" class="botaoApp3D">DÉSTOCKAGE</a>
             </p>
           </div>
           <div class="col-md-6 text-center">
@@ -767,7 +767,7 @@
         </div>
         <div id="Menu" style="display: none; width: 300px; position: absolute; left: 65px; z-index: 11; background-color: gray;">
           <div class="submenu">
-            <a class="text-hb-color" href="https://priximbattable.net/content/70-service-de-pose" style="display: flex;gap: 20px;align-items: center;">
+            <a class="text-hb-color" href="/content/70-service-de-pose" style="display: flex;gap: 20px;align-items: center;">
               <div class="icone">
                 <img src="/img/service-pose.svg" alt="Service de Pose">
               </div>
@@ -777,7 +777,7 @@
             </a>
           </div>
           <div class="submenu">
-            <a class="text-hb-color" href="https://priximbattable.net/avis-client" style="display: flex;gap: 20px;align-items: center;">
+            <a class="text-hb-color" href="/avis-client" style="display: flex;gap: 20px;align-items: center;">
               <div class="icone">
                 <img src="/img/avis.svg" alt="Avis">
               </div>
@@ -797,7 +797,7 @@
             </span>
           </div>
           <div class="submenu">
-            <a class="text-hb-color" href="https://priximbattable.net/content/32-fabricant" style="display: flex;gap: 20px;align-items: center;">
+            <a class="text-hb-color" href="/content/32-fabricant" style="display: flex;gap: 20px;align-items: center;">
               <div class="icone">
                 <img src="/img/fabricant.svg" alt="Fabricant notre métier">
               </div>
@@ -807,7 +807,7 @@
             </a>
           </div>
           <div class="submenu">
-            <a class="text-hb-color" href="https://priximbattable.net/content/18-produits-certifies" style="display: flex;gap: 20px;align-items: center;">
+            <a class="text-hb-color" href="/content/18-produits-certifies" style="display: flex;gap: 20px;align-items: center;">
               <div class="icone">
                 <img src="/img/certifications.svg" alt="Nos certifications">
               </div>
@@ -828,7 +828,7 @@
           </div>
           <div class="submenu">
             <a class="text-hb-color"
-              href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous" style="display: flex;gap: 20px;align-items: center;">
+              href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous" style="display: flex;gap: 20px;align-items: center;">
               <div class="icone">
                 <img src="/img/ou-sont-nos-clients.svg" alt="Où sont nos clients">
               </div>
@@ -838,7 +838,7 @@
             </a>
           </div>
           <div class="submenu">
-            <a class="text-hb-color" href="https://priximbattable.net/content/21-actualites-priximbattable" style="display: flex;gap: 20px;align-items: center;">
+            <a class="text-hb-color" href="/content/21-actualites-priximbattable" style="display: flex;gap: 20px;align-items: center;">
               <div class="icone">
                 <img src="/img/actualites.svg" alt="Actualités">
               </div>
@@ -880,14 +880,14 @@
               <source srcset="/img/cms/Avis/avis-desktop.webp" type="image/webp">
               <img loading="lazy" src="/img/cms/Avis/avis-desktop.jpg" class="img-fluid" alt="Avis" title="Avis" width="1500" height="430">
             </picture>
-            <a  class=" hidden-lg-up" href="https://priximbattable.net/avis-client">
+            <a  class=" hidden-lg-up" href="/avis-client">
               <picture>
                 <source srcset="/img/cms/Avis/avis_mobile.webp" type="image/webp">
                 <img loading="lazy" class="img-fluid img-centre img-media-100" src="/img/cms/Avis/avis_mobile.jpg" alt="Avis" title="Avis" width="800" height="520">
               </picture>
             </a>
             <div class="logos-avis avis-h">
-              <a href="https://priximbattable.net/avis-client" target="_blank" class="notas-avis-color-logo-info">
+              <a href="/avis-client" target="_blank" class="notas-avis-color-logo-info">
                 <div class="border-avis">
                   <picture>
                     <source srcset="/img/cms/Avis/logo-google.webp" type="image/webp">
@@ -1228,7 +1228,7 @@
 
               {if {$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'} >= "2025-05-14 00:00:00" && {$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'} <= "2025-05-20 23:59:59"}
                 <div class="carousel-item active">
-                  <a href="https://priximbattable.net/abri-de-voiture/640251-carport-aluminium-toit-plat-adosse-sur-mesure.html">
+                  <a href="/abri-de-voiture/640251-carport-aluminium-toit-plat-adosse-sur-mesure.html">
                     <picture class="imgBannerDesktop">
                       <source srcset="/img/soldes/desktop-anticipez-lete-avec-style-et-confort-1.webp" type="image/webp">
                       <img loading="lazy" src="/img/soldes/desktop-anticipez-lete-avec-style-et-confort-1.jpg" alt="Anticipez l'été avec style et confort !" title="Anticipez l'été avec style et confort !" width="1450" height="415">

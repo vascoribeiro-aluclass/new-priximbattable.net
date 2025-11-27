@@ -42,7 +42,7 @@
           <div class="col-md-12 col-md-offset-3">
             <h3>{l s='Contact us' d='Shop.Theme.Global'}</h3>
             <p>
-            Si vous souhaitez <strong>contacter</strong> notre <strong>service client</strong> ou notre <strong>webmaster</strong>, n’hésitez pas à leur poser votre <strong>question</strong> via ce <strong>formulaire de contact</strong>. Ceux-ci vous répondront dans les plus brefs délais après avoir pris connaissance du message. Vous pouvez aussi contacter notre <strong>service commercial</strong> par <strong>téléphone, Messenger, WhatsApp </strong> ou via <strong>le Tchat</strong>, consultez cette <a href="https://priximbattable.net/service-client"> page </a> pour en savoir plus.
+            Si vous souhaitez <strong>contacter</strong> notre <strong>service client</strong> ou notre <strong>webmaster</strong>, n’hésitez pas à leur poser votre <strong>question</strong> via ce <strong>formulaire de contact</strong>. Ceux-ci vous répondront dans les plus brefs délais après avoir pris connaissance du message. Vous pouvez aussi contacter notre <strong>service commercial</strong> par <strong>téléphone, Messenger, WhatsApp </strong> ou via <strong>le Tchat</strong>, consultez cette <a href="/service-client"> page </a> pour en savoir plus.
             </p>
           </div>
         </div>

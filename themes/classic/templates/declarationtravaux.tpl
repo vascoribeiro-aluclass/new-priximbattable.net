@@ -30,7 +30,7 @@
       <div class="mb-2 dt-flex-title-description dt-flex-centre">
         Descriptif du Projet
       </div>
-      <form id="formdt" action="https://priximbattable.net/declaration-de-travaux" method="post"
+      <form id="formdt" action="/declaration-de-travaux" method="post"
         enctype="multipart/form-data">
         <input type="hidden" id="tokendt" name="tokendt" value="{$tokendt}">
 

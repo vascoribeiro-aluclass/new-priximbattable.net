@@ -93,19 +93,19 @@
                         type="checkbox"></td>
                   {elseif $row eq '#NEEDHELP'}
                     <td class="fix_{$k} no_select"> Oui avec notre partenaire Needhelp <a
-                        href="https://priximbattable.net/content/17-trouver-un-installateur-avec-needhelp" target="_blank"> LIEN
+                        href="/content/17-trouver-un-installateur-avec-needhelp" target="_blank"> LIEN
                       </a> </td>
                   {elseif $row eq '#LACAGE'}
-                    <td class="fix_{$k} no_select"> <a href="https://priximbattable.net/content/18-produits-certifies"
+                    <td class="fix_{$k} no_select"> <a href="/content/18-produits-certifies"
                         target="_blank"> Qualimarine/Qualanod/Qualicoat </a> </td>
                   {elseif $row eq '#USINE'}
-                    <td class="fix_{$k} no_select"> <a href="https://priximbattable.net/content/18-produits-certifies"
+                    <td class="fix_{$k} no_select"> <a href="/content/18-produits-certifies"
                         target="_blank"> ISO 9001 </a> </td>
                   {elseif $row eq "#OUTROSRAL"}
                     <td class="fix_{$k} no_select"> PLUSIEURS RAL DISPONIBLE :<a
-                        href="https://priximbattable.net/content/9-palette-ral" target="_blank"> LIEN </a> </td>
+                        href="/content/9-palette-ral" target="_blank"> LIEN </a> </td>
                   {elseif $row eq "#COLLECTE"}
-                    <td class="fix_{$k} no_select"> POSSIBLE : <a href="https://priximbattable.net/content/29-collecte"
+                    <td class="fix_{$k} no_select"> POSSIBLE : <a href="/content/29-collecte"
                         target="_blank"> LIEN </a> </td>
                   {elseif $t eq $posPrix}
                     {assign var=mutlstringPrix value="::"|explode:$Comptable[$t][$k]}
@@ -121,7 +121,7 @@
                     </td>
                   {elseif $t eq $posLink}
                     <td class="fix_{$k} no_select">
-                      <a href="https://priximbattable.net/avis-client" target="_blank">
+                      <a href="/avis-client" target="_blank">
                         <button type="button" style="width: 100px;" class="button-comparatif-comm">
                           <picture>
                             <source src="/img/comparatif/cssSprite_comparatif.webp" type="image/webp" />
@@ -226,7 +226,7 @@
                               {assign var=mutllink value="::"|explode:$mutlstring[0]}
                               <a href="{$mutllink[1]}" target="_blank"> LIEN </a>
                             {elseif $mutlstring[0]|strstr:"#OUTROSRAL"}
-                              PLUSIEURS RAL DISPONIBLE :<a href="https://priximbattable.net/content/9-palette-ral" target="_blank">
+                              PLUSIEURS RAL DISPONIBLE :<a href="/content/9-palette-ral" target="_blank">
                                 LIEN </a>
                             {else}
                               {$mutlstring[0]}
@@ -246,7 +246,7 @@
                               <a href="{$mutllink[1]}" target="_blank"> LIEN </a>
 
                             {elseif $mutlstring[1]|strstr:"#OUTROSRAL"}
-                              PLUSIEURS RAL DISPONIBLE :<a href="https://priximbattable.net/content/9-palette-ral" target="_blank">
+                              PLUSIEURS RAL DISPONIBLE :<a href="/content/9-palette-ral" target="_blank">
                                 LIEN </a>
                             {else}
                               {$mutlstring[1]}

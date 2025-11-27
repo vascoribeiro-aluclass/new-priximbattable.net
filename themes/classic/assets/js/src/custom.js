@@ -735,7 +735,7 @@ function loadImagesMenu(idmenu) {
       var link = $(this).data("id");
       var name_prod = $(this).data("title-product");
       window.open(
-        "https://priximbattable.net/3d/" + link + ".html?name=" + name_prod,
+        "/3d/" + link + ".html?name=" + name_prod,
         "_blank"
       );
       return false;
@@ -1784,7 +1784,7 @@ function ShowModalGagne() {
     "Félicitations, vous concourrez pour un cadeau !"
   );
   $(".namerappel").html(
-    'Inscrivez-vous et gagnez un cadeau*<br>  <a href="https://priximbattable.net/content/19-anniversaire" target="_blank" ><small style="font-weight: 500;font-size: 0.675rem;color: red;">*voir conditions du concours</small></a>'
+    'Inscrivez-vous et gagnez un cadeau*<br>  <a href="/content/19-anniversaire" target="_blank" ><small style="font-weight: 500;font-size: 0.675rem;color: red;">*voir conditions du concours</small></a>'
   );
   $("#coderappel").val("gagne");
   $(".rappelheader").css("background-color", "#daa520");

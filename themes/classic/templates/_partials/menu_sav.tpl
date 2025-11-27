@@ -697,7 +697,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="about-us-block">
-              <a href="https://priximbattable.net/content/4-qui-sommes-nous" target="_blank">
+              <a href="/content/4-qui-sommes-nous" target="_blank">
                 <div class="title">Qui sommes nous</div>
               </a>
               <a href="https://www.priximbattable.net">
@@ -745,7 +745,7 @@
                   <span style="height: 20px;">Prochainement !</span>
                 </div>
               </a>
-              <a href="https://priximbattable.net/content/48-ils-parlent-de-nous" target="_blank">
+              <a href="/content/48-ils-parlent-de-nous" target="_blank">
                 <div class="subtitle brands">
                   <span style="height: 20px;">Ils parlent de nous</span>
                   <div class="img-brands">
@@ -783,7 +783,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-4 text-center">
-                    <a href="https://priximbattable.net/content/32-fabricant" target="_blank">
+                    <a href="/content/32-fabricant" target="_blank">
                       <picture>
                         <source srcset="/img/cms/menu-about-us/usines.webp" type="image/webp">
                         <img loading="lazy" src="/img/cms/menu-about-us/usines.png" alt=""
@@ -795,7 +795,7 @@
                     </a>
                   </div>
                   <div class="col-md-4 text-center">
-                    <a href="https://priximbattable.net/content/18-produits-certifies" target="_blank">
+                    <a href="/content/18-produits-certifies" target="_blank">
                       <picture>
                         <source srcset="/img/cms/menu-about-us/nos-certificats.webp" type="image/webp">
                         <img loading="lazy" src="/img/cms/menu-about-us/nos-certificats.png" alt=""
@@ -806,7 +806,7 @@
                     </a>
                   </div>
                   <div class="col-md-4 text-center">
-                    <a href="https://priximbattable.net/content/45-centre-logistique" target="_blank">
+                    <a href="/content/45-centre-logistique" target="_blank">
                       <picture>
                         <source srcset="/img/cms/menu-about-us/des-pays.webp" type="image/webp">
                         <img loading="lazy" src="/img/cms/menu-about-us/des-pays.png" alt=""
@@ -826,7 +826,7 @@
           <div class="col-md-3">
             <div class="about-us-block">
               <div class="title">Nos garantie</div>
-              <a href="https://priximbattable.net/content/14-conditions-de-garantie" target="_blank">
+              <a href="/content/14-conditions-de-garantie" target="_blank">
                 <div class="subtitle with-custom-icon">
                   <span class="spacial-cyan">
                     <picture>
@@ -837,7 +837,7 @@
                   <span>20 ans</span>
                 </div>
               </a>
-              <a href="https://priximbattable.net/content/14-conditions-de-garantie" target="_blank">
+              <a href="/content/14-conditions-de-garantie" target="_blank">
                 <div class="subtitle with-custom-icon">
                   <span class="old-cyan">
                     <picture>
@@ -848,7 +848,7 @@
                   <span>5 ans</span>
                 </div>
               </a>
-              <a href="https://priximbattable.net/content/16-pack-tranquillissime" target="_blank">
+              <a href="/content/16-pack-tranquillissime" target="_blank">
                 <div class="subtitle with-custom-icon">
                   <span class="soft-cyan">
                     <picture>
@@ -860,7 +860,7 @@
                   <span>Pack Tranquillissime</span>
                 </div>
               </a>
-              <a href="https://priximbattable.net/content/60-l-indice-de-reparabilite" target="_blank">
+              <a href="/content/60-l-indice-de-reparabilite" target="_blank">
                 <div class="subtitle with-custom-icon">
                   <span class="sky-purple">
                     <picture>
@@ -872,7 +872,7 @@
                   <span>Indice de réparabilité</span>
                 </div>
               </a>
-              <a href="https://priximbattable.net/sav/signaler_sav.php" target="_blank">
+              <a href="/sav/signaler_sav.php" target="_blank">
                 <div class="subtitle with-custom-icon">
                   <span class="light-orange">
                     <picture>
@@ -889,7 +889,7 @@
           <div class="col-md-3">
             <div class="about-us-block">
               <div class="title">Nos mode de paiement</div>
-              <a href="https://priximbattable.net/content/15-le-paiement-en-4-fois-avec-oney" target="_blank">
+              <a href="/content/15-le-paiement-en-4-fois-avec-oney" target="_blank">
                 <div class="subtitle paiement">
                   <picture>
                     <source srcset="/img/cms/menu-about-us/oney-3-4.webp" type="image/webp">
@@ -897,7 +897,7 @@
                   </picture>
                 </div>
               </a>
-              <a href="https://priximbattable.net/content/61-le-paiement-en-12-24-36-48-60-ou-84-fois-avec-oney-chez-priximbattable"
+              <a href="/content/61-le-paiement-en-12-24-36-48-60-ou-84-fois-avec-oney-chez-priximbattable"
                 target="_blank">
                 <div class="subtitle paiement">
                   <picture>
@@ -915,7 +915,7 @@
                   </picture>
                 </div>
               </a>
-              <a href="https://priximbattable.net/content/5-paiement-securise" target="_blank">
+              <a href="/content/5-paiement-securise" target="_blank">
                 <div class="subtitle paiement">
                   <picture>
                     <source srcset="/img/cms/menu-about-us/site-securise-ssl.webp" type="image/webp">
@@ -930,7 +930,7 @@
           <div class="col-md-3">
             <div class="about-us-block">
               <div class="title">Nos produits</div>
-              <a href="https://priximbattable.net/content/62-catalogues" target="_blank">
+              <a href="/content/62-catalogues" target="_blank">
                 <div class="subtitle with-custom-icon">
                   <span class="spacial-cyan">
                     <picture>
@@ -942,7 +942,7 @@
                   <span>Catalogue 2022</span>
                 </div>
               </a>
-              <a href="https://priximbattable.net/content/26-application-ar-viewer-priximbattable-visualiser-nos-produits-chez-vous"
+              <a href="/content/26-application-ar-viewer-priximbattable-visualiser-nos-produits-chez-vous"
                 target="_blank">
                 <div class="subtitle with-custom-icon">
                   <span class="old-cyan">
@@ -954,7 +954,7 @@
                   <span>Voir le produit en 3D</span>
                 </div>
               </a>
-              <a href="https://priximbattable.net/content/31-comparatif" target="_blank">
+              <a href="/content/31-comparatif" target="_blank">
                 <div class="subtitle with-custom-icon">
                   <span class="light-orange">
                     <picture>
@@ -984,7 +984,7 @@
           <div class="col-md-3">
             <div class="about-us-block">
               <div class="title">Avis</div>
-              <a href="https://priximbattable.net/avis-client" target="_blank">
+              <a href="/avis-client" target="_blank">
                 <div class="subtitle avis">
                   <picture>
                     <source srcset="/img/cms/menu-about-us/logo-google.webp" type="image/webp">
@@ -999,7 +999,7 @@
                   </span>
                 </div>
               </a>
-              <a href="https://priximbattable.net/avis-client" target="_blank">
+              <a href="/avis-client" target="_blank">
                 <div class="subtitle avis">
                   <picture>
                     <source srcset="/img/cms/menu-about-us/logo-trustpilot.webp" type="image/webp">
@@ -1014,7 +1014,7 @@
                   </span>
                 </div>
               </a>
-              <a href="https://priximbattable.net/avis-client" target="_blank">
+              <a href="/avis-client" target="_blank">
                 <div class="subtitle avis">
                   <picture>
                     <source srcset="/img/cms/menu-about-us/logo-priximbattable.webp" type="image/webp">
@@ -1029,7 +1029,7 @@
                   </span>
                 </div>
               </a>
-              <a href="https://priximbattable.net/content/47-projets-clients-priximbattable" target="_blank">
+              <a href="/content/47-projets-clients-priximbattable" target="_blank">
                 <div class="subtitle avis">
                   <span>91% DE CLIENTS SATISFAITS</span>
                 </div>
@@ -1056,7 +1056,7 @@
 
               <div class="block-to-customers desktop">
                 <div>
-                  <a href="https://priximbattable.net/content/17-trouver-un-installateur-avec-needhelp" target="_blank">
+                  <a href="/content/17-trouver-un-installateur-avec-needhelp" target="_blank">
                     <picture>
                       <source srcset="/img/cms/menu-about-us/pour-nos-clients-trouver-un-installateur.webp"
                         type="image/webp">
@@ -1092,7 +1092,7 @@
                   </a>
                 </div>
                 <div>
-                  <a href="https://priximbattable.net/blog" target="_blank">
+                  <a href="/blog" target="_blank">
                     <picture>
                       <source srcset="/img/cms/menu-about-us/pour-nos-clients-blog.webp" type="image/webp">
                       <img loading="lazy" src="/img/cms/menu-about-us/pour-nos-clients-blog.png" alt=""
@@ -1103,7 +1103,7 @@
                   </a>
                 </div>
                 <div>
-                  <a href="https://priximbattable.net/content/47-projets-clients-priximbattable" target="_blank">
+                  <a href="/content/47-projets-clients-priximbattable" target="_blank">
                     <picture>
                       <source srcset="/img/cms/menu-about-us/pour-nos-clients-galerie-photos.webp" type="image/webp">
                       <img loading="lazy" src="/img/cms/menu-about-us/pour-nos-clients-galerie-photos.png" alt=""
@@ -1116,7 +1116,7 @@
               </div>
 
               <div class="block-to-customers mobile">
-                <a href="https://priximbattable.net/content/17-trouver-un-installateur-avec-needhelp" target="_blank">
+                <a href="/content/17-trouver-un-installateur-avec-needhelp" target="_blank">
                   <div class="subtitle with-custom-icon">
                     <span class="spacial-cyan">
                       <picture>
@@ -1153,7 +1153,7 @@
                     <span>Vidéos et notice de montage</span>
                   </div>
                 </a>
-                <a href="https://priximbattable.net/blog" target="_blank">
+                <a href="/blog" target="_blank">
                   <div class="subtitle with-custom-icon">
                     <span class="sky-purple">
                       <picture>
@@ -1164,7 +1164,7 @@
                     <span>Blog</span>
                   </div>
                 </a>
-                <a href="https://priximbattable.net/content/47-projets-clients-priximbattable" target="_blank">
+                <a href="/content/47-projets-clients-priximbattable" target="_blank">
                   <div class="subtitle with-custom-icon">
                     <span class="light-orange">
                       <picture>
@@ -1211,7 +1211,7 @@
           </div>
           <hr />
           <div class="btn-actualites">
-            <a href="https://priximbattable.net/content/21-actualites-priximbattable" class="">Cliquez
+            <a href="/content/21-actualites-priximbattable" class="">Cliquez
               pour
               découvrir nos actualités</a>
           </div>
@@ -1944,7 +1944,7 @@
                       <div class="row">
                         <div class="col-md-3">
                           <div class="about-us-block">
-                            <a href="https://priximbattable.net/content/4-qui-sommes-nous" target="_blank">
+                            <a href="/content/4-qui-sommes-nous" target="_blank">
                               <div class="title">Qui sommes nous</div>
                             </a>
                             <a href="https://www.priximbattable.net">
@@ -1996,7 +1996,7 @@
                                 <span style="height: 20px;">Prochainement !</span>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/content/48-ils-parlent-de-nous" target="_blank">
+                            <a href="/content/48-ils-parlent-de-nous" target="_blank">
                               <div class="subtitle brands">
                                 <span style="height: 20px;" >Ils parlent de nous</span>
                                 <div class="img-brands">
@@ -2037,7 +2037,7 @@
                             <div class="container">
                               <div class="row">
                                 <div class="col-md-4 text-center">
-                                  <a href="https://priximbattable.net/content/32-fabricant" target="_blank">
+                                  <a href="/content/32-fabricant" target="_blank">
                                     <picture>
                                       <source srcset="/img/cms/menu-about-us/usines.webp" type="image/webp">
                                       <img loading="lazy" src="/img/cms/menu-about-us/usines.png" alt=""
@@ -2049,7 +2049,7 @@
                                   </a>
                                 </div>
                                 <div class="col-md-4 text-center">
-                                  <a href="https://priximbattable.net/content/18-produits-certifies" target="_blank">
+                                  <a href="/content/18-produits-certifies" target="_blank">
                                     <picture>
                                       <source srcset="/img/cms/menu-about-us/nos-certificats.webp" type="image/webp">
                                       <img loading="lazy" src="/img/cms/menu-about-us/nos-certificats.png" alt=""
@@ -2060,7 +2060,7 @@
                                   </a>
                                 </div>
                                 <div class="col-md-4 text-center">
-                                  <a href="https://priximbattable.net/content/45-centre-logistique" target="_blank">
+                                  <a href="/content/45-centre-logistique" target="_blank">
                                     <picture>
                                       <source srcset="/img/cms/menu-about-us/des-pays.webp" type="image/webp">
                                       <img loading="lazy" src="/img/cms/menu-about-us/des-pays.png" alt=""
@@ -2080,7 +2080,7 @@
                         <div class="col-md-3">
                           <div class="about-us-block">
                             <div class="title">Nos garantie</div>
-                            <a href="https://priximbattable.net/content/14-conditions-de-garantie" target="_blank">
+                            <a href="/content/14-conditions-de-garantie" target="_blank">
                               <div class="subtitle with-custom-icon">
                                 <span class="spacial-cyan">
                                   <picture>
@@ -2092,7 +2092,7 @@
                                 <span>20 ans</span>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/content/14-conditions-de-garantie" target="_blank">
+                            <a href="/content/14-conditions-de-garantie" target="_blank">
                               <div class="subtitle with-custom-icon">
                                 <span class="old-cyan">
                                   <picture>
@@ -2104,7 +2104,7 @@
                                 <span>5 ans</span>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/content/16-pack-tranquillissime" target="_blank">
+                            <a href="/content/16-pack-tranquillissime" target="_blank">
                               <div class="subtitle with-custom-icon">
                                 <span class="soft-cyan">
                                   <picture>
@@ -2116,7 +2116,7 @@
                                 <span>Pack Tranquillissime</span>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/content/60-l-indice-de-reparabilite" target="_blank">
+                            <a href="/content/60-l-indice-de-reparabilite" target="_blank">
                               <div class="subtitle with-custom-icon">
                                 <span class="sky-purple">
                                   <picture>
@@ -2128,7 +2128,7 @@
                                 <span>Indice de réparabilité</span>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/sav/signaler_sav.php" target="_blank">
+                            <a href="/sav/signaler_sav.php" target="_blank">
                               <div class="subtitle with-custom-icon">
                                 <span class="light-orange">
                                   <picture>
@@ -2146,7 +2146,7 @@
                         <div class="col-md-3">
                           <div class="about-us-block">
                             <div class="title">Nos mode de paiement</div>
-                            <a href="https://priximbattable.net/content/15-le-paiement-en-4-fois-avec-oney"
+                            <a href="/content/15-le-paiement-en-4-fois-avec-oney"
                               target="_blank">
                               <div class="subtitle paiement">
                                 <picture>
@@ -2156,7 +2156,7 @@
                                 </picture>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/content/61-le-paiement-en-12-24-36-48-60-ou-84-fois-avec-oney-chez-priximbattable"
+                            <a href="/content/61-le-paiement-en-12-24-36-48-60-ou-84-fois-avec-oney-chez-priximbattable"
                               target="_blank">
                               <div class="subtitle paiement">
                                 <picture>
@@ -2175,7 +2175,7 @@
                                 </picture>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/content/5-paiement-securise" target="_blank">
+                            <a href="/content/5-paiement-securise" target="_blank">
                               <div class="subtitle paiement">
                                 <picture>
                                   <source srcset="/img/cms/menu-about-us/site-securise-ssl.webp" type="image/webp">
@@ -2190,7 +2190,7 @@
                         <div class="col-md-3">
                           <div class="about-us-block">
                             <div class="title">Nos produits</div>
-                            <a href="https://priximbattable.net/content/62-catalogues" target="_blank">
+                            <a href="/content/62-catalogues" target="_blank">
                               <div class="subtitle with-custom-icon">
                                 <span class="spacial-cyan">
                                   <picture>
@@ -2202,7 +2202,7 @@
                                 <span>Catalogue 2022</span>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/content/26-application-ar-viewer-priximbattable-visualiser-nos-produits-chez-vous"
+                            <a href="/content/26-application-ar-viewer-priximbattable-visualiser-nos-produits-chez-vous"
                               target="_blank">
                               <div class="subtitle with-custom-icon">
                                 <span class="old-cyan">
@@ -2215,7 +2215,7 @@
                                 <span>Voir le produit en 3D</span>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/content/31-comparatif" target="_blank">
+                            <a href="/content/31-comparatif" target="_blank">
                               <div class="subtitle with-custom-icon">
                                 <span class="light-orange">
                                   <picture>
@@ -2245,7 +2245,7 @@
                         <div class="col-md-3">
                           <div class="about-us-block">
                             <div class="title">Avis</div>
-                            <a href="https://priximbattable.net/avis-client" target="_blank">
+                            <a href="/avis-client" target="_blank">
                               <div class="subtitle avis">
                                 <picture>
                                   <source srcset="/img/cms/menu-about-us/logo-google.webp" type="image/webp">
@@ -2261,7 +2261,7 @@
                                 </span>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/avis-client" target="_blank">
+                            <a href="/avis-client" target="_blank">
                               <div class="subtitle avis">
                                 <picture>
                                   <source srcset="/img/cms/menu-about-us/logo-trustpilot.webp" type="image/webp">
@@ -2277,7 +2277,7 @@
                                 </span>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/avis-client" target="_blank">
+                            <a href="/avis-client" target="_blank">
                               <div class="subtitle avis">
                                 <picture>
                                   <source srcset="/img/cms/menu-about-us/logo-priximbattable.webp" type="image/webp">
@@ -2293,7 +2293,7 @@
                                 </span>
                               </div>
                             </a>
-                            <a href="https://priximbattable.net/content/47-projets-clients-priximbattable"
+                            <a href="/content/47-projets-clients-priximbattable"
                               target="_blank">
                               <div class="subtitle avis">
                                 <span>91% DE CLIENTS SATISFAITS</span>
@@ -2321,7 +2321,7 @@
 
                             <div class="block-to-customers desktop">
                               <div>
-                                <a href="https://priximbattable.net/content/17-trouver-un-installateur-avec-needhelp"
+                                <a href="/content/17-trouver-un-installateur-avec-needhelp"
                                   target="_blank">
                                   <picture>
                                     <source srcset="/img/cms/menu-about-us/pour-nos-clients-trouver-un-installateur.webp"
@@ -2362,7 +2362,7 @@
                                 </a>
                               </div>
                               <div>
-                                <a href="https://priximbattable.net/blog" target="_blank">
+                                <a href="/blog" target="_blank">
                                   <picture>
                                     <source srcset="/img/cms/menu-about-us/pour-nos-clients-blog.webp" type="image/webp">
                                     <img loading="lazy" src="/img/cms/menu-about-us/pour-nos-clients-blog.png" alt=""
@@ -2373,7 +2373,7 @@
                                 </a>
                               </div>
                               <div>
-                                <a href="https://priximbattable.net/content/47-projets-clients-priximbattable"
+                                <a href="/content/47-projets-clients-priximbattable"
                                   target="_blank">
                                   <picture>
                                     <source srcset="/img/cms/menu-about-us/pour-nos-clients-galerie-photos.webp"
@@ -2388,7 +2388,7 @@
                             </div>
 
                             <div class="block-to-customers mobile">
-                              <a href="https://priximbattable.net/content/17-trouver-un-installateur-avec-needhelp"
+                              <a href="/content/17-trouver-un-installateur-avec-needhelp"
                                 target="_blank">
                                 <div class="subtitle with-custom-icon">
                                   <span class="spacial-cyan">
@@ -2429,7 +2429,7 @@
                                   <span>Vidéos et notice de montage</span>
                                 </div>
                               </a>
-                              <a href="https://priximbattable.net/blog" target="_blank">
+                              <a href="/blog" target="_blank">
                                 <div class="subtitle with-custom-icon">
                                   <span class="sky-purple">
                                     <picture>
@@ -2441,7 +2441,7 @@
                                   <span>Blog</span>
                                 </div>
                               </a>
-                              <a href="https://priximbattable.net/content/47-projets-clients-priximbattable"
+                              <a href="/content/47-projets-clients-priximbattable"
                                 target="_blank">
                                 <div class="subtitle with-custom-icon">
                                   <span class="light-orange">
@@ -2494,7 +2494,7 @@
                         </div>
                         <hr />
                         <div class="btn-actualites">
-                          <a href="https://priximbattable.net/content/21-actualites-priximbattable" class="">Cliquez
+                          <a href="/content/21-actualites-priximbattable" class="">Cliquez
                             pour
                             découvrir nos actualités</a>
                         </div>

@@ -4,7 +4,7 @@
 <div class="hidden-sm-down" style="padding: 0rem;">
   {* <div class="row pb-1 text-center">
     <div class="col-md-12">
-      <a href="https://priximbattable.net/content/45-centre-logistique" target="_blank">
+      <a href="/content/45-centre-logistique" target="_blank">
         <picture>
           <source srcset="/img/cms/page-product-sites.webp" type="image/webp">
           <img src="/img/cms/page-product-sites.png" alt="Nous sommes fabricantes" title="Nous sommes fabricantes">
@@ -92,7 +92,7 @@
     <div class="col-sm-7 col-xs-7 col-md-7 pl-0 pr-0">
 
       <div class="col-md-12">
-        <a href="https://priximbattable.net/content/45-centre-logistique" target="_blank">
+        <a href="/content/45-centre-logistique" target="_blank">
           <picture>
             <source srcset="/img/cms/page-product-sites.webp" type="image/webp">
             <img src="/img/cms/page-product-sites.png" alt="Nous sommes fabricantes" title="Nous sommes fabricantes"
