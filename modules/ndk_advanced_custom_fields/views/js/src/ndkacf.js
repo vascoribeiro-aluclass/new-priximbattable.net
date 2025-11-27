@@ -7125,7 +7125,7 @@ $(" .img-value-5525, .img-value-5520, .img-value-5517, .img-value-5516, .img-val
 
 $.ajax({
   type: "POST",
-  url: "https://priximbattable.net/ajax/index.php",
+  url: "/ajax/index.php",
   data: {
     setaction: "getwishlist",
     id_product: $('#ndkcf_id_product').val(),
