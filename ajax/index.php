@@ -116,7 +116,7 @@ switch($action){
   case "getorderhistoric":
     $id_order = Tools::getValue('id_order');
 
-    $result_order = Db::getInstance()->executeS("SELECT `id_customer`,`id_cart` FROM `sp_orders` where `reference` = " . (int)$id_order );
+    $result_order = Db::getInstance()->executeS("SELECT `id_customer`,`id_cart` FROM `ps_orders` where `reference` = " . (int)$id_order );
     $row_order    = current( $result_order );
     $link = ShareCart::getlinksahrecart((int)$row_order['id_customer'],(int)$row_order['id_cart']);
     header("Location: ".$link);
@@ -155,7 +155,7 @@ switch($action){
                           Product::getIdTaxRulesGroupByIdProduct((int)$id_product_old, Context::getContext())
                       );
 
-    $query = "SELECT `id_product_original`, ".$id_product_new." as `id_product_customization`,`link` FROM `sp_link_customization_product` where `id_product_customization` =  ". $id_product_old;
+    $query = "SELECT `id_product_original`, ".$id_product_new." as `id_product_customization`,`link` FROM `ps_link_customization_product` where `id_product_customization` =  ". $id_product_old;
     $resultconfiguracao = Db::getInstance()->executeS($query);
     if(count($resultconfiguracao) > 0){
       $rowconf = $resultconfiguracao[0];
@@ -238,7 +238,7 @@ switch($action){
     $id_product = Tools::getValue('id_product');
 
     if(is_numeric($score) && is_numeric($id_product)){
-      $sql = "INSERT INTO `sp_score_repair` (`id_product`,`score`) VALUES ('".(int)$id_product."','".(int)$score."'); ";
+      $sql = "INSERT INTO `ps_score_repair` (`id_product`,`score`) VALUES ('".(int)$id_product."','".(int)$score."'); ";
       $inserscore = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
       $status = "sucess";
     }else{
@@ -398,20 +398,20 @@ switch($action){
     && preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', $phone_rappel)){
 
 
-      $sql = "select count(*) as exist_mail FROM `sp_coupon_info` where `mail` like '%".$email_rappel."%';";
+      $sql = "select count(*) as exist_mail FROM `ps_coupon_info` where `mail` like '%".$email_rappel."%';";
       $sp_coupon_info = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
       if($sp_coupon_info[0]['exist_mail'] > 0){
         echo "error";
         exit;
       }
 
-      $sql = "INSERT INTO `sp_coupon_info` (`nom`, `mail`, `tel`) VALUES ('".$last_name_rappel."','".$email_rappel."','".$phone_rappel."');";
+      $sql = "INSERT INTO `ps_coupon_info` (`nom`, `mail`, `tel`) VALUES ('".$last_name_rappel."','".$email_rappel."','".$phone_rappel."');";
       $sp_coupon_info = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
 
 
       $percentage = 5;
 
-      $query = "SHOW TABLE STATUS LIKE 'sp_cart_rule'";
+      $query = "SHOW TABLE STATUS LIKE 'ps_cart_rule'";
       $item = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($query);
       $AutoIncrement = $item[0]['Auto_increment'];
 
@@ -429,7 +429,7 @@ switch($action){
 
       $coupon10 = "PAT" . $random_str.$AutoIncrement;
 
-      $sql = "INSERT INTO sp_cart_rule
+      $sql = "INSERT INTO ps_cart_rule
       SET id_customer='0',
       date_from='" . $date_debut . "',
       date_to='" . $date_fin . "',
@@ -483,7 +483,7 @@ switch($action){
       $sc_code_reduction = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
 
       $status = "sucess";
-      $sql = "INSERT INTO sp_cart_rule_lang
+      $sql = "INSERT INTO ps_cart_rule_lang
             SET id_cart_rule='" . $id_cart_rule . "',
             id_lang='1',
             name='" . $coupon10 . "'";

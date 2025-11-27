@@ -9,14 +9,14 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $resultsPerPage = isset($_GET['results_per_page']) ? intval($_GET['results_per_page']) : 5;
 $offset = ($page - 1) * $resultsPerPage;
 
-$data = Db::getInstance()->executeS("SELECT `id_product`,`title`,`content`,`customer_name`,`grade`, `date_add`, `validate` FROM `sp_product_comment` where  `validate` = 1 AND `deleted` = 0
+$data = Db::getInstance()->executeS("SELECT `id_product`,`title`,`content`,`customer_name`,`grade`, `date_add`, `validate` FROM `ps_product_comment` where  `validate` = 1 AND `deleted` = 0
 ORDER BY `date_add` DESC LIMIT $offset, $resultsPerPage");
 
 //print_r($data);
 
 
 //Verificacao da quantidade por pagina
-$todos = Db::getInstance()->executeS("SELECT * FROM `sp_product_comment` where `validate` = 1 AND `deleted` = 0");
+$todos = Db::getInstance()->executeS("SELECT * FROM `ps_product_comment` where `validate` = 1 AND `deleted` = 0");
 
 $totalPage = ceil(count($todos));
 
