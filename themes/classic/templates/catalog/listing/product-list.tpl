@@ -159,7 +159,7 @@
         </div>
 
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <a data-link-type="tree" data-type="linkpicker" href="https://priximbattable.net/content/11-livraison-gratuite" Helvetica;" target="_blank">
+          <a data-link-type="tree" data-type="linkpicker" href="/content/11-livraison-gratuite" Helvetica;" target="_blank">
           <img loading="lazy" alt="vive_la_france" src="/img/banners/vive_la_france.png" title="vive_la_france"> </a>
         </div>-->
       </div>
@@ -325,7 +325,7 @@
 
           <div class="hidden-md-down" style="flex-direction: row;display: inline-flex;">
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+              <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                 target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -335,7 +335,7 @@
               </a>
             </div>
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/comparatif?ctg=45" target="_blank">
+              <a href="/comparatif?ctg=45" target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/comparatif-portails.webp" type="image/webp" />
                   <img loading="lazy" src="/img/comparatif/desktop/comparatif-portails.jpg"
@@ -356,7 +356,7 @@
               <div class="col-sm-12" id="imgBanner">
                 <div class="row" style="background: #f1f1f1;">
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+                    <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                       target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -366,7 +366,7 @@
                     </a>
                   </div>
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/comparatif?ctg=45" target="_blank">
+                    <a href="/comparatif?ctg=45" target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/comparatif-portails.webp" type="image/webp" />
                         <img loading="lazy" src="/img/comparatif/desktop/comparatif-portails.jpg"
@@ -389,7 +389,7 @@
         {elseif {$category.id} == "34"}
           <div class="hidden-md-down" style="flex-direction: row;display: inline-flex;">
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+              <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                 target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -399,7 +399,7 @@
               </a>
             </div>
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/comparatif?ctg=34" target="_blank">
+              <a href="/comparatif?ctg=34" target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/comparatif-pergolas-aluminium.webp" type="image/webp" />
                   <img loading="lazy" src="/img/comparatif/desktop/comparatif-pergolas-aluminium.jpg"
@@ -420,7 +420,7 @@
               <div class="col-sm-12" id="imgBanner">
                 <div class="row" style="background: #f1f1f1;">
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+                    <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                       target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -430,7 +430,7 @@
                     </a>
                   </div>
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/comparatif?ctg=34" target="_blank">
+                    <a href="/comparatif?ctg=34" target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/comparatif-pergolas-aluminium.webp" type="image/webp" />
                         <img loading="lazy" src="/img/comparatif/desktop/comparatif-pergolas-aluminium.jpg"
@@ -453,7 +453,7 @@
         {elseif {$category.id} == "35"}
           <div class="hidden-md-down" style="flex-direction: row;display: inline-flex;">
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+              <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                 target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -463,7 +463,7 @@
               </a>
             </div>
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/comparatif?ctg=35" target="_blank">
+              <a href="/comparatif?ctg=35" target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/comparatif-pergolas-bioclimatiques.webp" type="image/webp" />
                   <img loading="lazy" src="/img/comparatif/desktop/comparatif-pergolas-bioclimatiques.jpg"
@@ -484,7 +484,7 @@
               <div class="col-sm-12" id="imgBanner">
                 <div class="row" style="background: #f1f1f1;">
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+                    <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                       target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -494,7 +494,7 @@
                     </a>
                   </div>
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/comparatif?ctg=35" target="_blank">
+                    <a href="/comparatif?ctg=35" target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/comparatif-pergolas-bioclimatiques.webp" type="image/webp" />
                         <img loading="lazy" src="/img/comparatif/desktop/comparatif-pergolas-bioclimatiques.jpg"
@@ -517,7 +517,7 @@
         {elseif {$category.id} == "21" || {$category.id} == "108" || {$category.id} == "117" }
           <div class="hidden-md-down" style="flex-direction: row;display: inline-flex;">
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+              <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                 target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -527,7 +527,7 @@
               </a>
             </div>
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/comparatif?ctg=21" target="_blank">
+              <a href="/comparatif?ctg=21" target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/comparatif-grillages.webp" type="image/webp" />
                   <img loading="lazy" src="/img/comparatif/desktop/comparatif-grillages.jpg"
@@ -548,7 +548,7 @@
               <div class="col-sm-12" id="imgBanner">
                 <div class="row" style="background: #f1f1f1;">
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+                    <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                       target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -558,7 +558,7 @@
                     </a>
                   </div>
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/comparatif?ctg=21" target="_blank">
+                    <a href="/comparatif?ctg=21" target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/comparatif-grillages.webp" type="image/webp" />
                         <img loading="lazy" src="/img/comparatif/desktop/comparatif-grillages.jpg"
@@ -581,7 +581,7 @@
         {elseif {$category.id} == "23" }
           <div class="hidden-md-down" style="flex-direction: row;display: inline-flex;">
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+              <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                 target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -591,7 +591,7 @@
               </a>
             </div>
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/comparatif?ctg=23" target="_blank">
+              <a href="/comparatif?ctg=23" target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/comparatif-garde-corps.webp" type="image/webp" />
                   <img loading="lazy" src="/img/comparatif/desktop/comparatif-garde-corps.jpg"
@@ -612,7 +612,7 @@
               <div class="col-sm-12" id="imgBanner">
                 <div class="row" style="background: #f1f1f1;">
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+                    <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                       target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -622,7 +622,7 @@
                     </a>
                   </div>
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/comparatif?ctg=23" target="_blank">
+                    <a href="/comparatif?ctg=23" target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/comparatif-garde-corps.webp" type="image/webp" />
                         <img loading="lazy" src="/img/comparatif/desktop/comparatif-garde-corps.jpg"
@@ -645,7 +645,7 @@
         {elseif {$category.id} == "25" }
           <div class="hidden-md-down" style="flex-direction: row;display: inline-flex;">
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+              <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                 target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -655,7 +655,7 @@
               </a>
             </div>
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/comparatif?ctg=25" target="_blank">
+              <a href="/comparatif?ctg=25" target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/comparatif-portes-garage-battantes.webp" type="image/webp" />
                   <img loading="lazy" src="/img/comparatif/desktop/comparatif-portes-garage-battantes.jpg"
@@ -677,7 +677,7 @@
               <div class="col-sm-12" id="imgBanner">
                 <div class="row" style="background: #f1f1f1;">
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+                    <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                       target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -687,7 +687,7 @@
                     </a>
                   </div>
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/comparatif?ctg=25" target="_blank">
+                    <a href="/comparatif?ctg=25" target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/comparatif-portes-garage-battantes.webp" type="image/webp" />
                         <img loading="lazy" src="/img/comparatif/desktop/comparatif-portes-garage-battantes.jpg"
@@ -710,7 +710,7 @@
         {elseif {$category.id} == "26" }
           <div class="hidden-md-down" style="flex-direction: row;display: inline-flex;">
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+              <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                 target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -720,7 +720,7 @@
               </a>
             </div>
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/comparatif?ctg=26" target="_blank">
+              <a href="/comparatif?ctg=26" target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/comparatif-portes-garage-enroulables.webp" type="image/webp" />
                   <img loading="lazy" src="/img/comparatif/desktop/comparatif-portes-garage-enroulables.jpg"
@@ -742,7 +742,7 @@
               <div class="col-sm-12" id="imgBanner">
                 <div class="row" style="background: #f1f1f1;">
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+                    <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                       target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -752,7 +752,7 @@
                     </a>
                   </div>
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/comparatif?ctg=24" target="_blank">
+                    <a href="/comparatif?ctg=24" target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/comparatif-portes-garage-enroulables.webp" type="image/webp" />
                         <img loading="lazy" src="/img/comparatif/desktop/comparatif-portes-garage-enroulables.jpg"
@@ -775,7 +775,7 @@
         {elseif {$category.id} == "24" }
           <div class="hidden-md-down" style="flex-direction: row;display: inline-flex;">
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+              <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                 target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -785,7 +785,7 @@
               </a>
             </div>
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/comparatif?ctg=24" target="_blank">
+              <a href="/comparatif?ctg=24" target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/comparatif-portes-garage-sectionnelles.webp" type="image/webp" />
                   <img loading="lazy" src="/img/comparatif/desktop/comparatif-portes-garage-sectionnelles.jpg"
@@ -807,7 +807,7 @@
               <div class="col-sm-12" id="imgBanner">
                 <div class="row" style="background: #f1f1f1;">
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+                    <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                       target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -817,7 +817,7 @@
                     </a>
                   </div>
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/comparatif?ctg=24" target="_blank">
+                    <a href="/comparatif?ctg=24" target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/comparatif-portes-garage-sectionnelles.webp" type="image/webp" />
                         <img loading="lazy" src="/img/comparatif/desktop/comparatif-portes-garage-sectionnelles.jpg"
@@ -840,7 +840,7 @@
         {elseif {$category.id} == "33" }
           <div class="hidden-md-down" style="flex-direction: row;display: inline-flex;">
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+              <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                 target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -850,7 +850,7 @@
               </a>
             </div>
             <div style="width: 35.2%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/comparatif?ctg=33" target="_blank">
+              <a href="/comparatif?ctg=33" target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/comparatif-portes-service.webp" type="image/webp" />
                   <img loading="lazy" src="/img/comparatif/desktop/comparatif-portes-service.jpg"
@@ -871,7 +871,7 @@
               <div class="col-sm-12" id="imgBanner">
                 <div class="row" style="background: #f1f1f1;">
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+                    <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                       target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />
@@ -881,7 +881,7 @@
                     </a>
                   </div>
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/comparatif?ctg=33" target="_blank">
+                    <a href="/comparatif?ctg=33" target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/comparatif-portes-service.webp" type="image/webp" />
                         <img loading="lazy" src="/img/comparatif/desktop/comparatif-portes-service.jpg"
@@ -923,7 +923,7 @@
           || {$category.id} == "179" || {$category.id} == "180" || {$category.id} == "183" }
           <div class="hidden-md-down" style="flex-direction: row;display: inline-flex;">
             <div style="width: 88.5%; margin-right: 0.4rem;">
-              <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+              <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                 target="_blank">
                 <picture>
                   <source srcset="/img/comparatif/desktop/produit-prix-imbattable-02.webp" type="image/webp" />
@@ -945,7 +945,7 @@
               <div class="col-sm-12" id="imgBanner">
                 <div class="row" style="background: #f1f1f1;">
                   <div class="col-sm-12" style="margin-bottom: 0.4rem;">
-                    <a href="https://priximbattable.net/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
+                    <a href="/content/49-il-y-a-un-produit-prix-imbattable-pres-de-chez-vous"
                       target="_blank">
                       <picture>
                         <source srcset="/img/comparatif/desktop/produit-prix-imbattable-01.webp" type="image/webp" />

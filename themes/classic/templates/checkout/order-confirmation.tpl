@@ -14,7 +14,7 @@
                 </picture>
                 <div style="width: 319px;height: 120px;border-radius: 25px;display: flex;justify-content: center;position: absolute;bottom: 0;z-index: 1;background-image: linear-gradient(#b9b0b040,#3c3a3aa6);align-items: center;">
                   <div class="logos-avis-conf-order-review avis-h-checkout avis-h-checkout-addrs" style="bottom:45px">
-                    <a href="https://priximbattable.net/avis-client" target="_blank" style="display:flex; gap:5px;">
+                    <a href="/avis-client" target="_blank" style="display:flex; gap:5px;">
                       <div class="border-avis">
                         <picture>
                           <source srcset="/img/cms/Avis/logo-google.webp" type="image/webp">
@@ -34,7 +34,7 @@
                     </a>
                   </div>
                   <div class="logos-avis-conf-order-review avis-h-checkout avis-h-checkout-addrs">
-                    <a href="https://priximbattable.net/avis-client" target="_blank" style="display:flex;gap:5px;">
+                    <a href="/avis-client" target="_blank" style="display:flex;gap:5px;">
                       <div class="border-avis">
                         <picture>
                           <source srcset="/img/cms/Avis/logo-priximbattable.webp" type="image/webp">

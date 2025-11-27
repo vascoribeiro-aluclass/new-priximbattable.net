@@ -70,7 +70,7 @@
               <input type="checkbox" class="checkbox_check" name="cgv-terms">
               <label class="custom-terms">
 
-              J'ai lu et j'accepte les <a href="https://priximbattable.net/content/3-conditions-utilisation" id="cta-terms-and-conditions-0">conditions générales de vente</a> et j'y adhère sans réserve.
+              J'ai lu et j'accepte les <a href="/content/3-conditions-utilisation" id="cta-terms-and-conditions-0">conditions générales de vente</a> et j'y adhère sans réserve.
 
               </label>
 

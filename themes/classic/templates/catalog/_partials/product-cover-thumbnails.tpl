@@ -135,13 +135,13 @@
     </div> *}
       {*
     <div class="col-md-12">
-      <a class="btn btn-app" href="https://priximbattable.net/content/26-application-ar-viewer-prix-imbattable-visualiser-nos-produits-chez-vous" target="_blank"><i class="fa fa-magic"></i> Visualisez ce produit chez vous en 3D</a>
+      <a class="btn btn-app" href="/content/26-application-ar-viewer-prix-imbattable-visualiser-nos-produits-chez-vous" target="_blank"><i class="fa fa-magic"></i> Visualisez ce produit chez vous en 3D</a>
     </div>
          *}
   {else}
       {*
     <div class="col-md-12">
-      <a class="btn btn-app" href="https://priximbattable.net/content/26-application-ar-viewer-prix-imbattable-visualiser-nos-produits-chez-vous" target="_blank"><i class="fa fa-magic"></i> Visualisez ce produit chez vous en 3D</a>
+      <a class="btn btn-app" href="/content/26-application-ar-viewer-prix-imbattable-visualiser-nos-produits-chez-vous" target="_blank"><i class="fa fa-magic"></i> Visualisez ce produit chez vous en 3D</a>
     </div>
          *}
   {/if}

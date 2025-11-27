@@ -262,7 +262,7 @@
 
               </div>
               <a {if $product.discount_type === 'percentage'}class="btn-pack" {else}class="btn-pack-discount" {/if}
-                href="https://priximbattable.net/content/16-pack-tranquillissime" target="_blank">Lire nos
+                href="/content/16-pack-tranquillissime" target="_blank">Lire nos
                 recommandations<img src="/themes/classic/templates/checkout/_partials/tap-click.png" alt="Clik Here"
                   style="transform: matrix(0.89, -0.45, 0.45, 0.89, 0, 0); width:36px; height:36px; position:relative; top:.7rem; left:1rem;"></a>
 

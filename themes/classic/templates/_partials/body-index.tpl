@@ -367,7 +367,7 @@
             title="Client satisfait" width="725" height="330" />
         </picture>
         <div class="logos-avis">
-          <a href="https://priximbattable.net/avis-client" target="_blank">
+          <a href="/avis-client" target="_blank">
             <div class="border-avis">
               <picture>
                 <source srcset="/img/cms/Avis/logo-google.webp" type="image/webp">
@@ -587,7 +587,7 @@
 
           <div class="block-to-customers custom-block-to-customers desktop">
             <div>
-              <a href="https://priximbattable.net/content/70-service-de-pose" target="_blank">
+              <a href="/content/70-service-de-pose" target="_blank">
                 <picture>
                   <source srcset="/img/cms/menu-about-us/installateur.webp" type="image/webp">
                   <img loading="lazy" src="/img/cms/menu-about-us/installateur.png" alt="Installateur" class="img-fluid"
@@ -621,7 +621,7 @@
             </div>
 
             {* <div>
-             <a href="https://priximbattable.net/blog" target="_blank">
+             <a href="/blog" target="_blank">
                <picture>
                  <source srcset="/img/cms/menu-about-us/blog.webp" type="image/webp">
                  <img loading="lazy" src="/img/cms/menu-about-us/blog.png" alt="Blog" class="img-fluid" width="260"
@@ -647,7 +647,7 @@
               </a>
             </div>
             {* <div>
-             <a href="https://priximbattable.net/content/47-projets-clients-priximbattable" target="_blank">
+             <a href="/content/47-projets-clients-priximbattable" target="_blank">
                <picture>
                  <source srcset="/img/cms/menu-about-us/galerie-photos.webp" type="image/webp">
                  <img loading="lazy" src="/img/cms/menu-about-us/galerie-photos.png" alt="Phototéque" class="img-fluid"
@@ -712,7 +712,7 @@
                 <span>Vidéos et notice de montage</span>
               </div>
             </a>
-            {* <a href="https://priximbattable.net/blog" target="_blank">
+            {* <a href="/blog" target="_blank">
            <div class="subtitle with-custom-icon py-1">
              <span class="sky-purple">
                <picture>
@@ -724,7 +724,7 @@
              <span>Blog</span>
            </div>
          </a> *}
-            {* <a href="https://priximbattable.net/content/47-projets-clients-priximbattable" target="_blank">
+            {* <a href="/content/47-projets-clients-priximbattable" target="_blank">
            <div class="subtitle with-custom-icon py-1">
              <span class="light-orange">
                <picture>
@@ -777,7 +777,7 @@
             <img loading="lazy" src="/img/cms/home/home-un-choix-conscient.png" alt="Nos certificats"
               class="img-fluid nous-sommes-fabricant" width="938" height="528" />
           </picture>
-          <a href="https://priximbattable.net/content/18-produits-certifies" target="_blank">
+          <a href="/content/18-produits-certifies" target="_blank">
             <div class="subtitle nous-sommes-fabricant mt-2">Nos certificats</div>
           </a>
         </div>
@@ -803,7 +803,7 @@
 
       </div>
       <div class="col-lg-4 text-center pt-2">
-        <a href="https://priximbattable.net/content/45-centre-logistique" target="_blank">
+        <a href="/content/45-centre-logistique" target="_blank">
           <picture>
             <source srcset="/img/cms/home/home-centres-logistiques.webp" type="image/webp">
             <img loading="lazy" src="/img/cms/home/home-centres-logistiques.png" alt="Nos centres logistiques"
@@ -814,7 +814,7 @@
         </a>
       </div>
       <div class="col-lg-4 text-center pt-2">
-        <a href="https://priximbattable.net/content/62-catalogues" target="_blank">
+        <a href="/content/62-catalogues" target="_blank">
           <picture>
             <source srcset="/img/cms/home/home-catalogue.webp" type="image/webp">
             <img loading="lazy" src="/img/cms/home/home-catalogue.png" alt="Catalogue"
@@ -920,7 +920,7 @@
 
      </div>
      <div>
-       <a href="https://priximbattable.net/avis-client" target="_blank">
+       <a href="/avis-client" target="_blank">
          <div class="content">
            <picture class=" hidden-md-down">
              <source srcset="/img/cms/Avis/google.webp" type="image/webp">
@@ -946,21 +946,21 @@
        </a>
      </div>
      <div>
-       <a href="https://priximbattable.net/avis-client">
+       <a href="/avis-client">
          <picture class=" hidden-lg-up">
            <source srcset="/img/cms/Avis/google.webp" type="image/webp">
            <img class="img-avis-mobile" loading="lazy" src="/img/cms/Avis/google.png" alt="Google" title="Google"
              width="50" height="25">
          </picture>
        </a>
-       <a href="https://priximbattable.net/avis-client">
+       <a href="/avis-client">
          <picture class=" hidden-lg-up">
            <source srcset="/img/cms/Avis/pagesjaunes.webp" type="image/webp">
            <img class="img-avis-mobile" loading="lazy" src="/img/cms/Avis/pagesjaunes.png" alt="Pages Jaunes"
              title="Pages Jaunes" width="50" height="25">
          </picture>
        </a>
-       <a href="https://priximbattable.net/avis-client">
+       <a href="/avis-client">
          <picture class=" hidden-lg-up">
            <source srcset="/img/cms/Avis/priximbattable.webp" type="image/webp">
            <img class="img-avis-mobile" loading="lazy" src="/img/cms/Avis/priximbattable.png" alt="Prix Imbattable"

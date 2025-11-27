@@ -76,7 +76,7 @@
 						<meta itemprop="position" content="1">
 					</li>
 					<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-						<a itemprop="item" href="https://priximbattable.net/service-client.php">
+						<a itemprop="item" href="/service-client.php">
 							<span itemprop="name">Service client</span>
 						</a>
 					<meta itemprop="position" content="2">

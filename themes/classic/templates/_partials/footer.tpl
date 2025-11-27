@@ -40,12 +40,12 @@
 
     <div class="col-xs-12 col-sm-4 col-md-4 bloco_icones">
       <div class="col-xs-2 col-sm-2 col-md-2 m-0 p-0">
-        <a href="https://priximbattable.net/content/15-le-paiement-en-4-fois-avec-oney" target="_blank">
+        <a href="/content/15-le-paiement-en-4-fois-avec-oney" target="_blank">
           <img loading="lazy" src="/img/icons/oney.png" class="icon-responsive icon-center" alt="Paiement 4x Oney" title="Paiement 4x Oney">
         </a>
       </div>
       <div class="col-xs-10 col-sm-10 col-md-10 txt_icones">
-        <a href="https://priximbattable.net/content/15-le-paiement-en-4-fois-avec-oney" target="_blank" class="link_btn">Paiement 4x Oney</a>
+        <a href="/content/15-le-paiement-en-4-fois-avec-oney" target="_blank" class="link_btn">Paiement 4x Oney</a>
       </div>
     </div>
 
@@ -60,12 +60,12 @@
 
     <div class="col-xs-12 col-sm-4 col-md-4 bloco_icones">
       <div class="col-xs-2 col-sm-2 col-md-2 m-0 p-0">
-        <a href="https://priximbattable.net/content/12-service-client" target="_blank">
+        <a href="/content/12-service-client" target="_blank">
           <img loading="lazy" src="/img/icons/service.png" class="icon-responsive icon-center" alt="Service Client" title="Service Client">
         </a>
       </div>
       <div class="col-xs-10 col-sm-10 col-md-10 txt_icones">
-        <a href="https://priximbattable.net/content/12-service-client" target="_blank" class="link_btn">Service à votre disposition</a>
+        <a href="/content/12-service-client" target="_blank" class="link_btn">Service à votre disposition</a>
       </div>
     </div>
 
@@ -96,12 +96,12 @@
 
     <div class="col-xs-12 col-sm-4 col-md-4 bloco_icones">
       <div class="col-xs-2 col-sm-2 col-md-2 m-0 p-0">
-        <a href="https://priximbattable.net/content/17-trouver-un-installateur-avec-needhelp" target="_blank">
+        <a href="/content/17-trouver-un-installateur-avec-needhelp" target="_blank">
           <img loading="lazy" src="/img/icons/installateur.png" class="icon-responsive icon-center" alt="Trouvez un installateur avec needhelp.com en moins de 24h" title="Trouvez un installateur avec needhelp.com en moins de 24h">
         </a>
       </div>
       <div class="col-xs-10 col-sm-10 col-md-10 txt_icones">
-        <a href="https://priximbattable.net/content/17-trouver-un-installateur-avec-needhelp" target="_blank" class="link_btn">Trouvez un Installateur</a>
+        <a href="/content/17-trouver-un-installateur-avec-needhelp" target="_blank" class="link_btn">Trouvez un Installateur</a>
       </div>
     </div>
 
