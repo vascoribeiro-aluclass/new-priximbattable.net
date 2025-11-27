@@ -1,0 +1,22 @@
+By acquiring and using this module (the "Module"), you, the Purchaser, agree to the following terms and conditions:
+
+Grant of License:
+a) The Purchaser is granted a non-exclusive and non-transferable license to use the Module for a single application.
+b) The Module may be used by the Purchaser for their own purposes or for a client's project.
+
+Restrictions:
+a) The Purchaser shall not directly or indirectly license, sub-license, sell, resell, distribute, or provide the Module for free to any third party without prior written consent from the author.
+b) The Module shall not be incorporated into any work intended for Resale, including but not limited to software products, templates, themes, or plugins.
+
+Intellectual Property:
+a) The Module and all related intellectual property rights are the sole property of the author.
+b) The Purchaser agrees not to modify, reverse engineer, or create derivative works of the Module without explicit permission from the author.
+
+Liability:
+a) The Module is provided "as is" without warranty of any kind, express or implied. The author shall not be held liable for any damages or losses arising from the use or inability to use the Module.
+b) The Purchaser assumes all responsibility and liability for the usage and consequences of the Module.
+
+Governing Law:
+This License Agreement shall be governed by and interpreted in accordance with the laws of [Jurisdiction]. Any disputes arising from this Agreement shall be subject to the exclusive jurisdiction of the courts in [Jurisdiction].
+
+Please carefully read and understand these terms before acquiring or using the Module. By acquiring and using the Module, you acknowledge and agree to be bound by this License Agreement.

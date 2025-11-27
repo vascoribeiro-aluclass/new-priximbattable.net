@@ -1,0 +1,344 @@
+/**
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ * versions in the future. If you wish to customize PrestaShop for your
+ * needs please refer to http://www.prestashop.com for more information.
+ * We offer the best and most useful modules PrestaShop and modifications for your online store.
+ *
+ * @author    Carlos Ucha
+ * @copyright 2010-2100 Carlos Ucha
+ * @license   see file: LICENSE.txt
+ * This program is not free software and you can't resell and redistribute it
+ *
+ * CONTACT WITH DEVELOPER
+ * carlosucha92@gmail.com
+ */
+
+
+/* CSS code for the chatbox styling */
+#chatbox {
+  position: fixed;
+  z-index: 9999;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+    /* Transition for smooth height change */
+  height: 55px;
+  max-height: 55px;
+  overflow: hidden; /* Hides content when closed */
+  transition: max-height 0.4s ease-in-out, height 0.4s ease-in-out, width 0.8s ease-in-out;
+}
+
+#chatbox {
+    width: 350px;
+}
+
+#chatbox.open {
+    width: 400px;
+}
+
+#chatbox.open {
+  height: 70vh; /* Fallback */
+  max-height: 70vh; /* This ensures a smooth transition */
+}
+
+#chatbox.bottom_right {
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Mobile styles - Fullscreen chatbox */
+@media (max-width: 768px) {
+    #chatbox.open {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0!important;
+        bottom: 0!important;
+        width: 100vw;
+        height:80vh;
+        max-height: 80vh;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: hidden;
+    }
+}
+
+#chatbox.top_right {
+  top: 20px;
+  right: 20px;
+}
+
+#chatbox.bottom_left {
+  bottom: 20px;
+  left: 20px;
+}
+
+#chatbox.top_left {
+  top: 20px;
+  left: 20px;
+}
+
+#chatbox-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+#chatbox-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+#chatbox-title {
+  font-weight: bold;
+  margin-left:10px;
+}
+
+.message.chatbot-error {
+  background-color: #FFCDD2; /* Background color for error messages */
+  color: #D32F2F; /* Text color for error messages */
+  padding: 8px 12px; /* Padding for error messages */
+  border-radius: 8px; /* Border radius for error messages */
+}
+
+#chatbox-toggle {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  float:left;
+  padding: 13px;
+}
+
+#chatbox-toggle img{
+  max-width: 30px;
+  height: auto;
+}
+
+#chatbox-minimize-icon {
+    margin-top: 4px;
+    float: left;
+    fill: none;
+    stroke: #5d5d5d;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    width: 0;
+    opacity: 0;
+    transition: transform 0.3s ease, stroke 0.2s ease-in-out;
+}
+
+#chatbox.open #chatbox-minimize-icon {
+    width: 18px; /* Ensures visibility */
+    opacity: 1; /* Fully visible */
+}
+
+#chatbox .chatbox-content {
+  display: none;
+}
+
+#chatbox .fa-angle-down{
+    display:none;
+}
+
+#chatbox.open .fa-angle-down{
+    display:block;
+    float: left;
+    margin: 8px;
+    font-weight: bold;
+}
+
+#chatbox.open .chatbox-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  border-top: 1px solid #dcdcdc;
+  overflow: hidden;
+}
+
+#chatbox-messages {
+    padding: 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-height: calc(70vh - 120px);
+    overflow-y: auto; /* Enables scrolling */
+    overflow-x: hidden;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    #chatbox-messages {
+        max-height: none;
+    }
+}
+
+/* Pushes the first message to the bottom, allowing scrolling */
+#chatbox-messages .message:first-child {
+    margin-top: auto;
+}
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+#chatbox-messages::-webkit-scrollbar {
+    width: 6px; /* Adjust scrollbar width */
+}
+
+#chatbox-messages::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Scrollbar color */
+    border-radius: 4px;
+}
+
+#chatbox-messages::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Light background to make scrollbar visible */
+}
+
+#chatbox-messages .message{
+    padding-top: 7px;
+}
+
+#chatbox-messages .response{
+    font-weight: bold;
+    border: 1px solid #ffedac;
+    background: #fffcf2;
+    padding: 11px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-top: 15px;
+}
+
+#chatbox-messages .user{
+    font-weight: bold;
+    border: 1px solid #cdcdff;
+    background: #f2f2ff;
+    padding: 11px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-top: 15px;
+}
+
+#chatbox-input {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  padding: 10px;
+  width:100%;
+  position: sticky;
+  bottom: 0;
+  border-top: 1px solid #d3d3d3;
+}
+
+#chatbox-input-text {
+  flex: 1;
+  overflow: hidden;
+  height: 30px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 16px; /* Prevents zoom on phones */
+  max-height: 200px;  /* Limit maximum height before scrolling */
+}
+
+@media (max-width: 768px) {
+    #chatbox-input {
+        margin-bottom:20px;
+    }
+
+    #chatbox-input-text {
+        border-radius: 15px;
+        border: 2px solid #211e1e;
+    }
+}
+
+#chatbox-send-button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#chatbox-send-button:disabled {
+  cursor: not-allowed;
+  opacity:0.7;
+}
+
+#chatbox-send-button svg {
+    width: 23px;
+    height: 23px;
+}
+
+/* Hover and active states */
+#chatbox-send-button:hover {
+    background-color: inherit;
+}
+
+#chatbox-send-button:active {
+    transform: scale(0.9); /* Adds a slight click effect */
+}
+
+.btn-selected {
+    border: 2px solid #4b4b4b;
+}
+
+/* Additional styling to show/hide the chatbox toggle button */
+.chatbox-closed #chatbox-toggle {
+  display: block;
+}
+
+.chatbox-open #chatbox-toggle {
+  display: none;
+}
+
+#chatbox #consent-buttons{
+    padding-top: 10px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+@keyframes dots {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#waiting-dots {
+  text-align: center;
+  padding: 10px;
+}
+
+.dot {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #000;
+  margin: 0 3px;
+  animation: dots 1s infinite;
+}
