@@ -634,10 +634,11 @@ function loadImagesMenu(idmenu) {
     // -- paulo - GTM tag devis
 
     // ++ vasco - add pack
-    $("#addpacktranquillissime").click(function () {
+   $("#addpacktranquillissime").click(function () {
       $("#lineven_servicespacksorder").hide();
       $("#messagemwait").show();
       $.ajax({
+        type: "POST",
         url: "/panier?add=1&id_product=13432",
         success: function (result) {
           location.reload();
