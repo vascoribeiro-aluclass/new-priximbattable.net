@@ -225,6 +225,7 @@ class NdkCf extends ObjectModel
     }
     return $result;
   }
+
   public static function GetCalculoPerPVC($aluclass_pvc, $field, $fields, $i)
   {
     $val_pvc = 0;
@@ -295,20 +296,6 @@ class NdkCf extends ObjectModel
     return false;
   }
 
-  public static function GetPriceCustomField($id_field, $value, $id_lang)
-  {
-
-    $sql =
-      'SELECT ncf.`id_ndk_customization_field`,ncf.`type`, ncf.`price` as price, ncf.`unit`, ncf.`price_type`, ncf.`price_per_caracter`, ncfv.`id_ndk_customization_field_value`, ncfv.`price`as valuePrice, ncfvl.value, ncfv.`reference`
-			FROM `' . _DB_PREFIX_ . 'ndk_customization_field` ncf
-      INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value` ncfv ON (ncfv.`id_ndk_customization_field`= ncf.`id_ndk_customization_field` )
-
-      INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` ncfvl ON (ncfvl.`id_ndk_customization_field_value`= ncfv.`id_ndk_customization_field_value` AND ncfvl.`value` = "' . pSQL($value) . '" AND ncfvl.`id_lang` = ' . (int)$id_lang . ' AND ncfvl.`value` <> "" )
-			WHERE (ncf.`id_ndk_customization_field` = ' . (int)$id_field . ' AND (ncf.price > 0 OR ncf.price_per_caracter > 0)) OR (ncfv.`id_ndk_customization_field` = ' . (int)$id_field . ' AND ncfvl.`value` = "' . pSQL($value) . '" AND ncfvl.`id_lang` = ' . (int)$id_lang . ')';
-
-    return Db::getInstance()->executeS($sql);
-  }
-
   public static function getCustomFields($id_product, $id_category)
   {
 
@@ -324,7 +311,7 @@ class NdkCf extends ObjectModel
     $fields = Db::getInstance()->executeS('
 				SELECT cf.`id_ndk_customization_field`, cf.`type`, cf.`feature`, cf.`target`, cf.`target_child`, cf.`price` , cf.`unit`, cf.`preserve_ratio`, cf.`price_type`, cf.`price_per_caracter`, cf.`nb_lines`, cf.`maxlength`, cf.`x_axis`, cf.`y_axis`, cf.`zone_width`, cf.`svg_path`, cf.`zone_height`, cf.`required`, cf.`recommend`, cf.`is_visual`, cf.`configurator`, cf.`draggable`, cf.`resizeable`, cf.`rotateable`, cf.`orienteable`, cf.`position`, cf.`ref_position`, cf.`zindex`, cf.`fonts`, cf.`colors`,  cf.`stroke_color`, cf.`sizes`, cf.effects, cf.alignments, cf.color_effect, cf.`validity`, cf.`quantity_min`, cf.`quantity_max`,cf.`weight_min`, cf.`weight_max`, cf.`open_status`, cf.influences, cfl.`name`, cfl.`notice`, cfl.`tooltip`, g.id_ndk_customization_field_group, g.mode
 				FROM `' . _DB_PREFIX_ . 'ndk_customization_field` cf
-				LEFT JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_lang` cfl ON (cfl.`id_ndk_customization_field`= cf.`id_ndk_customization_field`AND cfl.`id_lang` = ' . (int)$id_lang . ' )
+				INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_lang` cfl ON (cfl.`id_ndk_customization_field`= cf.`id_ndk_customization_field`AND cfl.`id_lang` = ' . (int)$id_lang . ' )
 				LEFT JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_group` g ON (FIND_IN_SET( cf.`id_ndk_customization_field`, g.`fields`))
 				INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_shop` cfs ON (cfs.`id_ndk_customization_field`= cf.`id_ndk_customization_field`AND cfs.`id_shop` = ' . (int)Context::getContext()->shop->id . ')
 				WHERE FIND_IN_SET( ' . (int)$id_product . ', cf.`products`) OR FIND_IN_SET( ' . (int)$id_category . ', cf.`categories`) AND cf.type NOT IN(99)
@@ -425,7 +412,21 @@ class NdkCf extends ObjectModel
           Ndkcf::recordCsv($field['id_ndk_customization_field']);
 
         $fields[$i]['is_csv'] = true;
+        //var_dump(NdkCf::csvToPriceRange($csv_file));
+        /*$csv_array = NdkCf::csvToPriceRange($csv_file);
+					$c = 0;
+					foreach($csv_array as $key=>$value){
+						if($c == 0)
+						{
+							foreach($value as $k=>$v)
+								$fields[$i]['price_range_height'][] = $k;
+						}
 
+						$fields[$i]['price_range_width'][] = $key;
+						$c++;
+					}
+
+					$fields[$i]['price_range'] = $csv_array;*/
         $fields[$i]['price_range_width'] = Db::getInstance()->executeS('SELECT DISTINCT(width) FROM ' . _DB_PREFIX_ . 'ndk_customization_field_csv WHERE id_ndk_customization_field = ' . (int)$field['id_ndk_customization_field']);
 
         $fields[$i]['price_range_height'] = Db::getInstance()->executeS('SELECT DISTINCT(height) FROM ' . _DB_PREFIX_ . 'ndk_customization_field_csv WHERE id_ndk_customization_field = ' . (int)$field['id_ndk_customization_field']);
@@ -818,6 +819,7 @@ class NdkCf extends ObjectModel
       $usetax = false;
     }
 
+    $id_lang = Context::getContext()->language->id;
     $fields = Db::getInstance()->executeS('
 				SELECT cf.`price`, cf.`unit`
 				FROM `' . _DB_PREFIX_ . 'ndk_customization_field` cf
@@ -852,39 +854,13 @@ class NdkCf extends ObjectModel
       return 0;
   }
 
-  public static function getOneCustomFields($id_ndk_customization_field)
-  {
-    $id_lang = Context::getContext()->language->id;
-    $fields = Db::getInstance()->executeS('
-				SELECT cf.`id_ndk_customization_field`, cfl.`name`, CONCAT(cfl.`name`, \' (\', cfl.`admin_name`, \')\') as adminname,  cf.`is_visual`, cf.`configurator` ,cf.`draggable`,cf.`resizeable`, cf.`rotateable`, cf.`orienteable`
-				FROM `' . _DB_PREFIX_ . 'ndk_customization_field` cf
-				INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_lang` cfl ON (cfl.`id_ndk_customization_field`= cf.`id_ndk_customization_field`AND cfl.`id_lang` = ' . (int)$id_lang . ' )
-				WHERE cfl.`id_lang` = ' . (int)$id_lang . ' and  cf.`id_ndk_customization_field` = ' . (int)$id_ndk_customization_field . '
-				GROUP BY  cf.`id_ndk_customization_field` ORDER BY cf.`id_ndk_customization_field`');
-
-    $i = 0;
-    foreach ($fields as $field) {
-      $fields[$i]['values'] = Db::getInstance()->executeS(
-        'SELECT cfv.`id_ndk_customization_field_value` as id, cfvl.`value`,  cfvl.`description`, cfv.`price`, cfv.`color`, cfv.`set_quantity`, cfv.`quantity`, cfv.`default_value`,cfv.`input_type` ,  cfv.`quantity_min`, cfv.`quantity_max`, cfv.`step_quantity`
-				FROM `' . _DB_PREFIX_ . 'ndk_customization_field_value` cfv
-				INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` cfvl ON (cfvl.`id_ndk_customization_field_value`= cfv.`id_ndk_customization_field`AND cfvl.`id_lang` = ' . (int)$id_lang . ')
-				WHERE cfv.`id_ndk_customization_field` = ' . (int)$field['id_ndk_customization_field']
-      );
-
-      $i++;
-    }
-
-
-    return $fields;
-  }
-
   public static function getAllCustomFields()
   {
     $id_lang = Context::getContext()->language->id;
     $fields = Db::getInstance()->executeS('
 				SELECT cf.`id_ndk_customization_field`, cfl.`name`, CONCAT(cfl.`name`, \' (\', cfl.`admin_name`, \')\') as adminname,  cf.`is_visual`, cf.`configurator` ,cf.`draggable`,cf.`resizeable`, cf.`rotateable`, cf.`orienteable`
 				FROM `' . _DB_PREFIX_ . 'ndk_customization_field` cf
-				INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_lang` cfl ON (cfl.`id_ndk_customization_field`= cf.`id_ndk_customization_field`AND cfl.`id_lang` = ' . (int)$id_lang . ' )
+				LEFT JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_lang` cfl ON (cfl.`id_ndk_customization_field`= cf.`id_ndk_customization_field`AND cfl.`id_lang` = ' . (int)$id_lang . ' )
 				WHERE cfl.`id_lang` = ' . (int)$id_lang . '
 				GROUP BY  cf.`id_ndk_customization_field` ORDER BY cf.`id_ndk_customization_field`');
 
@@ -893,7 +869,7 @@ class NdkCf extends ObjectModel
       $fields[$i]['values'] = Db::getInstance()->executeS(
         'SELECT cfv.`id_ndk_customization_field_value` as id, cfvl.`value`,  cfvl.`description`, cfv.`price`, cfv.`color`, cfv.`set_quantity`, cfv.`quantity`, cfv.`default_value`,cfv.`input_type` ,  cfv.`quantity_min`, cfv.`quantity_max`, cfv.`step_quantity`
 				FROM `' . _DB_PREFIX_ . 'ndk_customization_field_value` cfv
-				INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` cfvl ON (cfvl.`id_ndk_customization_field_value`= cfv.`id_ndk_customization_field`AND cfvl.`id_lang` = ' . (int)$id_lang . ')
+				LEFT JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` cfvl ON (cfvl.`id_ndk_customization_field_value`= cfv.`id_ndk_customization_field`AND cfvl.`id_lang` = ' . (int)$id_lang . ')
 				WHERE cfv.`id_ndk_customization_field` = ' . (int)$field['id_ndk_customization_field']
       );
 
@@ -911,7 +887,7 @@ class NdkCf extends ObjectModel
     $id_lang = Context::getContext()->language->id;
     $sql = 'SELECT cfv.`id_ndk_customization_field_value` as id, cfvl.`value`,  cfvl.`description`, cfv.`price`, cfv.`color`, cfv.`set_quantity`, cfv.`quantity`, cfv.`default_value`,cfv.`input_type` , cfv.`quantity_min`, cfv.`quantity_max`, cfv.`step_quantity`, cfv.`influences_restrictions`
 			FROM `' . _DB_PREFIX_ . 'ndk_customization_field_value` cfv
-			INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` cfvl ON (cfvl.`id_ndk_customization_field_value`= cfv.`id_ndk_customization_field`AND cfvl.`id_lang` = ' . (int)$id_lang . ')
+			LEFT JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` cfvl ON (cfvl.`id_ndk_customization_field_value`= cfv.`id_ndk_customization_field`AND cfvl.`id_lang` = ' . (int)$id_lang . ')
 			WHERE cfv.`id_ndk_customization_field` = ' . (int)$this->id;
     $result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
     return $result;
@@ -1008,9 +984,15 @@ class NdkCf extends ObjectModel
     $sql =
       'SELECT ncf.`id_ndk_customization_field`,ncf.`type`, ncf.`price` as price, ncf.`unit`, ncf.`price_type`, ncf.`price_per_caracter`, ncfv.`id_ndk_customization_field_value`, ncfv.`price`as valuePrice, ncfvl.value, ncfv.`reference`
 			FROM `' . _DB_PREFIX_ . 'ndk_customization_field` ncf
+
 			INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value` ncfv ON (ncfv.`id_ndk_customization_field`= ncf.`id_ndk_customization_field` )
-			INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` ncfvl ON (ncfvl.`id_ndk_customization_field_value`= ncfv.`id_ndk_customization_field_value` AND ncfvl.`id_ndk_customization_field_value` = "' . (int)$value  . '" AND ncfvl.`id_lang` = ' . (int)$id_lang . ' AND ncfvl.`value` <> "" )
-			WHERE (ncf.`id_ndk_customization_field` = ' . (int)$id_field . ' AND (ncf.price > 0 OR ncf.price_per_caracter > 0)) OR (ncfv.`id_ndk_customization_field` = ' . (int)$id_field . ' AND ncfvl.`id_ndk_customization_field_value` = "' . (int)$value . '"  AND ncfvl.`id_lang` = ' . (int)$id_lang . ')';
+
+			INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` ncfvl ON (ncfvl.`id_ndk_customization_field_value`= ncfv.`id_ndk_customization_field_value` AND ncfvl.`value` = "' . pSQL($value) . '" AND ncfvl.`id_lang` = ' . (int)$id_lang . ' AND ncfvl.`value` <> "" )
+
+			WHERE (ncf.`id_ndk_customization_field` = ' . (int)$id_field . ' AND (ncf.price > 0 OR ncf.price_per_caracter > 0)) OR (ncfv.`id_ndk_customization_field` = ' . (int)$id_field . ' AND ncfvl.`value` = "' . pSQL($value) . '" AND ncfvl.`id_lang` = ' . (int)$id_lang . ')';
+
+    //var_dump($sql);
+    //var aluclass_id_product_windows = ["29243","29590","29591","29616","29592","29593","29594","29617","29035","19806","29115","29117","29133","29135","29136","29138"];
 
     // tapee e aile
     $aluclass_id_field_tapee = array("660", "746", "1469", "3426", "746");
@@ -1087,7 +1069,6 @@ class NdkCf extends ObjectModel
     $aluclass_id_pord_options_fermeture = array("640153", "640152", "1291", "1379", "1302", "1150", "1127", "1264", "640116", "640147", "640148", "640149", "640150", "640151", "640207", "640208");  /* id dos prods, opcoes pergola site fr */
 
     $aluclass_id_TypeFixation_cloture = array("2722", "2728", "4147", "4159", "4160", "4161", "4162", "4163", "4164", "4165", "4166", "4167", "4168", "4169", "4170", "4215", "4216", "4217", "4218", "4219", "4220", "4221", "4222", "4223", "4224", "4225", "4226", "4227", "4228", "4229", "4230", "4231", "4232", "4233", "4234", "4235", "4236", "4237", "4238"); /* ids campos ndk, opcoes cloture   site fr */
-
     $aluclass_id_pord_TypeFixation_cloture = array("13814", "640026");  /* id dos prods, opcoes cloture site fr */
 
     $aluclass_id_pord_TypeFixation_cloture_new = array("485", "687", "606", "640029", "640027", "640028");  /* id dos prods, opcoes cloture site fr */
@@ -1199,12 +1180,26 @@ class NdkCf extends ObjectModel
     );
 
 
+    $aluclass_id_longueur_cloture_new = array(
+      '485' => '2637',
+      '687' => '2619',
+      '606' => '2628',
+      '640027' => '2619',
+      '640028' => '2628',
+      '640029' => '2637'
+
+    );
 
     $aluclass_id_longueur_cloture = array(
       '13814' => '2710',
       '640026' => '2710'
     );
 
+    $aluclass_id_decoration_decor_porta = array(
+      '3208' => '780',
+      '43148' => '779',
+      '43150' => '784'
+    );
 
     $aluclass_id_field_bsolamez = array("5206");
     $aluclass_product_bsolamez = array("640218");
@@ -1215,8 +1210,8 @@ class NdkCf extends ObjectModel
     $aluclass_id_32_carport = array("5627","5637"); /* ids campos ndk, opcoes carport   32 mm  site fr */
     $aluclass_id_pord_32_carport = array("640292", "640293");  /* id dos prods , opcoes carport 32 mm site fr */
     $aluclass_id_dimen_32_carport = array("5620","5621","5622","5630","5631","5632");  /* id dos prods , opcoes carport 32 mm site fr */
-    $aluclass_id_options_fermeture_carport = array("5626", "5636", "5655", "5646");
-    $aluclass_id_pord_options_fermeture_carport = array("640292", "640293", "640294", "640295");  
+     $aluclass_id_options_fermeture_carport = array("5626", "5636", "5655", "5646");
+    $aluclass_id_pord_options_fermeture_carport = array("640292", "640293", "640294", "640295");
 
     $aluclass_id_field_pre_pvc = array("4996", "4999", "5000", "5007", "5008", "5020", "5009", "5024", "5028", "5032", "5036", "5043", "5047", "5051", "5055");
     $aluclass_id_field_pvc = array("5001", "5003", "5011", "5012", "5010", "5010", "5026", "5029", "5033", "5037", "5044", "5048", "5052", "5056");
@@ -1249,14 +1244,14 @@ class NdkCf extends ObjectModel
 
     $aluclass_id_service_pose_grillage = array("5524"); /* ids campos ndk, opcoes verriere   site fr */
     /* Inicio arrays por causa dos serviço de pose das grillage/ clouture */
-    $aluclass_prod_id_service_pose_grillage = array("68667", "640024", "68627", "640025", "48485", "640023", "485", "687", "190338", "190381", "190231", "606", "640130", "640026");
-    $aluclass_prod_id_service_pose_clouture = array("485", "687", "190338", "190381", "190231", "606");
+    $aluclass_prod_id_service_pose_grillage = array("68667","640024","68627","640025","48485","640023","485","687","190338","190381","190231","606","640130","640026");
+    $aluclass_prod_id_service_pose_clouture = array("485","687","190338","190381","190231","606");
     $aluclass_prod_id_service_pose_clouture_promo = array("640026");
     $aluclass_prod_id_service_pose_clouture_panneau = array("640130");
     /*Fim arrays por causa dos serviço de pose das grillage/ clouture */
 
     /*  ingorar  desconto*/
-    $arrayidsingorar = array(5426, 5417, 5424, 5425, 5439, 5440, 5441, 5442, 5443, 5444, 5445, 5446, 5447, 5448, 5449, 5450, 5452, 5453, 5454, 5455, 5456, 5457, 5458, 5459, 5460, 5462, 5463, 5465, 5466, 5467, 5472, 5473, 5518, 5522, 5523, 5546);
+    $arrayidsingorar = array(5426, 5417, 5424, 5425, 5439, 5440, 5441, 5442, 5443, 5444, 5445, 5446, 5447, 5448, 5449, 5450, 5452, 5453, 5454, 5455, 5456, 5457, 5458, 5459, 5460, 5462, 5463, 5465, 5466, 5467, 5472, 5473, 5518, 5522, 5523,5546);
 
     $fields = Db::getInstance()->executeS($sql);
     $i = 0;
@@ -1264,25 +1259,25 @@ class NdkCf extends ObjectModel
       if ($usetax) {
         $fields[$i]['price'] = $product_tax_calculator->addTaxes($field['price']);
         $fields[$i]['price_per_caracter'] = $product_tax_calculator->addTaxes($field['price_per_caracter']);
+        //original $fields[$i]['valuePrice'] = $product_tax_calculator->addTaxes($field['valuePrice']);
 
         // aluclass - inicio calculo decoracao
         if (in_array($id_field, $aluclass_id_decor_porta)) {
           if (in_array($id_product, $aluclass_id_prod_com_decor)) {
-
-
             $val_decor = $_POST["prices"][$id_field];
             $field['valuePrice'] = $val_decor / ((($product_tax_calculator->taxes[0]->rate) / 100) + 1);
           }
         }
         // aluclass - fim calculo decoracao
+
         // ignorar desconto inicio
         if (in_array($id_field, $arrayidsingorar)) {
-          if (array_key_exists('reduction_value', $reductionDiscount)) {
+          if(array_key_exists('reduction_value', $reductionDiscount)){
             $valor_unitario = $field['valuePrice'];
             $valor_unitario = $valor_unitario / (1 - ($reductionDiscount['reduction_value'] / 100));
             $field['valuePrice'] = $valor_unitario;
           }
-        }
+       }
         // ignorar desconto fim
 
         // aluclass - pose de service  grillage
@@ -1311,26 +1306,28 @@ class NdkCf extends ObjectModel
                         && $dimensions[$value]['height'] != '' &&  $dimensions[$value]['height'] != ' '
                       ) {
 
-                        if (array_key_exists('reduction_value', $reductionDiscount)) {
+                        if(array_key_exists('reduction_value', $reductionDiscount)){
                           $valor_unitario = $valor_unitario / (1 - ($reductionDiscount['reduction_value'] / 100));
                         }
 
                         if (in_array($id_product, $aluclass_prod_id_service_pose_clouture)) {
                           $valorNumResultado = $dimensions[$value]['width'];
-                          $val_finition = ($valorNumResultado / 1000) * $valor_unitario;
-                        } elseif (in_array($id_product, $aluclass_prod_id_service_pose_clouture_panneau)) {
+                          $val_finition = ($valorNumResultado/1000) * $valor_unitario;
+                        }elseif (in_array($id_product, $aluclass_prod_id_service_pose_clouture_panneau)) {
                           preg_match_all('/\d+/', $dimensions[$value]['width'], $matches);
                           $secondNumber = isset($matches[0][1]) ? $matches[0][1] : 50;
-                          $val_finition =  $secondNumber * $valor_unitario;
-                        } elseif (in_array($id_product, $aluclass_prod_id_service_pose_clouture_promo)) {
+                          $val_finition =  $secondNumber* $valor_unitario;
+                        }elseif (in_array($id_product, $aluclass_prod_id_service_pose_clouture_promo)) {
                           preg_match_all('/=(\d+)m/', $dimensions[$value]['width'], $matches);
                           $secondNumber = isset($matches[1][0]) ? $matches[1][0] : 50;
-                          $val_finition =  $secondNumber * $valor_unitario;
-                        } else {
+                          $val_finition =  $secondNumber* $valor_unitario;
+
+                        }else{
                           preg_match('/(\d+(?:,\d+)?)/', $dimensions[$value]['width'], $matches);
                           $valorNumResultado = isset($matches[0]) ? str_replace(',', '.', $matches[0]) : null;
                           $val_finition = $valorNumResultado * $valor_unitario;
                         }
+
                       }
                     }
                   }
@@ -1377,10 +1374,12 @@ class NdkCf extends ObjectModel
                 }
               }
             }
-          
+
           }
         }
         //  aluclass - fim calculo 32 mm carport
+
+
 
         // aluclass - inicio calculo finition
 
@@ -1515,7 +1514,6 @@ class NdkCf extends ObjectModel
         }
         // aluclass - fim calculo cloture)
 
-
         //Vasco Portas de Entrada - Tapee
         $resultCalculoAileOrTapee = Ndkcf::GetCalculoAileOrTapee($aluclassIdFieldTapeeOrAileDoor, $id_field, $field);
         if ($resultCalculoAileOrTapee) {
@@ -1540,6 +1538,7 @@ class NdkCf extends ObjectModel
           }
         }
 
+
         // aluclass - inicio calculo pergola
         if (in_array($id_field, $aluclass_id_options_fermeture)) {
           if (in_array($id_product, $aluclass_id_pord_options_fermeture)) {
@@ -1554,7 +1553,6 @@ class NdkCf extends ObjectModel
           }
         }
         // aluclass - fim calculo pergola
-
          // aluclass - inicio calculo carport
         if (in_array($id_field, $aluclass_id_options_fermeture_carport)) {
           if (in_array($id_product,  $aluclass_id_pord_options_fermeture_carport)) {
@@ -1569,7 +1567,6 @@ class NdkCf extends ObjectModel
           }
         }
         // aluclass - fim calculo carport
-
         // aluclass - inicio calculo taipee e aile com taxa aplicada
         // tapee - se for tape
         if (in_array($id_field, $aluclass_id_field_tapee)) {
@@ -1604,7 +1601,9 @@ class NdkCf extends ObjectModel
             }
           }
           $fields[$i]['valuePrice'] = $product_tax_calculator->addTaxes($val_tapee);
-        }
+        } /*else {
+					$fields[$i]['valuePrice'] = $product_tax_calculator->addTaxes($field['valuePrice']); // original
+				}*/
 
         // aile
         if (in_array($id_field, $aluclass_id_field_aile)) {
@@ -1709,7 +1708,9 @@ class NdkCf extends ObjectModel
             }
           }
           $fields[$i]['valuePrice'] = $val_tapee;
-        }
+        } /*else {
+					$fields[$i]['valuePrice'] = $field['valuePrice']; // original
+				}*/
 
 
         // Vasco Portas de Entrada - Aile
@@ -1717,6 +1718,7 @@ class NdkCf extends ObjectModel
         if ($resultCalculoAileOrTapee) {
           $fields[$i]['valuePrice'] = $resultCalculoAileOrTapee;
         }
+
         //Vasco Janelas PVC
         if (in_array($id_product, $aluclass_product_pvc)) {
           if (in_array($id_field, $aluclass_id_field_pre_pvc)) {
@@ -1735,8 +1737,6 @@ class NdkCf extends ObjectModel
             $field['valuePrice']   = NdkCf::GetCalculoPVC($field);
           }
         }
-
-
         // aile
         if (in_array($id_field, $aluclass_id_field_aile)) {
           $valor_unitario = $field['valuePrice'];
@@ -1770,8 +1770,9 @@ class NdkCf extends ObjectModel
             }
           }
           $fields[$i]['valuePrice'] = $val_aile;
-        }
-
+        } /*else {
+					$fields[$i]['valuePrice'] = $field['valuePrice']; // original
+				}*/
         if (!in_array($id_field, $aluclass_id_field_tapee) && !in_array($id_field, $aluclass_id_field_aile)) {
           $fields[$i]['valuePrice'] = $field['valuePrice'];
         }
@@ -1784,7 +1785,20 @@ class NdkCf extends ObjectModel
     return $fields;
   }
 
+  public static function getValueRef($id_field, $value, $id_product)
+  {
+    $id_lang = Context::getContext()->language->id;
+    $sql =
+      'SELECT ncfv.`reference`
+			FROM `' . _DB_PREFIX_ . 'ndk_customization_field` ncf
+			INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value` ncfv ON (ncfv.`id_ndk_customization_field`= ncf.`id_ndk_customization_field` )
+			INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` ncfvl ON (ncfvl.`id_ndk_customization_field_value`= ncfv.`id_ndk_customization_field_value` AND ncfvl.`value` = "' . pSQL($value) . '" AND ncfvl.`id_lang` = ' . (int)$id_lang . ' AND ncfvl.`value` <> "" )
+			WHERE ncfv.`id_ndk_customization_field` = ' . (int)$id_field . ' AND ncfvl.`value` = "' . pSQL($value) . '"';
 
+    //var_dump($sql);
+    $reference = Db::getInstance()->getRow($sql);
+    return $reference['reference'];
+  }
 
 
   public function updatePosition($way, $position)
@@ -1892,7 +1906,7 @@ class NdkCf extends ObjectModel
     $fields = Db::getInstance()->executeS('
 				SELECT cf.`id_ndk_customization_field`, cfl.`admin_name`
 				FROM `' . _DB_PREFIX_ . 'ndk_customization_field` cf
-				INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_lang` cfl ON (cfl.`id_ndk_customization_field`= cf.`id_ndk_customization_field` AND cfl.`id_lang` = ' . (int)$id_lang . ' )
+				LEFT JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_lang` cfl ON (cfl.`id_ndk_customization_field`= cf.`id_ndk_customization_field` AND cfl.`id_lang` = ' . (int)$id_lang . ' )
 				WHERE cf.`id_ndk_customization_field` IN (' . $ids . ') GROUP BY  cf.id_ndk_customization_field');
 
 
@@ -1901,7 +1915,7 @@ class NdkCf extends ObjectModel
       $fields[$i]['values'] = Db::getInstance()->executeS('
 					SELECT cfv.`id_ndk_customization_field_value` as id, cfvl.`value` as name
 					FROM `' . _DB_PREFIX_ . 'ndk_customization_field_value` cfv
-					INNER JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` cfvl ON (cfvl.`id_ndk_customization_field_value`= cfv.`id_ndk_customization_field_value` AND cfvl.`id_lang` = ' . (int)$id_lang . ' )
+					LEFT JOIN `' . _DB_PREFIX_ . 'ndk_customization_field_value_lang` cfvl ON (cfvl.`id_ndk_customization_field_value`= cfv.`id_ndk_customization_field_value` AND cfvl.`id_lang` = ' . (int)$id_lang . ' )
 					WHERE cfv.`id_ndk_customization_field`= (' . $field['id_ndk_customization_field'] . ')');
 
       if ($qtty && $qtty > 0) {
@@ -1912,11 +1926,15 @@ class NdkCf extends ObjectModel
         }
       }
 
+
       $i++;
     }
 
+
     return $fields;
   }
+
+
 
 
   public static function createProductCustom($product, $id_combination = 0, $price, $cusText, $devischeck = false, $ndkcfidproductedit = false)
@@ -1943,34 +1961,31 @@ class NdkCf extends ObjectModel
       $carrierCode = AluclassCarrier::getCarrierCode((int)$product->id);
     }
 
-    // Incio do Serviço de montagem
     $arrayNDKs = Tools::getValue('ndkcsfield');
     $checkposeservice = false;
-
-    $arrayidsservice = array(5426, 5417, 5424, 5425, 5439, 5440, 5441, 5442, 5443, 5444, 5445, 5446, 5447, 5448, 5449, 5450, 5452, 5453, 5454, 5455, 5456, 5457, 5458, 5459, 5460, 5462, 5463, 5465, 5466, 5467, 5472, 5473, 5518, 5522, 5523, 5524, 5546);
+    // service de pose id do campo
+    $arrayidsservice = array(5426,5417,5424,5425,5439,5440,5441,5442,5443,5444,5445,5446,5447,5448,5449,5450,5452,5453,5454,5455,5456,5457,5458,5459,5460,5462,5463,5465,5466,5467,5472,5473,5518,5522,5523,5524,5546);
 
     foreach ($arrayNDKs as $keysndk => $valuendk) {
       if (in_array($keysndk, $arrayidsservice)) {
         $checkposeservice = true;
       }
     }
-    // Fim do Serviço de montagem
-    // cria tag's para identificadores
-    // tag servço de montagem [%POSE%]
+
     if ($checkposeservice) {
       $carrierCode = '[%POSE%] ' . $carrierCode;
     }
-    // tag servideo de entrega de plano de pergolas as cameras [%PLAN%]
+
     foreach ($arrayNDKs as $keysndk => $valuendk) {
       if ($keysndk == 5327) {
         $carrierCode = "[%PLAN%] " . $carrierCode;
       }
     }
-    // tag portes gratuitos [%FREE%]
+
     if (AluclassCarrier::checkFreeShip((int)$product->id)) {
       $carrierCode = "[%FREE%] " . $carrierCode;
     }
-    // tag portes gratuitos [%HALFFREE%]
+
     if (AluclassCarrier::checkHalfFreeShip((int)$product->id)) {
       $carrierCode = "[%HALFFREE%] " . $carrierCode;
     }
@@ -1999,7 +2014,7 @@ class NdkCf extends ObjectModel
       $link_rewrite = str_replace(array('--', '---', '----'), '-', $link_rewrite);
       $link_rewrite = Tools::truncateString($link_rewrite . ' ' . $name, 125);
       $customProd->link_rewrite[$lang['id_lang']] = Tools::str2url($link_rewrite . '-00');
-      $customProd->description_short[$lang['id_lang']] = $cusText . ' :' . $name . "[@".$product->id_category_default."@]" . $carrierCode;
+      $customProd->description_short[$lang['id_lang']] = $cusText . ' :' . $name . "[!".$product->id."!]" ."[@".$product->id_category_default."@]" . $carrierCode;
     }
 
 
@@ -2009,6 +2024,7 @@ class NdkCf extends ObjectModel
 
     $customProd->id_category_default = (int)Configuration::get('NDK_ACF_CAT');
 
+    //$customProd->advanced_stock_managment = $product->advanced_stock_managment;
     $customProd->customizable = 1;
     $customProd->id_supplier = (int)$product->id_supplier;
     $customProd->id_manufacturer = (int)$product->id_manufacturer;
@@ -2018,7 +2034,11 @@ class NdkCf extends ObjectModel
     //forpack
     $customProd->cache_is_pack = 1;
     $customProd->pack_stock_type = 1;
+
+    //*****     teste   IVA */
     $customProd->id_tax_rules_group = Product::getIdTaxRulesGroupByIdProduct((int)$product->id, Context::getContext());
+
+    //$customProd->pack_stock_type = 3;
     $customProd->out_of_stock = $product->out_of_stock;
     $customProd->visibility = 'none';
     $customProd->price = $price;
@@ -2045,6 +2065,11 @@ class NdkCf extends ObjectModel
     $customProd->advanced_stock_management = $product->advanced_stock_management;
     $customProd->depends_on_stock = $product->depends_on_stock;
 
+
+    // if ($devischeck) {
+    //   return $customProd;
+    // } else {
+
     $customProd->save();
 
     foreach ($languages as $lang) {
@@ -2064,6 +2089,9 @@ class NdkCf extends ObjectModel
           VALUES (' . (int)$warehouse['id_warehouse'] . ', ' . (int)$customProd->id . ', 0, "' . pSQL($warehouse['location']) . '") ');
     }
 
+
+    //$carrier_list = $product->getCarriers();
+    //$customProd->setCarriers($carrier_list);
     $customProd->setCarriers(self::getCarriersIds((int)$product->id));
     //Product::duplicateSpecificPrices((int)$product->id, $customProd->id);
     foreach (SpecificPrice::getByProductId((int)$product->id, (int)$id_combination) as $data) {
@@ -2077,6 +2105,7 @@ class NdkCf extends ObjectModel
     Product::duplicateAccessories((int)$product->id, $customProd->id);
 
     GroupReduction::duplicateReduction((int)$product->id, $customProd->id);
+    //$combination_images = Product::duplicateAttributes((int)$product->id, $customProd->id);
 
     NdkCf::duplicateProductImagesAttibute((int)$product->id, $customProd->id, $id_combination);
     //Image::duplicateProductImages((int)$product->id, $customProd->id, array());
@@ -2136,6 +2165,7 @@ class NdkCf extends ObjectModel
         $image_new = clone $image_old;
         unset($image_new->id);
         $image_new->id_product = (int)$id_product_new;
+        //$image_new->cover = 1;
 
         // A new id is generated for the cloned image when calling add()
         if ($image_new->add()) {
@@ -2162,6 +2192,8 @@ class NdkCf extends ObjectModel
             copy(_PS_PROD_IMG_DIR_ . $image_old->getExistingImgPath() . '.jpg', $new_path . '.jpg');
           }
 
+          //NdkCf::replaceAttributeImageAssociationId($combination_images, (int)$image_old->id, (int)$image_new->id);
+
           // Duplicate shop associations for images
           $image_new->duplicateShops($id_product_old);
         } else {
@@ -2169,7 +2201,11 @@ class NdkCf extends ObjectModel
         }
       }
     }
+    //return Image::duplicateAttributeImageAssociations($combination_images);
   }
+
+
+
 
   public static function getCarriersIds($id_product)
   {
@@ -2197,6 +2233,7 @@ class NdkCf extends ObjectModel
         'SELECT fc.id_ndk_customization_field_configuration as id FROM ' . _DB_PREFIX_ . 'ndk_customization_field_configuration fc WHERE fc.id_customization = ' . (int)$id_customization
       );
       if (sizeof($search) > 0) {
+        //print(Tools::jsonEncode($search[0]['name']));
         $config = new ndkCfConfig((int)$search[0]['id']);
         if (Validate::isLoadedObject($config))
           $config->delete();
@@ -2224,6 +2261,7 @@ class NdkCf extends ObjectModel
         'SELECT fc.id_ndk_customization_field_configuration as id FROM ' . _DB_PREFIX_ . 'ndk_customization_field_configuration fc WHERE fc.id_customization = ' . (int)$id_customization
       );
       if (sizeof($search) > 0) {
+        //print(Tools::jsonEncode($search[0]['name']));
         $config = new ndkCfConfig((int)$search[0]['id']);
         $config->delete();
       }
@@ -2387,6 +2425,17 @@ class NdkCf extends ObjectModel
 				)
 				WHERE cp.id_category = ' . (int)$id_category . ' AND p.active = 1 GROUP BY id_product ORDER by name'
     );
+
+
+    /*return Db::getInstance()->executeS('
+				SELECT p.`id_product`, p.`reference`, pl.`name`
+				FROM `'._DB_PREFIX_.'product`p
+				LEFT JOIN `'._DB_PREFIX_.'product_lang` pl ON (
+					p.`id_product` = pl.`id_product`
+					AND pl.`id_lang` = '.(int)$id_lang.'
+				)
+				WHERE p.id_category_default = '.(int)$id_category.' GROUP BY id_product ORDER by name'
+			);*/
   }
 
 
@@ -2497,6 +2546,8 @@ class NdkCf extends ObjectModel
     return $comb;
   }
 
+
+
   public static function getIdCombination($id_product, $attr1, $attr2)
   {
     $myresult = 0;
@@ -2552,6 +2603,12 @@ class NdkCf extends ObjectModel
         $attr['cols'][] = $item;
       else
         $attr['rows'][] = $item;
+
+      /*if($item['is_color_group'] == 1)
+					$attr['cols'][] = $item;
+				else
+					$attr['rows'][] = $item;*/
+
 
       $i++;
     }
@@ -2776,6 +2833,7 @@ class NdkCf extends ObjectModel
     $id_address = (int)Context::getContext()->cart->id_address_invoice;
     $address = Address::initialize($id_address, true);
     $tax_manager = TaxManagerFactory::getManager($address, Product::getIdTaxRulesGroupByIdProduct((int)$id_product, Context::getContext()));
+    $product_tax_calculator = $tax_manager->getTaxCalculator();
     $usetax = Group::getPriceDisplayMethod(Group::getPriceDisplayMethod(Context::getContext()->customer->id_default_group));
     $usetax = Product::$_taxCalculationMethod == PS_TAX_INC;
 
@@ -2789,7 +2847,7 @@ class NdkCf extends ObjectModel
 
   public static function getNdkTaxeRate($id_product)
   {
-
+    $context = Context::getContext();
     $id_address = (int)Context::getContext()->cart->id_address_invoice;
     $address = Address::initialize($id_address, true);
     $tax_manager = TaxManagerFactory::getManager($address, Product::getIdTaxRulesGroupByIdProduct((int)$id_product, Context::getContext()));

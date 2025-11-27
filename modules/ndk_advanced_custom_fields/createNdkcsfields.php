@@ -111,6 +111,7 @@ if ((int)Tools::getValue('old_id_customization') > 0) {
 
   $customisation->delete();
 } else {
+  $devischeck = false;
   $newCustomProd = NdkCf::createProductCustom($product, (int)Tools::getValue('ndkcf_id_combination'), 0, Tools::getValue('cusText'), $devischeck);
   // if ($devischeck) {
   //   $newCustomProdDevis = $newCustomProd;
@@ -1267,20 +1268,20 @@ if (Tools::getValue('id_product') && sizeof(Tools::getValue('ndkcsfield')) > 0) 
     $newDesc .= '<p><b>' . $fieldLabel['name'] . ' : </b>' . $val['value'] . '</p>';
   }
 
-  if ($devischeck) {
-    $arrayDevis = array();
-    $productscheck = array();
+  // if ($devischeck) {
+  //   $arrayDevis = array();
+  //   $productscheck = array();
 
-    $arrayDevis['description'] = $newDesc;
-    $arrayDevis['price'] = $newCustomProdObj->price;
+  //   $arrayDevis['description'] = $newDesc;
+  //   $arrayDevis['price'] = $newCustomProdObj->price;
 
-    $productscheck[0]['description_short'] =  $newCustomProdObj->description_short[$id_lang];
-    $productscheck[0]['cart_quantity'] = 1;
+  //   $productscheck[0]['description_short'] =  $newCustomProdObj->description_short[$id_lang];
+  //   $productscheck[0]['cart_quantity'] = 1;
 
-    $arrayDevis['portes'] = AluclassCarrier::getCarrierPrice($productscheck);
+  //   $arrayDevis['portes'] = AluclassCarrier::getCarrierPrice($productscheck);
 
-    print(Tools::jsonEncode($arrayDevis));
-  }
+  //   print(Tools::jsonEncode($arrayDevis));
+  // }
 
 
   //on retourne les valeurs
