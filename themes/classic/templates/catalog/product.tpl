@@ -1171,10 +1171,10 @@
                               {if {$product.id} != '1120'}
                                 {if {$infoProduto['cont_ndk']} > 0}
 
-                                  <span class="price productPriceUp"
+                                  <span class="price productPriceUp d"
                                     content="{$precoAtualizadoSEO['preco_com_desconto_catalogo']}">{$precoAtualizadoSEO['preco_com_desconto_catalogo_view']}</span>
                                 {else}
-                                  <span class="price productPriceUp" content="{$product.price_amount}">{$product.price}</span>
+                                  <span class="price productPriceUp c" content="{$product.price_amount}">{$product.price}</span>
                                 {/if}
                               {else}
                                 <span class="price productPriceUp hehe" content="{$product.price_amount}">{$product.price}</span>
