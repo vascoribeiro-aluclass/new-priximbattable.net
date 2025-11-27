@@ -981,7 +981,7 @@ function ShowFileTechnical(text, width, length, type) {
 
   $(".pdfplaning").show();
   $(".pdftext").text(text + length + 'mm x' + width + 'mm');
-  $(".pdfplan").attr("data-pdf", 'https://dev.priximbattable.net/modules/ndk_advanced_custom_fields/PDF/pdf/PDFNDK.php?length=' + length + '&width=' + width + '&wall=' + type + '&text=' + text);
+  $(".pdfplan").attr("data-pdf", 'https://priximbattable.net/modules/ndk_advanced_custom_fields/PDF/pdf/PDFNDK.php?length=' + length + '&width=' + width + '&wall=' + type + '&text=' + text);
 }
 
 /*

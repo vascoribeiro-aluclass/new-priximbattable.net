@@ -676,7 +676,7 @@
           </div>
 
           <div class="block-to-customers mobile">
-            <a href="https://dev.priximbattable.net/content/34-service-de-pose" target="_blank">
+            <a href="/content/34-service-de-pose" target="_blank">
               <div class="subtitle with-custom-icon py-1">
                 <span class="spacial-cyan">
                   <picture>

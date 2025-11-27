@@ -34,6 +34,8 @@ class ServiceclientController extends FrontController
 	public function postProcess()
     {
 
+			$msg = '';
+
 		if (Tools::isSubmit('submit')) {
 
 			switch($_POST['contact_motif']){

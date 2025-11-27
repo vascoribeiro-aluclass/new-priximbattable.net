@@ -41,7 +41,7 @@
             {* <div class="container">
               <div class="row recuosLaterais mt-3 mb-3">
                 <div class="col-12">
-                  <a href="https://dev.priximbattable.net/101-bonnes-affaires">
+                  <a href="https://priximbattable.net/101-bonnes-affaires">
                     <picture class="hidden-md-down">
                       <source srcset="/img/soldes/bonnes-affaires-desktop.webp" type="image/webp">
                       <img src="/img/soldes/bonnes-affaires-desktop.jpg" class="img-fluid" alt="Nos bonnes affaires" title="Nos bonnes affaires" width="1450" height="415">
