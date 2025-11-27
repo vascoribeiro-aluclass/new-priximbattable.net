@@ -649,10 +649,10 @@ class Cart extends CartCore
                 $bd_address_deliver = Db::getInstance()->executeS("SELECT   a.`phone`,`city`,`postcode`
           , cl.`name` country, sl.*
           FROM `" . _DB_PREFIX_ . "store` a
-                      INNER JOIN `sp_country_lang` cl
+                      INNER JOIN `ps_country_lang` cl
                           ON (cl.`id_country` = a.`id_country`
                           AND cl.`id_lang` = " . (int)Context::getContext()->language->id . ")
-                                      INNER JOIN `sp_store_lang` sl
+                                      INNER JOIN `ps_store_lang` sl
                           ON (sl.`id_store` = a.`id_store`
                           AND sl.`id_lang` = " . (int)Context::getContext()->language->id . ")
             WHERE a.`active` = 1
