@@ -570,7 +570,7 @@ class AluclassCarrier{
       $priceporteweight = ($priceporteweight - $price > 0 ? $priceporteweight - $price : 0);
       $priceString .= "TOTAL Livraison: ".number_format($price, 2, ',', ' '). " €";
     }
-    $sql = 'INSERT INTO `sp_customize_delivery_order` (`ref`, `product`, `portes`) VALUES ("'.$reference.'", "'.$nameString.'", "'.$priceString.'");';
+    $sql = 'INSERT INTO `ps_customize_delivery_order` (`ref`, `product`, `portes`) VALUES ("'.$reference.'", "'.$nameString.'", "'.$priceString.'");';
 
     $result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
 

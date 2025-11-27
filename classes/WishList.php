@@ -170,7 +170,7 @@ class WishListCore extends ObjectModel
     $sql = "SELECT  p.price, cp.quantity , p.id_product, cp.id_customization, pl.description, pl.name
             FROM `" . _DB_PREFIX_ . "cart_product_historic` cp
             INNER JOIN `" . _DB_PREFIX_ . "product` p on p.id_product = cp.id_product
-            INNER JOIN `sp_product_lang` pl on pl.id_product = p.id_product and pl.id_lang = ".(int)Context::getContext()->language->id."
+            INNER JOIN `ps_product_lang` pl on pl.id_product = p.id_product and pl.id_lang = ".(int)Context::getContext()->language->id."
             WHERE cp.id_cart = ".(int) $idCart ." ORDER BY cp.`date_hst` DESC";
 
     $cartHistoricProductResult = Db::getInstance()->executeS($sql);

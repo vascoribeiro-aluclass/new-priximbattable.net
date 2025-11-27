@@ -64,7 +64,7 @@ if (Tools::getValue('id_product_edit')) {
   $context->cart->updateQty(1, (int)Tools::getValue('id_product_edit'), 0, (int)$customizationoldedit['id_customization'], 'down');
   // $customisationedit = new Customization((int)$customizationoldedit['id_customization']);
   // $customisationedit->delete();
-  // Db::getInstance()->execute('DELETE FROM `sp_link_customization_product` where `id_product_customization` =  ' . (int)Tools::getValue('id_product_edit'));
+  // Db::getInstance()->execute('DELETE FROM `ps_link_customization_product` where `id_product_customization` =  ' . (int)Tools::getValue('id_product_edit'));
 }
 
 if ((int)Tools::getValue('old_id_customization') > 0) {
