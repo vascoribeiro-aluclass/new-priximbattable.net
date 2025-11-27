@@ -133,14 +133,14 @@
               <source srcset="/img/cms/Avis/avis-desktop.webp" type="image/webp">
               <img loading="lazy" src="/img/cms/Avis/avis-desktop.jpg" class="img-fluid" alt="Avis" title="Avis" width="1500" height="430">
             </picture>
-            <a  class=" hidden-lg-up" href="https://priximbattable.net/avis-client">
+            <a  class=" hidden-lg-up" href="/avis-client">
               <picture>
                 <source srcset="/img/cms/Avis/avis_mobile.webp" type="image/webp">
                 <img loading="lazy" class="img-fluid img-centre" src="/img/cms/Avis/avis_mobile.jpg" alt="Avis" title="Avis" width="800" height="520">
               </picture>
             </a>
             <div class="logos-avis avis-h-checkout avis-h-checkout-addrs">
-              {* <a href="https://priximbattable.net/avis-client" target="_blank"> *}
+              {* <a href="/avis-client" target="_blank"> *}
                 <div class="border-avis">
                   <picture>
                     <source srcset="/img/cms/Avis/logo-google.webp" type="image/webp">
