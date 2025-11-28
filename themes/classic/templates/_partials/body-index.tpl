@@ -609,7 +609,7 @@
               </a>
             </div>
             <div>
-              <a href="https://www.youtube.com/@user-oy2oc3dn5l/videos">
+              <a href="https://www.youtube.com/@priximbattable-net/videos">
                 <picture>
                   <source srcset="/img/cms/menu-about-us/videos-et-notice-de-montage.webp" type="image/webp">
                   <img loading="lazy" src="/img/cms/menu-about-us/videos-et-notice-de-montage.png"
@@ -700,7 +700,7 @@
                 <span>Exemple de réalisation complète</span>
               </div>
             </a>
-            <a href="https://www.youtube.com/@user-oy2oc3dn5l/videos">
+            <a href="https://www.youtube.com/@priximbattable-net/videos">
               <div class="subtitle with-custom-icon py-1">
                 <span class="soft-cyan">
                   <picture>
