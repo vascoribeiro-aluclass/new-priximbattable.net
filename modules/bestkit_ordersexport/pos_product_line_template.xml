@@ -1,0 +1,22 @@
+        <LineItem>
+          <Id>{{product_attribute_id}}</Id>
+          <ProductId>{{product_id}}</ProductId>
+          <CombinationId>{{product_attribute_id}}</CombinationId>
+          <Name>
+            {{product_reference}} {{name}}
+          </Name>
+          <Quantity>{{product_quantity}}</Quantity>
+          <id_parent>{{id_parent}}</id_parent>
+          <id_category>{{id_category}}</id_category>
+          <id_product>{{id_product}}</id_product>
+          <testeporte>{{testeporte}}</testeporte>
+          <OrderUnit>piece</OrderUnit>
+          <UnitPrice>{{unit_price_tax_incl}}</UnitPrice>
+          <Discount>{{reduction_amount_tax_incl}}</Discount>
+          <TotalPrice>{{total_price_tax_incl}}</TotalPrice>
+          <TaxRate>{{rate}}</TaxRate>
+          <VariationString>{{product_name}}</VariationString>
+          <InfoExtra>{{info_extra}}</InfoExtra>
+          <preview_image>{{preview_image}}</preview_image>
+          <poseProduct>{{tag_pose}}</poseProduct>
+        </LineItem>

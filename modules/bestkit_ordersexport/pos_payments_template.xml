@@ -1,0 +1,6 @@
+		<SalesPayment>
+			<Description>{{payment_method}}</Description>
+			<Amount>{{amount}}</Amount>
+		</SalesPayment>
+<Dissurs>
+        

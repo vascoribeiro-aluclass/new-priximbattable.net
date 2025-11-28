@@ -1070,27 +1070,27 @@ class PDFQuotation extends Module
     if($emailcomercial == 'undefined'){
       $emailcomercial = null;
     }
-    // if($emailcomercial){
+    if($emailcomercial){
 
-    //   $arrayPOSTSMS = array(
-    //     "token" => "d7a03fee5546592a37e22ff8f45bbbe45da4632dfed9a774e085d0e8b5d3fa73",
-    //     "o" => "sendcoupon",
-    //     "codemensage" => "84",
-    //     "nom" => $quotation->last_name,
-    //     "conseillere" => '',
-    //     "devis" => "https://priximbattable.net/img/quotation/D0".$quotation->id.'.pdf',
-    //     "email" => $emailcomercial,
-    //     "phone" => str_replace('+', '00', $quotation->phone),
-    //   );
-    //     $ch = curl_init();
-    //     curl_setopt($ch, CURLOPT_URL, "https://gestao.eu/api/index.php");
-    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    //     curl_setopt($ch, CURLOPT_POSTFIELDS, $arrayPOSTSMS);
-    //     curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
-    //     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    //     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    //     $data = curl_exec($ch);
-    // }
+      $arrayPOSTSMS = array(
+        "token" => "d7a03fee5546592a37e22ff8f45bbbe45da4632dfed9a774e085d0e8b5d3fa73",
+        "o" => "sendcoupon",
+        "codemensage" => "84",
+        "nom" => $quotation->last_name,
+        "conseillere" => '',
+        "devis" => "https://priximbattable.net/img/quotation/D0".$quotation->id.'.pdf',
+        "email" => $emailcomercial,
+        "phone" => str_replace('+', '00', $quotation->phone),
+      );
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://gestao.eu/api/index.php");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $arrayPOSTSMS);
+        curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        $data = curl_exec($ch);
+    }
 
 		//Generate PDF
     $pdf = new PDF($quotation, 'Quotation', $params['context']->smarty);

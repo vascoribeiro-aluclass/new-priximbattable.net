@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>gptchatbox</name>
+    <displayName><![CDATA[GPT-ChatBox PRO]]></displayName>
+    <version><![CDATA[3.0.2]]></version>
+    <description><![CDATA[GPT-ChatBot Pro is an intelligent chatbot module for PrestaShop websites that enhances customer engagement, provides personalized assistance, and boosts sales and conversions with its advanced language processing and natural language understanding capabilities.]]></description>
+    <author><![CDATA[Carlos Ucha]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+</module>

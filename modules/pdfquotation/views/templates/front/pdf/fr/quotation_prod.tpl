@@ -27,18 +27,26 @@
                         </tr> *}
 
                         <tr>
-                            <td width="70%"><b>FRAIS DE PORT  : </b>    </td> <td width="30%" style="text-align: right;">{displayPrice price=$Portes}</td>
+                            <td width="70%"><b>FRAIS DE PORT  : </b>    </td> <td width="30%" style="text-align: right;">
+                                {displayPrice price=$Portes}
+                            </td>
                         </tr>
 
                         <tr>
-                            <td width="70%"><b>TVA {$iva}%  : </b>    </td> <td width="30%" style="text-align: right;">{displayPrice price=$priceIVA}</td>
+                            <td width="70%"><b>TVA {$iva}%  : </b>    </td> <td width="30%" style="text-align: right;">
+                                {displayPrice price=$priceIVA}
+                            </td>
                         </tr>
 
                         <tr>
-                            <td width="70%"><b>TOTAL PRODUIT T.T.C : </b>    </td> <td width="30%" style="text-align: right;">{displayPrice price=$pricetotalproducts}</td>
+                            <td width="70%"><b>TOTAL PRODUIT T.T.C : </b>    </td> <td width="30%" style="text-align: right;">
+                                {displayPrice price=$pricetotalproducts}
+                            </td>
                         </tr>
                         <tr>
-                            <td width="70%" style="font-weight: bold; color: #fff; background-color: #595959;"><b>TOTAL T.T.C : </b>    </td> <td width="30%" style="text-align: right;font-weight: bold; color: #fff; background-color: #595959;">{displayPrice price=$pricetotal} </td>
+                            <td width="70%" style="font-weight: bold; color: #fff; background-color: #595959;"><b>TOTAL T.T.C : </b>    </td> <td width="30%" style="text-align: right;font-weight: bold; color: #fff; background-color: #595959;">
+                                {displayPrice price=$pricetotal}
+                             </td>
                         </tr>
                     </table>
                     </td>
@@ -53,7 +61,8 @@
                          <table style="width: 100%;"  >
                          <tr>
                          <td width="100%">
-                             {displayPrice price=$description}
+                             {$description}
+                            
                          </td>
                        </tr>
 
