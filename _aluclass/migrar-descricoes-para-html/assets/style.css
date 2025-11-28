@@ -1,0 +1,10 @@
+#block_select_subcategory_id {
+  display: none;
+}
+
+#log {
+  height: 63vh;
+  position: relative;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
