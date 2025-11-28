@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<XMLFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SalesOrders>
+    <SalesOrder>
+      <OrderNumber>100006473</OrderNumber>
+      <SpecialDeliveryInstructions><![CDATA[Not at home Instructions: leave by front door if out 
+Delivery Instructions: can i have a tub of dripping included please?]]></SpecialDeliveryInstructions>
+      <CustomerOrderRef>100006473</CustomerOrderRef>
+      <RequiredDate>2015-08-28T00:00:00</RequiredDate>
+      <PromisedDate>2015-08-28T00:00:00</PromisedDate>
+      <OrderDate>2015-08-27T09:17:57</OrderDate>
+      <Customer>
+        <eCommerceAccountNumber>5254</eCommerceAccountNumber>
+        <StatementName>Stephen Whale</StatementName>
+        <StatementAddress1>Hoppits, Onslow Green</StatementAddress1>
+        <StatementAddress3>Barnston</StatementAddress3>
+        <StatementTown>Dunmow</StatementTown>
+        <StatementCountry>United Kingdom</StatementCountry>
+        <StatementCountryCode>GB</StatementCountryCode>
+        <StatementPostcode>CM63PP</StatementPostcode>
+        <StatementEmail>stevewhale@msn.com</StatementEmail>
+        <StatementTelephone>01371820508</StatementTelephone>
+        <InvoiceName>Stephen Whale</InvoiceName>
+        <InvoiceAddress1>Hoppits, Onslow Green</InvoiceAddress1>
+        <InvoiceAddress3>Barnston</InvoiceAddress3>
+        <InvoiceTown>Dunmow</InvoiceTown>
+        <InvoiceCountry>United Kingdom</InvoiceCountry>
+        <InvoiceCountryCode>GB</InvoiceCountryCode>
+        <InvoicePostcode>CM63PP</InvoicePostcode>
+        <InvoiceEmail>stevewhale@msn.com</InvoiceEmail>
+        <InvoiceTelephone>01371820508</InvoiceTelephone>
+        <CustomerContact>
+          <Name>Stephen Whale</Name>
+          <Telephone>01371820508</Telephone>
+          <Email>stevewhale@msn.com</Email>
+        </CustomerContact>
+        <DeliveryAddress>
+          <Name>Stephen Whale</Name>
+          <Contact>Stephen Whale</Contact>
+          <Address1>Hoppits, Onslow Green</Address1>
+          <Address3>Barnston</Address3>
+          <Town>Dunmow</Town>
+          <Country>United Kingdom</Country>
+          <CountryCode>GB</CountryCode>
+          <Postcode>CM63PP</Postcode>
+          <Email>stevewhale@msn.com</Email>
+          <Telephone>01371820508</Telephone>
+        </DeliveryAddress>
+      </Customer>
+      <DeliveryMethod><![CDATA[tntshipping_tntshipping]]></DeliveryMethod>
+      <DeliveryGross>5.00</DeliveryGross>
+      <DeliveryNet>5.0000</DeliveryNet>
+      <DeliveryTax>0.0000</DeliveryTax>
+      <DeliveryTaxCode>T0</DeliveryTaxCode>
+      <OrderGross>56.69</OrderGross>
+      <OrderNet>0.0000</OrderNet>
+      <OrderTax>0.0000</OrderTax>
+      <AmountPaid>56.69</AmountPaid>
+      <Payments>
+        <SalesPayment>
+          <Description>sagepayserver</Description>
+          <Amount>56.69</Amount>
+        </SalesPayment>
+      </Payments>
+      <Lines>
+        <SalesOrderLine>
+          <eCommerceCode>Beef Topside-2kg</eCommerceCode>
+          <Code>Beef Topside-2kg</Code>
+          <Quantity>1.0000</Quantity>
+          <eCommerceItemID>43910</eCommerceItemID>
+          <ProductComments><![CDATA[Product Options:
+
+Approx. Weight: 2kg]]></ProductComments>
+          <TaxCode>T0</TaxCode>
+          <DatePromised>2015-08-28T00:00:00</DatePromised>
+          <DateRequired>2015-08-28T00:00:00</DateRequired>
+          <ItemGross>39.94</ItemGross>
+        </SalesOrderLine>
+      </Lines>
+    </SalesOrder>
+  </SalesOrders>
+</XMLFile>
