@@ -1,66 +1,9 @@
 <?php
-/**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Open Software License (OSL 3.0)
- * that is bundled with this package in the file LICENSE.md.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/OSL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to https://devdocs.prestashop.com/ for more information.
- *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
- */
-use Symfony\Component\Translation\TranslatorInterface;
 
-class CheckoutAddressesStepCore extends AbstractCheckoutStep
+class CheckoutAddressesStep extends CheckoutAddressesStepCore
 {
-    protected $template = 'checkout/_partials/steps/addresses.tpl';
 
-    private $addressForm;
-    private $use_same_address = true;
-    private $show_delivery_address_form = false;
-    private $show_invoice_address_form = false;
-    private $form_has_continue_button = false;
-
-    public function __construct(
-        Context $context,
-        TranslatorInterface $translator,
-        CustomerAddressForm $addressForm
-    ) {
-        parent::__construct($context, $translator);
-        $this->addressForm = $addressForm;
-    }
-
-    public function getDataToPersist()
-    {
-        return [
-            'use_same_address' => $this->use_same_address,
-        ];
-    }
-
-    public function restorePersistedData(array $data)
-    {
-        if (array_key_exists('use_same_address', $data)) {
-            $this->use_same_address = $data['use_same_address'];
-        }
-
-        return $this;
-    }
-
-   public function handleRequest(array $requestParams = [])
+    public function handleRequest(array $requestParams = [])
     {
         $this->addressForm->setAction($this->getCheckoutSession()->getCheckoutURL());
 
@@ -308,12 +251,4 @@ class CheckoutAddressesStepCore extends AbstractCheckoutStep
         return $params;
     }
 
-    public function render(array $extraParams = [])
-    {
-        return $this->renderTemplate(
-            $this->getTemplate(),
-            $extraParams,
-            $this->getTemplateParameters()
-        );
-    }
 }
