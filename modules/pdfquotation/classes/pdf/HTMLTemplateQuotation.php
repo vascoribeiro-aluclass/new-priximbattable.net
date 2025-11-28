@@ -132,7 +132,7 @@ class HTMLTemplateQuotation extends HTMLTemplate
 
 
     $priceproduct_withIVA = ($priceproduct_lessIVA * $tax_calculator);
-    $priceproduct_withIVA_withDiscount = $priceproduct_withIVA - ($priceproduct_withIVA * ($checaDescontosCatalogo['reduction'] / 100));
+    $priceproduct_withIVA_withDiscount = (float)$priceproduct_withIVA - ((float)$priceproduct_withIVA * ((float)$checaDescontosCatalogo['reduction'] / 100));
     $priceproduct_withDiscount_LessIVA = ($priceproduct_withIVA_withDiscount / $tax_calculator);
 
 
