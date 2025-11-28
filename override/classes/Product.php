@@ -8,6 +8,11 @@ class Product extends ProductCore
   /* paulo ++ função criada para verificar no front office se há descontos ativos no catálogo */
   public function checaDescontosCatalogo($idcategory = false, $idproduct = false)
   {
+
+    // echo "asd d";
+    // print_r($idproduct);
+    // exit;
+
     $hoje = date("Y-m-d H:i:s");
     $retorno['cont_rules'] = 0;
     $retorno['reduction'] = 0;
@@ -271,7 +276,6 @@ class Product extends ProductCore
   /* paulo ++ função criada para exibir o preço do produto com desconto do catálogo (se necessário) */
   public function precoAtualizadoSEO($preco_final_sem_desc_seo, $reduction_value, $preco_final_sem_desc_seo_sem_portes = 0)
   {
-   
     $context = Context::getContext();
     $cartRules = $context->cart->getCartRules();
     $preco_reduction_value = $preco_final_sem_desc_seo_sem_portes - ($preco_final_sem_desc_seo_sem_portes * ($reduction_value / 100));

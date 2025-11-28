@@ -64,15 +64,12 @@
           {* {if {$infoProduto['cont_reducao']} > 0} *}
             {if {$product.id} != '1120'}
               {if {$checaDescontosCatalogo['reduction']} >= 1}
-
                 {if {$infoProduto['cont_ndk']} > 0}
                   <span content="{$product.price_amount}"
-                    class="current_price_aluclass price_risk_aluclass fr">{$infoProduto['preco_final_sem_desc']}</span>
+                    class="current_price_aluclass price_risk_aluclass">{$infoProduto['preco_final_sem_desc']}</span>
                 {else}
-                      <span content="{$product.price_amount}"
-                    class="current_price_aluclass price_risk_aluclass fr">{$infoProduto['preco_final_sem_desc']}</span>
                   <span content="{$product.price_amount}"
-                    class="current_price_aluclass price_risk_aluclass pt">{$infoProduto['preco_final_sem_desc_sem_portes']}</span>
+                    class="current_price_aluclass price_risk_aluclass">{$infoProduto['preco_final_sem_desc_sem_portes']}</span>
                 {/if}
 
                 {* <span content="{$product.price_amount}" class="current_price_aluclass price_risk_aluclass">{$infoProduto['preco_final_sem_desc']}</span> *}
@@ -87,80 +84,64 @@
 
             {if {$product.id} != '1120'}
               {if {$checaDescontosCatalogo['reduction']} >= 1}
-
-
-
                 <span class="discount discount-percentage current_discount_aluclass">-{$checaDescontosCatalogo['reduction']}
                   AUJOURD'HUI</span>
+                  {/if}
+                {/if}
 
+              <p class="hidden-md-up "> </p>
+              <span class="factoryDirectPrice">Prix direct usine (TTC)</span>
+            </div>
+                {block name='product_unit_price'}
+                  {if $displayUnitPrice}
+                <p class="product-unit-price sub">
+                    {l s='(%unit_price%)' d='Shop.Theme.Catalog' sprintf=['%unit_price%' => $product.unit_price_full]}</p>
+                  {/if}
+                {/block}
+          </div>
+              {/block}
+              {block name='product_without_taxes'}
+                {if $priceDisplay == 2}
+            <p class="product-without-taxes">
+                  {l s='%price% tax excl.' d='Shop.Theme.Catalog' sprintf=['%price%' => $product.price_tax_exc]}</p>
+                {/if}
+              {/block}
+              {block name='product_pack_price'}
+                {if $displayPackPrice}
+            <p class="product-pack-price">
+              <span>
+                  {l s='Instead of %price%' d='Shop.Theme.Catalog' sprintf=['%price%' => $noPackPrice]}</span>
+            </p>
+                {/if}
+              {/block}
+              {block name='product_ecotax'}
+                {if $product.ecotax.amount > 0}
+            <p class="price-ecotax">
+                  {l s='Including %amount% for ecotax' d='Shop.Theme.Catalog' sprintf=['%amount%' => $product.ecotax.value]}
+                  {if $product.has_discount}
+                    {l s='(not impacted by the discount)' d='Shop.Theme.Catalog'}
+                  {/if}
+            </p>
+                {/if}
+              {/block}
+              {hook h='displayProductPriceBlock' product=$product type="weight" hook_origin='product_sheet'}
 
-      {* <span class="discount discount-percentage current_discount_aluclass">{l s='Save %percentage%' d='Shop.Theme.Catalog' sprintf=['%percentage%' => $checaDescontosCatalogo['reduction']]}</span> *}
-      {/if}
-      {/if}
-      {* {if $product.has_discount}
-            {if $product.discount_type === 'percentage'}
-              <span class="discount discount-percentage">{l s='Save %percentage%' d='Shop.Theme.Catalog' sprintf=['%percentage%' => $product.discount_percentage_absolute]}</span>
-            {else}
-              <span class="discount discount-amount">
-                  {l s='Save %amount%' d='Shop.Theme.Catalog' sprintf=['%amount%' => $product.discount_to_display]}
-              </span>
-            {/if}
-          {/if} *}
-      <p class="hidden-md-up "> </p>
-      <span class="factoryDirectPrice">Prix direct usine (TTC)</span>
-    </div>
+        <div class="tax-shipping-delivery-label">
 
-    {block name='product_unit_price'}
-    {if $displayUnitPrice}
-    <p class="product-unit-price sub">
-      {l s='(%unit_price%)' d='Shop.Theme.Catalog' sprintf=['%unit_price%' => $product.unit_price_full]}</p>
-    {/if}
-    {/block}
-  </div>
-  {/block}
+              {if $configuration.display_taxes_label}
+                {$product.labels.tax_long}
+              {/if}
+              {hook h='displayProductPriceBlock' product=$product type="price"}
+              {hook h='displayProductPriceBlock' product=$product type="after_price"}
 
-  {block name='product_without_taxes'}
-  {if $priceDisplay == 2}
-  <p class="product-without-taxes">
-    {l s='%price% tax excl.' d='Shop.Theme.Catalog' sprintf=['%price%' => $product.price_tax_exc]}</p>
-  {/if}
-  {/block}
-
-  {block name='product_pack_price'}
-  {if $displayPackPrice}
-  <p class="product-pack-price">
-    <span>{l s='Instead of %price%' d='Shop.Theme.Catalog' sprintf=['%price%' => $noPackPrice]}</span>
-  </p>
-  {/if}
-  {/block}
-
-  {block name='product_ecotax'}
-  {if $product.ecotax.amount > 0}
-  <p class="price-ecotax">
-    {l s='Including %amount% for ecotax' d='Shop.Theme.Catalog' sprintf=['%amount%' => $product.ecotax.value]}
-    {if $product.has_discount}
-    {l s='(not impacted by the discount)' d='Shop.Theme.Catalog'}
-    {/if}
-  </p>
-  {/if}
-  {/block}
-
-  {hook h='displayProductPriceBlock' product=$product type="weight" hook_origin='product_sheet'}
-
-  <div class="tax-shipping-delivery-label">
-    {if $configuration.display_taxes_label}
-    {$product.labels.tax_long}
-    {/if}
-    {hook h='displayProductPriceBlock' product=$product type="price"}
-    {hook h='displayProductPriceBlock' product=$product type="after_price"}
-    {if $product.additional_delivery_times == 1}
-    {if $product.delivery_information}
-    <span class="delivery-information">{$product.delivery_information}</span>
-    {/if}
-    {elseif $product.additional_delivery_times == 2}
-    {if $product.quantity > 0}
-    <span class="delivery-information">{$product.delivery_in_stock}</span>
-    {* Out of stock message should not be displayed if customer can't order the product. *}
+              {if $product.additional_delivery_times == 1}
+                {if $product.delivery_information}
+              <span class="delivery-information">{$product.delivery_information}</span>
+                {/if}
+              {elseif $product.additional_delivery_times == 2}
+                {if $product.quantity > 0}
+              <span class="delivery-information">{$product.delivery_in_stock}</span>
+              {* Out of stock message should not be displayed if customer can't order the product. *}
             {elseif $product.quantity <= 0 && $product.add_to_cart_url}
               <span class="delivery-information">{$product.delivery_out_stock}</span>
             {/if}
