@@ -12,4 +12,11 @@ class Order extends OrderCore {
       WHERE od.`id_order` = ' . (int) $this->id);
   }
 
+  public static function generateReference(){
+    // return strtoupper(Tools::passwdGen(9, 'NO_NUMERIC'));
+      $last_id = Db::getInstance()->getValue('SELECT MAX(id_order)
+                                        FROM '._DB_PREFIX_.'orders');
+                                        $tmpst = strtoupper(Tools::passwdGen(3, 'NUMERIC'));
+    return (15000 + (int)$last_id.'0'.$tmpst);
+  }
 }
