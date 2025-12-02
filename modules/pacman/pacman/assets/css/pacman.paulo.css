@@ -1,0 +1,176 @@
+body {
+	background-color: #FFF;
+	font-family: "Tahoma";
+	text-align: center;
+}
+
+#pacman {
+	height: 100%;
+	width: 100%;
+	border-color: 50px;
+}
+
+
+@media (min-width: 1281px) {
+  
+	.TimePACMAN{
+		color:yellow;
+		height: 70px;
+		text-align: center;
+		padding: 20px;
+	}
+	#pacman2 {
+		height: 100%;
+		width: 500px;
+	}
+	
+}
+
+@media (min-width: 768px) and (max-width: 1281px) {
+  
+	.TimePACMAN{
+		color: yellow;
+		text-align: center;
+		padding: 10px;
+	}
+	#pacman2 {
+		height: 100%;
+		width: 100%;
+	}
+
+	.menuC {
+		margin-top: 90%;
+		margin-left: 40%;
+	}
+	.paddingPacman{
+		padding-left: 10%;
+	}
+	
+}
+
+@media  (max-width: 767px) {
+  
+	.TimePACMAN{
+	    color: yellow;
+		text-align: center;
+		padding: 10px;
+	}
+
+	#pacman2 {
+		height: 100%;
+		width: 100%;
+	}
+
+	.menuC {
+		margin-top: 5px;
+	}
+	
+}
+
+
+.colorgroundblack{
+	background-color: black;
+}
+
+.colorgroundblackMail{
+	background-color: black;
+	border: 3px solid blue;
+	border-radius: 15px;
+}
+
+
+.buttonPACMAN3{
+	box-shadow: 2px 2px 4px 0 rgba(0,0,0,.2);
+
+text-transform: uppercase;
+
+font-weight: 600;
+
+padding: .5rem 0.6rem;
+
+border-color: transparent;
+
+display: inline-block;
+
+font-weight: 700;
+
+line-height: 0.55;
+
+text-align: center;
+
+white-space: nowrap;
+
+vertical-align: middle;
+
+cursor: pointer;
+
+-webkit-user-select: none;
+
+-moz-user-select: none;
+
+-ms-user-select: none;
+
+user-select: none;
+
+border: 2px solid red;
+
+font-size: 1rem;
+
+border-radius: 0;
+
+font-family: inherit;
+
+color: black;
+
+background-color: red;
+}
+
+.buttonPACMAN2{
+	box-shadow: 2px 2px 4px 0 rgba(0,0,0,.2);
+	text-transform: uppercase;
+	font-weight: 600;
+	padding: .5rem 0.6rem;
+	border-color: transparent;
+	display: inline-block;
+	font-weight: 700;
+	line-height: 1.15;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 2px solid yellow;
+	font-size: 1rem;
+	border-radius: 0;
+	font-family: inherit;
+	color: yellow;
+	background-color: yellow;
+}
+
+.buttonPACMAN{
+	box-shadow: 2px 2px 4px 0 rgba(0,0,0,.2);
+	text-transform: uppercase;
+	font-weight: 600;
+	padding: .5rem 0.6rem;
+	border-color: transparent;
+	display: inline-block;
+	font-weight: 700;
+	line-height: 1.15;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 2px solid yellow;
+	font-size: 1rem;
+	border-radius: 0;
+	font-family: inherit;
+	color: yellow;
+	background-color: black;
+}

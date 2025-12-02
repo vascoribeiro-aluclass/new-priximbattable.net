@@ -122,7 +122,12 @@
 
       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
         {hook h='displayFooterLinks2'}
-
+        {if {$cms.id} != '20'}
+          <div id='pacmanmenu'>
+            <a href="/content/20-pacman" target="_blank"><img src="/img/cms/PACMAN/pacman_1.gif" loading="lazy" alt=""
+                style="width: 68px; margin: 0; margin-top: -30px;"></a>
+          </div>
+        {/if}
       </div>
 
       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
@@ -298,5 +303,12 @@ s0.parentNode.insertBefore(s1,s0);
 /* live chat*/
 </script>
 {/literal}
+
+{if {$cms.id} == '20'}
+  <link rel="stylesheet" href="../modules/pacman/pacman/assets/css/pacman.paulo.css" type="text/css" media="all" />
+  <script src="../modules/pacman/pacman/assets/js/pacman.paulo.js"></script>
+  <script src="../modules/pacman/pacman/assets/js/modernizr.1.5.min.js"></script>
+  <script src="../modules/pacman/pacman.js"></script>
+{/if}
 
 
