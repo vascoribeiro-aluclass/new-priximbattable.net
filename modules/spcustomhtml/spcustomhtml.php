@@ -58,9 +58,9 @@ class SpCustomHtml extends Module
 		$this->secure_key = Tools::encrypt ($this->name);
 		$this->bootstrap = true;
 		parent::__construct ();
-		$this->displayName = $this->l('Custom Html');
-		$this->description = $this->l('This Module allows you to create your own HTML Module using a WYSIWYG editor.');
-		$this->confirmUninstall = $this->l('Are you sure?');
+		$this->displayName = 'Custom Html';
+		$this->description = 'This Module allows you to create your own HTML Module using a WYSIWYG editor.';
+		$this->confirmUninstall = 'Are you sure?';
 		$this->ps_versions_compliancy = array('min' => '1.6.0.9', 'max' => _PS_VERSION_);
 	}
 
@@ -806,34 +806,34 @@ class SpCustomHtml extends Module
 		{
 			if (!Validate::isInt(Tools::getValue('active')) || (Tools::getValue('active') != 0
 					&& Tools::getValue('active') != 1))
-				$errors[] = $this->l('Invalid slide state.');
+				$errors[] = 'Invalid slide state.';
 			if (!Validate::isInt(Tools::getValue('position')) || (Tools::getValue('position') < 0))
-				$errors[] = $this->l('Invalid slide position.');
+				$errors[] = 'Invalid slide position.';
 			if (Tools::isSubmit('id_spcustomhtml'))
 			{
 				if (!Validate::isInt(Tools::getValue('id_spcustomhtml'))
 					&& !$this->moduleExists(Tools::getValue('id_spcustomhtml')))
-					$errors[] = $this->l('Invalid module ID');
+					$errors[] = 'Invalid module ID';
 			}
 			$languages = Language::getLanguages(false);
 			foreach ($languages as $language)
 			{
 				if (Tools::strlen(Tools::getValue('title_module_'.$language['id_lang'])) > 255)
-					$errors[] = $this->l('The title is too long.');
+					$errors[] = 'The title is too long.';
 				if (Tools::strlen(Tools::getValue('content_'.$language['id_lang'])) > 4500)
-					$errors[] = $this->l('The content is too long.');
+					$errors[] = 'The content is too long.';
 			}
 			$id_lang_default = (int)Configuration::get('PS_LANG_DEFAULT');
 			if (Tools::strlen(Tools::getValue('title_module_'.$id_lang_default)) == 0)
-				$errors[] = $this->l('The title module is not set.');
+				$errors[] = 'The title module is not set.';
 			if (Tools::strlen(Tools::getValue('content_'.$id_lang_default)) == 0)
-				$errors[] = $this->l('The content is not set.');
+				$errors[] = 'The content is not set.';
 			if (Tools::strlen(Tools::getValue('moduleclass_sfx')) > 255)
-				$errors[] = $this->l('The Module Class Suffix  is too long.');
+				$errors[] = 'The Module Class Suffix  is too long.';
 		}elseif (Tools::isSubmit('id_spcustomhtml')
 			&& (!Validate::isInt(Tools::getValue('id_spcustomhtml'))
 				|| !$this->moduleExists((int)Tools::getValue('id_spcustomhtml'))))
-			$errors[] = $this->l('Invalid module ID');
+			$errors[] = 'Invalid module ID';
 		if (count($errors))
 		{
 			$this->html .= $this->displayError(implode('<br />', $errors));
@@ -852,7 +852,7 @@ class SpCustomHtml extends Module
 				$customhtml = new SpCustomHtmlClass((int)Tools::getValue ('id_spcustomhtml'));
 				if (!Validate::isLoadedObject($customhtml))
 				{
-					$this->html .= $this->displayError($this->l('Invalid slide ID'));
+					$this->html .= $this->displayError('Invalid slide ID');
 					return false;
 				}
 			}
@@ -920,20 +920,20 @@ class SpCustomHtml extends Module
 			$customhtml = new SpCustomHtmlClass(Tools::getValue ('id_spcustomhtml'));
 			foreach (Language::getLanguages (false) as $lang)
 				$customhtml->title_module[(int)$lang['id_lang']] = $customhtml->title_module[(int)$lang['id_lang']]
-					.$this->l(' (Copy)');
+					.' (Copy)';
 			$customhtml->duplicate();
 			$this->clearCacheItemForHook ();
 			Tools::redirectAdmin ($currentIndex.'&configure='.$this->name.'&token='
 				.Tools::getAdminTokenLite ('AdminModules').'&duplicateItemConfirmation');
 		}
 		elseif (Tools::isSubmit ('saveItemConfirmation'))
-			$this->html = $this->displayConfirmation ($this->l('Module successfully updated!'));
+			$this->html = $this->displayConfirmation ('Module successfully updated!');
 		elseif (Tools::isSubmit ('deleteItemConfirmation'))
-			$this->html = $this->displayConfirmation ($this->l('Module successfully deleted!'));
+			$this->html = $this->displayConfirmation ('Module successfully deleted!');
 		elseif (Tools::isSubmit ('duplicateItemConfirmation'))
-			$this->html = $this->displayConfirmation ($this->l('Module successfully duplicated!'));
+			$this->html = $this->displayConfirmation ('Module successfully duplicated!');
 		elseif (Tools::isSubmit ('updateItemConfirmation'))
-			$this->html = $this->displayConfirmation ($this->l('Module successfully updated!'));
+			$this->html = $this->displayConfirmation ('Module successfully updated!');
 	}
 
 	private function clearCacheItemForHook()
@@ -1010,23 +1010,23 @@ class SpCustomHtml extends Module
 		$this->html .= '
 	 	<div class="panel">
 			<div class="panel-heading">
-			'.$this->l('Module Manager').'
+			Module Manager
 			<span class="panel-heading-action">
 					<a class="list-toolbar-btn" href="'.$currentIndex.'&configure='.$this->name
 			.'&token='.Tools::getAdminTokenLite ('AdminModules').'&addItem">
 			<span data-toggle="tooltip" class="label-tooltip" data-original-title="'
-			.$this->l('Add new module').'" data-html="true"><i class="process-icon-new "></i></span></a>
+			.'Add new module'.'" data-html="true"><i class="process-icon-new "></i></span></a>
 			</span>
 			</div>
 			<table width="100%" class="table" cellspacing="0" cellpadding="0">
 			<thead>
 			<tr class="nodrag nodrop">
-				<th>'.$this->l('ID').'</th>
-				<th>'.$this->l('Ordering').'</th>
-				<th class=" left">'.$this->l('Title').'</th>
-				<th class=" left">'.$this->l('Hook into').'</th>
-				<th class=" left">'.$this->l('Status').'</th>
-				<th class=" right"><span class="title_box text-right">'.$this->l('Actions').'</span></th>
+				<th>ID</th>
+				<th>Ordering</th>
+				<th class=" left">Title</th>
+				<th class=" left">Hook into</th>
+				<th class=" left">Status</th>
+				<th class=" right"><span class="title_box text-right">Actions</span></th>
 			</tr>
 			</thead>
 			<tbody id="gird_items">';
@@ -1047,7 +1047,7 @@ class SpCustomHtml extends Module
 					.Tools::getAdminTokenLite ('AdminModules')
 					.'&editItem&id_spcustomhtml='.$customhtml['id_spcustomhtml'].'\'">'.$customhtml['title_module']
 					.' '.($customhtml['is_shared'] ? '<span class="label color_field"
-		style="background-color:#108510;color:white;margin-top:5px;">'.$this->l('Shared').'</span>' : '').'</td>
+		style="background-color:#108510;color:white;margin-top:5px;">Shared</span>' : '').'</td>
 					<td class="  " onclick="document.location = \''.$currentIndex.'&configure='.$this->name
 					.'&token='.Tools::getAdminTokenLite ('AdminModules').'&editItem&id_spcustomhtml='
 					.$customhtml['id_spcustomhtml'].'\'">'
@@ -1069,23 +1069,20 @@ class SpCustomHtml extends Module
 								</button>
 								<ul class="dropdown-menu">
 									<li>
-							<a onclick="return confirm(\''
-					.$this->l('Are you sure want duplicate this item?', __CLASS__, true, false)
-					.'\');"  title="'.$this->l('Duplicate').'" href="'.$currentIndex.'&configure='
+							<a onclick="return confirm(\'Are you sure want duplicate this item?\');"  title="Duplicate" href="'.$currentIndex.'&configure='
 					.$this->name.'&token='
 					.Tools::getAdminTokenLite ('AdminModules').'&duplicateItem&id_spcustomhtml='
 					.$customhtml['id_spcustomhtml'].'">
-											<i class="icon-copy"></i> '.$this->l('Duplicate').'
+											<i class="icon-copy"></i> Duplicate
 										</a>								
 									</li>
 									<li class="divider"></li>
 									<li>
-										<a title ="'.$this->l('Delete').'" onclick="return confirm(\''
-					.$this->l('Are you sure?', __CLASS__, true, false).'\');" href="'.$currentIndex
+										<a title ="Delete" onclick="return confirm(\'Are you sure?\');" href="'.$currentIndex
 					.'&configure='.$this->name.'&token='
 					.Tools::getAdminTokenLite ('AdminModules').'&deleteItem&id_spcustomhtml='
 					.$customhtml['id_spcustomhtml'].'">
-											<i class="icon-trash"></i> '.$this->l('Delete').'
+											<i class="icon-trash"></i> Delete
 										</a>
 									</li>
 								</ul>
@@ -1100,7 +1097,7 @@ class SpCustomHtml extends Module
 			$this->html .= '<td colspan="5" class="list-empty">
 								<div class="list-empty-msg">
 									<i class="icon-warning-sign list-empty-icon"></i>
-									'.$this->l('No records found').'
+									No records found
 								</div>
 							</td>';
 		}
@@ -1130,67 +1127,67 @@ class SpCustomHtml extends Module
 		$this->fields_form[0]['form'] = array(
 			'tinymce' => true,
 			'legend'  => array(
-				'title' => $this->l('General Options'),
+				'title' => 'General Options',
 				'icon'  => 'icon-cogs'
 			),
 			'input'   => array(
 				array(
 					'type'     => 'text',
-					'label'    => $this->l('Title'),
+					'label'    => 'Title',
 					'lang'     => true,
 					'name'     => 'title_module',
 					'class'    => 'fixed-width-xl',
-					'hint'     => $this->l('Title Of Module')
+					'hint'     => 'Title Of Module'
 				),
 				array(
 					'type'  => 'text',
-					'label' => $this->l('Module Class Suffix'),
+					'label' => 'Module Class Suffix',
 					'name'  => 'moduleclass_sfx',
-					'hint'  => $this->l('A suffix to be applied to the CSS class of the module.
-					This allows for individual module styling.'),
+					'hint'  => 'A suffix to be applied to the CSS class of the module.
+					This allows for individual module styling.',
 					'class' => 'fixed-width-xl'
 				),
 				array(
 					'type'   => 'switch',
-					'label'  => $this->l('Display Title'),
+					'label'  => 'Display Title',
 					'name'   => 'display_title_module',
-					'hint'   => $this->l('Display Title Of Module'),
+					'hint'   => 'Display Title Of Module',
 					'values' => array(
 						array(
 							'id'    => 'active_on',
 							'value' => 1,
-							'label' => $this->l('Enabled')
+							'label' => 'Enabled'
 						),
 						array(
 							'id'    => 'active_off',
 							'value' => 0,
-							'label' => $this->l('Disabled')
+							'label' => 'Disabled'
 						)
 					)
 				),
 				array(
 					'type'   => 'switch',
-					'label'  => $this->l('Status'),
+					'label'  => 'Status',
 					'name'   => 'active',
-					'hint'   => $this->l('Status Of Module'),
+					'hint'   => 'Status Of Module',
 					'values' => array(
 						array(
 							'id'    => 'active_on',
 							'value' => 1,
-							'label' => $this->l('Enabled')
+							'label' => 'Enabled'
 						),
 						array(
 							'id'    => 'active_off',
 							'value' => 0,
-							'label' => $this->l('Disabled')
+							'label' => 'Disabled'
 						)
 					)
 				),
 				array(
 					'type'    => 'select',
-					'label'   => $this->l('Hook into'),
+					'label'   => 'Hook into',
 					'name'    => 'hook',
-					'hint'    => $this->l('Select Hook for Module'),
+					'hint'    => 'Select Hook for Module',
 					'options' => array(
 						'query' => $hooks,
 						'id'    => 'key',
@@ -1199,9 +1196,9 @@ class SpCustomHtml extends Module
 				),
 				array(
 					'type'         => 'textarea',
-					'label'        => $this->l('Content'),
+					'label'        => 'Content',
 					'name'         => 'content',
-					'hint'         => $this->l('Show Content Of Module'),
+					'hint'         => 'Show Content Of Module',
 					'lang'         => true,
 					'autoload_rte' => true,
 					'cols'         => 40,
@@ -1209,11 +1206,11 @@ class SpCustomHtml extends Module
 				)
 			),
 			'submit'  => array(
-				'title' => $this->l('Save')
+				'title' => 'Save'
 			),
 			'buttons' => array(
 				array(
-					'title' => $this->l('Save and stay'),
+					'title' => 'Save and stay',
 					'name'  => 'saveAndStay',
 					'type'  => 'submit',
 					'class' => 'btn btn-default pull-right',
@@ -1244,14 +1241,14 @@ class SpCustomHtml extends Module
 		$helper->submit_action = 'saveItem';
 		$helper->toolbar_btn = array(
 			'save' => array(
-				'desc' => $this->l('Save'),
+				'desc' => 'Save',
 				'href' => AdminController::$currentIndex.'&configure='.$this->name
 					.'&save'.$this->name.'&token='.Tools::getAdminTokenLite ('AdminModules')
 			),
 			'back' => array(
 				'href' => AdminController::$currentIndex.'&configure='.$this->name.'&token='
 					.Tools::getAdminTokenLite ('AdminModules'),
-				'desc' => $this->l('Back to list') )
+				'desc' => 'Back to list' )
 		);
 		$id_spcustomhtml = (int)Tools::getValue ('id_spcustomhtml');
 
@@ -1832,8 +1829,8 @@ class SpCustomHtml extends Module
 	{
 		if (Shop::getContext() == Shop::CONTEXT_GROUP || Shop::getContext() == Shop::CONTEXT_ALL)
 			return '<p class="alert alert-warning">'.
-						$this->l('You cannot manage modules items from a "All Shops" or a "Group Shop" context,
-						select directly the shop you want to edit').
+						'You cannot manage modules items from a "All Shops" or a "Group Shop" context,
+						select directly the shop you want to edit'.
 					'</p>';
 		else
 			return '';
@@ -1846,19 +1843,19 @@ class SpCustomHtml extends Module
 
 		if ($mode == 'edit')
 			return '<p class="alert alert-danger">'.
-							sprintf($this->l('You can only edit this module from the shop(s) context: %s'),
+							sprintf('You can only edit this module from the shop(s) context: %s',
 								$shop_contextualized_name).
 					'</p>';
 		else
 			return '<p class="alert alert-danger">'.
-							sprintf($this->l('You cannot add modules from a "All Shops" or a "Group Shop" context')).
+							sprintf('You cannot add modules from a "All Shops" or a "Group Shop" context').
 					'</p>';
 	}
 
 	private function getShopAssociationError($id_customhtml)
 	{
 		return '<p class="alert alert-danger">'.
-			sprintf($this->l('Unable to get module shop association information (id_module: %d)'), (int)$id_customhtml).
+			sprintf('Unable to get module shop association information (id_module: %d)', (int)$id_customhtml).
 				'</p>';
 	}
 
@@ -1870,12 +1867,12 @@ class SpCustomHtml extends Module
 		if (Shop::isFeatureActive())
 		{
 			if (Shop::getContext() == Shop::CONTEXT_SHOP)
-			$shop_info = sprintf($this->l('The modifications will be applied to shop: %s'), $this->context->shop->name);
+			$shop_info = sprintf('The modifications will be applied to shop: %s', $this->context->shop->name);
 			else if (Shop::getContext() == Shop::CONTEXT_GROUP)
-				$shop_info = sprintf($this->l('The modifications will be applied to this group: %s'),
+				$shop_info = sprintf('The modifications will be applied to this group: %s',
 					Shop::getContextShopGroup()->name);
 			else
-				$shop_info = $this->l('The modifications will be applied to all shops and shop groups');
+				$shop_info = 'The modifications will be applied to all shops and shop groups';
 
 			return '<div class="alert alert-info">'.
 						$shop_info.
@@ -1887,8 +1884,8 @@ class SpCustomHtml extends Module
 	private function getSharedSlideWarning()
 	{
 		return '<p class="alert alert-warning">'.
-					$this->l('This module is shared with other shops!
-					All shops associated to this module will apply modifications made here').
+					'This module is shared with other shops!
+					All shops associated to this module will apply modifications made here'.
 				'</p>';
 	}
 
